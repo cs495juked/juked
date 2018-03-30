@@ -8,27 +8,58 @@
         as some other information to be sent to the database.
  */
 
+// need to include userClass?
+
 public class Lobby {
     private int lobbyCode;
     private int lobbySize;
+    int[] users;
 
-    pub
+    // getters & setters
+    public int getLobbyCode() {
+        // does this need to come from the DB?
+        // return DBlobbyCode
+        return lobbyCode;
+    }
 
-    int createLobby(str deviceID, str userID);
-    void joinLobby(int lobbyCode, str deviceID, str userID);
-    void destroyLobby();
-    void leaveLobby(ind deviceID);
-    Playlist createPlaylist();
-    User createUser(str deviceID, str userID);
-    int getLobbyID();
-    int getLobbySize();
-    void addUser();
-    int lobbySize;
-    int lobbyCode;
-    int Users [];
+    public void setLobbyCode(int lobbyCode) {
+        this.lobbyCode = lobbyCode;
+    }
+
+    public int getLobbySize() {
+        return lobbySize;
+    }
+
+    public void incrementLobbySize(int lobbySize) {
+        this.lobbySize = lobbySize + 1;
+    }
+    // end getters & setters
+
+    pubic int createLobby(int deviceID, str userID) {
 
 
 
+        return getLobbyCode();
+    }
+    void joinLobby(int lobbyCode, str deviceID, str userID) {
+
+    }
+    void destroyLobby() {
+
+    }
+
+    void leaveLobby(int deviceID) {
+
+    }
+
+
+    /* Playlist createPlaylist() {
+
+    } */
+
+    void addUser() {
+
+    }
 
 }
 
