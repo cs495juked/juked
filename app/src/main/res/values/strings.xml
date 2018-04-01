@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Juked</string>
     <string name="title_activity_settings_menu">Settings</string>
+    <string name="Join">Join Lobby</string>
+    <string name="Create">Create Lobby</string>
+
 
     <!-- Strings related to Settings -->
 
