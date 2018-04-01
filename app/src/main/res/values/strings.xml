@@ -77,6 +77,6 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_create_lobby">CreateLobby</string>
-    <string name="title_activity_user_lobby">userLobby</string>
-    <string name="title_activity_host_lobby">hostLobby</string>
+    <string name="create_lobby">Create Lobby</string>
+    <string name="join_lobby">Join Lobby</string>
 </resources>
