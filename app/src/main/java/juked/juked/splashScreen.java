@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.*;
 import android.view.*;
 import android.app.Dialog;
+import java.util.Random;
 
 public class splashScreen extends AppCompatActivity {
 
@@ -13,43 +14,48 @@ public class splashScreen extends AppCompatActivity {
     private Button createButton;
     private TextInputLayout lobbyCodeInput;
     private TextInputLayout nicknameInput;
+    private TextInputLayout hostNicknameInput;
+    private TextView generatedLobbyCodeText;
 
-
-    Dialog myDialog;
+    Dialog joinDialog;
+    Dialog createDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        myDialog = new Dialog(this);
+        joinDialog = new Dialog(this);
+        createDialog = new Dialog(this);
 
         joinButton = findViewById(R.id.joinBtn);
         createButton = findViewById(R.id.createBtn);
-        myDialog.setContentView(R.layout.joinlobbypopup);
+        joinDialog.setContentView(R.layout.joinlobbypopup);
+        createDialog.setContentView(R.layout.createlobbypopup);
+
+
 
 
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myDialog.show();
+                joinDialog.show();
                 Button joinLobbyFromPopup;
-                joinLobbyFromPopup = myDialog.findViewById(R.id.joinLobbyBtn);
+                joinLobbyFromPopup = joinDialog.findViewById(R.id.joinLobbyBtn);
 
                 joinLobbyFromPopup.setOnClickListener(new View.OnClickListener() {
                     @Override
 
                     public void onClick(View v) {
-                        lobbyCodeInput = myDialog.findViewById(R.id.inputLobbyCode);
+                        lobbyCodeInput = joinDialog.findViewById(R.id.inputLobbyCode);
                         String lobbyCode = lobbyCodeInput.getEditText().getText().toString();
 
-                        nicknameInput = myDialog.findViewById(R.id.inputNickname);
+                        nicknameInput = joinDialog.findViewById(R.id.inputNickname);
                         String nickname = nicknameInput.getEditText().getText().toString();
 
 
-
-
-                        myDialog.dismiss();
+                        joinDialog.dismiss();
+                        setContentView(R.layout.songlistview_row);
 
                         Toast.makeText(splashScreen.this,
                                 nickname + lobbyCode,
@@ -65,9 +71,36 @@ public class splashScreen extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(splashScreen.this,
-                        R.string.createToast,
-                        Toast.LENGTH_SHORT).show();
+                createDialog.show();
+                Button createLobbyFromPopup;
+                createLobbyFromPopup = createDialog.findViewById(R.id.createLobbyBtn);
+                generatedLobbyCodeText = (TextView) createDialog.findViewById(R.id.generatedLobbyCode);
+                Random r = new Random();
+                final int randomLobbyInt = r.nextInt(9999);
+
+
+                generatedLobbyCodeText.setText(Integer.toString(randomLobbyInt));
+
+                createLobbyFromPopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+
+                    public void onClick(View v) {
+
+                        hostNicknameInput = createDialog.findViewById(R.id.inputHostNickname);
+                        String hostNickname = hostNicknameInput.getEditText().getText().toString();
+
+
+
+                        createDialog.dismiss();
+                        setContentView(R.layout.songlistview_row);
+
+                        Toast.makeText(splashScreen.this,
+                                hostNickname + generatedLobbyCodeText.getText(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
 
             }
         });
