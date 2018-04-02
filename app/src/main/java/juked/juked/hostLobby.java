@@ -7,10 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.media.MediaPlayer;
+import android.media.AudioManager;
+import android.widget.ListView;
 
-
+import java.io.IOException;
 
 public class hostLobby extends AppCompatActivity {
+    ListView songListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,12 @@ public class hostLobby extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+//        songListView = (ListView) findViewById( R.id.SongListView);
+
+    }
+
+    private void populateSongsListView () {
+
     }
 
 }
