@@ -4,6 +4,8 @@
     <string name="Join">Join Lobby</string>
     <string name="Create">Create Lobby</string>
 
+    <string name="joinToast">Join!</string>
+    <string name="createToast">Create!</string>
 
     <!-- Strings related to Settings -->
 
@@ -79,4 +81,7 @@
     <string name="title_activity_create_lobby">CreateLobby</string>
     <string name="create_lobby">Create Lobby</string>
     <string name="join_lobby">Join Lobby</string>
+    <string name="lobby_code">Lobby Code</string>
+    <string name="joinLobbyBtn">Join Lobby</string>
+    <string name="nickname">Nickname</string>
 </resources>
