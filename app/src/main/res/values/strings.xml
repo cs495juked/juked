@@ -83,5 +83,7 @@
     <string name="join_lobby">Join Lobby</string>
     <string name="lobby_code">Lobby Code</string>
     <string name="joinLobbyBtn">Join Lobby</string>
+    <string name="createLobbyBtn">Create Lobby</string>
     <string name="nickname">Nickname</string>
+    <string name="generatedLobbyCode">XXXX</string>
 </resources>
