@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,7 +24,8 @@
         android:visibility="visible"
         android:layout_alignParentLeft="true"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp" >
+    </SearchView>
 
     <ListView
         android:id="@+id/SongListView"
@@ -38,4 +39,4 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
