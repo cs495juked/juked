@@ -75,9 +75,9 @@ public class splashScreen extends AppCompatActivity {
                 Button createLobbyFromPopup;
                 createLobbyFromPopup = createDialog.findViewById(R.id.createLobbyBtn);
                 generatedLobbyCodeText = (TextView) createDialog.findViewById(R.id.generatedLobbyCode);
-                Random r = new Random();
-                final int randomLobbyInt = r.nextInt(9999);
-
+//                Random r = new Random();
+//                final int randomLobbyInt = r.nextInt(9999);
+                int randomLobbyInt = (int)(Math.random()*9000)+1000;
 
                 generatedLobbyCodeText.setText(Integer.toString(randomLobbyInt));
 
