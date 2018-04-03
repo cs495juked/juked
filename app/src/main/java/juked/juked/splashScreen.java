@@ -65,7 +65,7 @@ public class splashScreen extends AppCompatActivity {
                         String nickname = nicknameInput.getEditText().getText().toString();
 
                         joinDialog.dismiss();
-                        setContentView(R.layout.activity_host_lobby);
+                        setContentView(R.layout.activity_host_main);
 
                         Toast.makeText(splashScreen.this,
                                 nickname + lobbyCode,

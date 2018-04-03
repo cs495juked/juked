@@ -75,7 +75,7 @@ public class HostMainActivity extends AppCompatActivity {
         adapter.addFragment(new SongListFragment(), "Party Lobby");
         adapter.addFragment(new SongListHistoryFragment(), "Song History");
         // this next one needs to be changed
-        adapter.addFragment(Void," Settings");
+        adapter.addFragment(null," Settings");
         viewPager.setAdapter(adapter);
     }
 
