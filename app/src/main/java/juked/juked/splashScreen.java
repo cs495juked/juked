@@ -1,5 +1,6 @@
 package juked.juked;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,11 +66,11 @@ public class splashScreen extends AppCompatActivity {
                         String nickname = nicknameInput.getEditText().getText().toString();
 
                         joinDialog.dismiss();
-                        setContentView(R.layout.activity_host_main);
+                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
 
-                        Toast.makeText(splashScreen.this,
-                                nickname + lobbyCode,
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(splashScreen.this,
+//                                nickname + lobbyCode,
+//                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -111,7 +112,7 @@ public class splashScreen extends AppCompatActivity {
 
 
                         createDialog.dismiss();
-                        setContentView(R.layout.activity_host_main);
+                        setContentView(R.layout.activity_test_recycled_view);
 
                         Toast.makeText(splashScreen.this,
                                 hostNickname + generatedLobbyCodeText.getText(),

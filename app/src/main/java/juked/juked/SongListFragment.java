@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import juked.juked.dummy.DummyContent;
 import juked.juked.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,8 +30,10 @@ public class SongListFragment extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
+
+
     /**
-     * Mandatory empty constructor for the frag ment manager to instantiate the
+     * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public SongListFragment() {
