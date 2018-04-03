@@ -41,7 +41,16 @@ public class splashScreen extends AppCompatActivity {
             public void onClick(View v) {
                 joinDialog.show();
                 Button joinLobbyFromPopup;
+                TextView backFromJoinBtn;
                 joinLobbyFromPopup = joinDialog.findViewById(R.id.joinLobbyBtn);
+                backFromJoinBtn = joinDialog.findViewById(R.id.backToHomeJoin);
+
+                backFromJoinBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        joinDialog.dismiss();
+                    }
+                });
 
                 joinLobbyFromPopup.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -50,9 +59,10 @@ public class splashScreen extends AppCompatActivity {
                         lobbyCodeInput = joinDialog.findViewById(R.id.inputLobbyCode);
                         String lobbyCode = lobbyCodeInput.getEditText().getText().toString();
 
+
+
                         nicknameInput = joinDialog.findViewById(R.id.inputNickname);
                         String nickname = nicknameInput.getEditText().getText().toString();
-
 
                         joinDialog.dismiss();
                         setContentView(R.layout.songlistview_row);
@@ -73,13 +83,23 @@ public class splashScreen extends AppCompatActivity {
             public void onClick(View v) {
                 createDialog.show();
                 Button createLobbyFromPopup;
+                TextView backBtn = createDialog.findViewById(R.id.backtoHomeBtn);
                 createLobbyFromPopup = createDialog.findViewById(R.id.createLobbyBtn);
-                generatedLobbyCodeText = (TextView) createDialog.findViewById(R.id.generatedLobbyCode);
-//                Random r = new Random();
-//                final int randomLobbyInt = r.nextInt(9999);
-                int randomLobbyInt = (int)(Math.random()*9000)+1000;
+                generatedLobbyCodeText = createDialog.findViewById(R.id.generatedLobbyCode);
+                Random r = new Random();
+                final int randomLobbyInt = r.nextInt(9999);
+                String lobby = String.format("%04d", randomLobbyInt);
 
-                generatedLobbyCodeText.setText(Integer.toString(randomLobbyInt));
+
+                backBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+
+                    public void onClick(View v) {
+                        createDialog.dismiss();
+                    }
+                });
+
+                generatedLobbyCodeText.setText(lobby);
 
                 createLobbyFromPopup.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -88,7 +108,6 @@ public class splashScreen extends AppCompatActivity {
 
                         hostNicknameInput = createDialog.findViewById(R.id.inputHostNickname);
                         String hostNickname = hostNicknameInput.getEditText().getText().toString();
-
 
 
                         createDialog.dismiss();

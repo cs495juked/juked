@@ -5,7 +5,7 @@
     android:layout_width="250dp"
     android:layout_height="350dp"
     android:layout_gravity="center"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/JukedGray"
     android:padding="5dp">
 
     <android.support.design.widget.TextInputLayout
@@ -35,14 +35,15 @@
 
     <Button
         android:id="@+id/createLobbyBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
+        android:layout_width="105dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="84dp"
         android:layout_marginEnd="71dp"
         android:layout_marginLeft="86dp"
         android:layout_marginRight="71dp"
         android:layout_marginStart="86dp"
         android:layout_marginTop="44dp"
+        android:background="@color/JukedBlue"
         android:text="@string/createLobbyBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,5 +90,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:layout_constraintVertical_bias="0.56" />
+
+    <TextView
+        android:id="@+id/backtoHomeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="170dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/backtohome"
+        android:textColor="@color/JukedBlue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/inputHostNickname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

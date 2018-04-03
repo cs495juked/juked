@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Juked</string>
     <string name="title_activity_settings_menu">Settings</string>
-    <string name="Join">Join Lobby</string>
-    <string name="Create">Create Lobby</string>
+    <string name="Join">Join a Party</string>
+    <string name="Create">Start a Party</string>
 
     <string name="joinToast">Join!</string>
     <string name="createToast">Create!</string>
@@ -80,16 +80,11 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_create_lobby">CreateLobby</string>
     <string name="create_lobby">Create Lobby</string>
-    <string name="join_lobby">Join Lobby</string>
+    <string name="join_lobby">Join Party</string>
     <string name="lobby_code">Lobby Code</string>
-    <string name="joinLobbyBtn">Join Lobby</string>
-    <string name="createLobbyBtn">Create Lobby</string>
+    <string name="joinLobbyBtn">Join Party</string>
+    <string name="createLobbyBtn">Create Party</string>
     <string name="nickname">Nickname</string>
     <string name="generatedLobbyCode">XXXX</string>
-    <string name="title_activity_host_main">HostMainActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
+    <string name="backtohome"><![CDATA[< Back]]></string>
 </resources>
