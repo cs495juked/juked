@@ -20,6 +20,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>():
     private final List<String> mFragmentTitleList = new ArrayList<>():
 
+    public void addFragment( Fragment fragment, String title) {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
+    }
 
     public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);

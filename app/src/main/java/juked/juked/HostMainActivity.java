@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,6 +42,7 @@ public class HostMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_main);
+        Log.d(TAG, "onCreate: Starting");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,6 +68,15 @@ public class HostMainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setupViewPager( ViewPager viewPager) {
+        SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new SongListFragment(), "Party Lobby");
+        adapter.addFragment(new SongListHistoryFragment(), "Song History");
+        // this next one needs to be changed
+        adapter.addFragment(Void," Settings");
+        viewPager.setAdapter(adapter);
     }
 
 
