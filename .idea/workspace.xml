@@ -21,9 +21,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd72731e-b0dc-4540-a36d-81c4db2608a6" name="Default" comment="redid hostMainActivity">
+    <list default="true" id="cd72731e-b0dc-4540-a36d-81c4db2608a6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +61,8 @@
       <file leaf-file-name="splashScreen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="146" column="59" lean-forward="true" selection-start-line="146" selection-start-column="59" selection-end-line="146" selection-end-column="59" />
+            <state relative-caret-position="281">
+              <caret line="146" column="60" lean-forward="false" selection-start-line="146" selection-start-column="60" selection-end-line="146" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1650#3478#0" expanded="true" />
@@ -71,12 +71,12 @@
                 <element signature="e#2334#3449#0" expanded="true" />
                 <element signature="e#3448#3449#0" expanded="true" />
                 <element signature="e#3477#3478#0" expanded="true" />
-                <element signature="e#3522#5585#0" expanded="true" />
+                <element signature="e#3522#5586#0" expanded="true" />
                 <element signature="e#4106#4303#0" expanded="true" />
                 <element signature="e#4302#4303#0" expanded="true" />
-                <element signature="e#4444#5556#0" expanded="true" />
-                <element signature="e#5555#5556#0" expanded="true" />
-                <element signature="e#5584#5585#0" expanded="true" />
+                <element signature="e#4444#5557#0" expanded="true" />
+                <element signature="e#5556#5557#0" expanded="true" />
+                <element signature="e#5585#5586#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2128,7 +2128,7 @@
     <property name="device.picker.selection" value="044d9630" />
     <property name="android.profiler.active" value="true" />
     <property name="SearchEverywhereHistoryKey" value="giti&#9;FILE&#9;file:///Users/Francisco-Mac/cs495/juked/app/.gitignore&#10;gitignore&#9;FILE&#9;file:///Users/Francisco-Mac/cs495/juked/app/.gitignore&#10;ignore&#9;FILE&#9;file:///Users/Francisco-Mac/cs495/juked/app/.gitignore" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1522878588845" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1522878949338" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2611,7 +2611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522878674904</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="updated database hookup for lobby creation&#10;added start of hookup for user creation">
+      <created>1522878761133</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1522878761133</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2636,7 +2643,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34465197" sideWeight="0.5234493" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3117932" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767403" sideWeight="0.4591528" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32767403" sideWeight="0.4591528" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767403" sideWeight="0.49394855" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42444822" sideWeight="0.48789713" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2644,7 +2651,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23071104" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Assistant" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34465197" sideWeight="0.47655067" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34465197" sideWeight="0.47655067" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24939467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2704,7 +2711,8 @@
     <MESSAGE value="added lobby screen with search bar to be implemented with Spotify api" />
     <MESSAGE value="redid hostMainActivity" />
     <MESSAGE value="Database for create lobby and attempted join lobby" />
-    <option name="LAST_COMMIT_MESSAGE" value="Database for create lobby and attempted join lobby" />
+    <MESSAGE value="updated database hookup for lobby creation&#10;added start of hookup for user creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated database hookup for lobby creation&#10;added start of hookup for user creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3030,8 +3038,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="146" column="59" lean-forward="true" selection-start-line="146" selection-start-column="59" selection-end-line="146" selection-end-column="59" />
+        <state relative-caret-position="281">
+          <caret line="146" column="60" lean-forward="false" selection-start-line="146" selection-start-column="60" selection-end-line="146" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1650#3478#0" expanded="true" />
@@ -3040,12 +3048,12 @@
             <element signature="e#2334#3449#0" expanded="true" />
             <element signature="e#3448#3449#0" expanded="true" />
             <element signature="e#3477#3478#0" expanded="true" />
-            <element signature="e#3522#5585#0" expanded="true" />
+            <element signature="e#3522#5586#0" expanded="true" />
             <element signature="e#4106#4303#0" expanded="true" />
             <element signature="e#4302#4303#0" expanded="true" />
-            <element signature="e#4444#5556#0" expanded="true" />
-            <element signature="e#5555#5556#0" expanded="true" />
-            <element signature="e#5584#5585#0" expanded="true" />
+            <element signature="e#4444#5557#0" expanded="true" />
+            <element signature="e#5556#5557#0" expanded="true" />
+            <element signature="e#5585#5586#0" expanded="true" />
           </folding>
         </state>
       </provider>
