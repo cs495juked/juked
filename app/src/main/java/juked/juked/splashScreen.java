@@ -35,8 +35,6 @@ public class splashScreen extends AppCompatActivity {
         createDialog.setContentView(R.layout.createlobbypopup);
 
 
-
-
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
