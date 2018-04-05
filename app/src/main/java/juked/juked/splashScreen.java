@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 import android.view.*;
 import android.app.Dialog;
@@ -16,10 +17,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
+
+import com.spotify.sdk.android.authentication.AuthenticationClient;
+import com.spotify.sdk.android.authentication.AuthenticationRequest;
+import com.spotify.sdk.android.authentication.AuthenticationResponse;
+import com.spotify.sdk.android.player.Config;
+import com.spotify.sdk.android.player.ConnectionStateCallback;
+import com.spotify.sdk.android.player.Error;
+import com.spotify.sdk.android.player.Player;
+import com.spotify.sdk.android.player.PlayerEvent;
+import com.spotify.sdk.android.player.Spotify;
+import com.spotify.sdk.android.player.SpotifyPlayer;
+
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
+public class splashScreen extends AppCompatActivity implements
+        SpotifyPlayer.NotificationCallback, ConnectionStateCallback {
 
-public class splashScreen extends AppCompatActivity {
+//public class splashScreen extends AppCompatActivity {
 
     private Button joinButton;
     private Button createButton;
@@ -34,11 +51,32 @@ public class splashScreen extends AppCompatActivity {
     Dialog joinDialog;
     Dialog createDialog;
 
+    public static Player mPlayer;
+
+    private static final String CLIENT_ID = "3bf8e5d5bae64c319395b084204e71ea";
+    private static final String REDIRECT_URI = "juked://callback";
+
+    private static final int REQUEST_CODE = 1337;       //LEEEEEEETTT
+
+    public static String accessToken;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+
+        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
+                AuthenticationResponse.Type.TOKEN,
+                REDIRECT_URI);
+
+        builder.setScopes(new String[]{"user-read-private", "streaming"});
+        AuthenticationRequest request = builder.build();
+
+        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+        //Log.d("response", "I am the access token " + accessToken);
+
         joinDialog = new Dialog(this);
         createDialog = new Dialog(this);
 
@@ -151,6 +189,106 @@ public class splashScreen extends AppCompatActivity {
 
             }
         });
+    }//end onCreate
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == REQUEST_CODE) {
+            AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
+
+            if (response.getType() == AuthenticationResponse.Type.TOKEN) {
+
+                Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
+                accessToken = response.getAccessToken();
+
+                Spotify.getPlayer(playerConfig, this, new SpotifyPlayer.InitializationObserver() {
+
+                    @Override
+                    public void onInitialized(SpotifyPlayer spotifyPlayer) {
+                        mPlayer = spotifyPlayer;
+                        mPlayer.addConnectionStateCallback(splashScreen.this);
+                        mPlayer.addNotificationCallback(splashScreen.this);
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        Log.e("MainActivity", "Could not initialize player: " + throwable.getMessage());
+                    }
+
+
+                });//this end Spotify.getPlayer
+
+            }//end inner if
+
+        }//end if
+
+    }//end onActivityResult
+
+
+    /*******************
+     * YOU MUST CALL SPOTIFY.DESTROYPLAYER
+     * IF NOT IT KEEPS RUNNING AND IS A MEMORY LEAK
+     * MEMORY LEAKS ARE BAD MMMMMMMMMKAAAAAAAAAYYYYYYYYYYYY
+     */
+    @Override
+    protected void onDestroy() {
+        Spotify.destroyPlayer(this);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onPlaybackEvent(PlayerEvent playerEvent) {
+        Log.d("MainActivity", "Playback event received: " + playerEvent.name());
+        switch (playerEvent) {
+            // Handle event type as necessary
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onPlaybackError(Error error) {
+        Log.d("MainActivity", "Playback error received: " + error.name());
+        switch (error) {
+            // Handle error type as necessary
+            default:
+                break;
+        }
+    }
+
+
+    @Override
+    public void onLoggedIn() {
+        Log.d("MainActivity", "User logged in");
+
+    }
+
+    @Override
+    public void onLoggedOut() {
+        Log.d("MainActivity", "User logged out");
+    }
+
+    @Override
+    public void onLoginFailed(Error err) {
+        Log.d("MainActivity", "Login failed");
+    }
+
+    @Override
+    public void onTemporaryError() {
+        Log.d("MainActivity", "Temporary error occurred");
+    }
+
+    @Override
+    public void onConnectionMessage(String message) {
+        Log.d("MainActivity", "Received connection message: " + message);
+    }
+
+    public String getToken(){
+        return accessToken;
 
 
 
