@@ -39,6 +39,4 @@ public class PlaylistSong {
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
     }
-
-    
 }
