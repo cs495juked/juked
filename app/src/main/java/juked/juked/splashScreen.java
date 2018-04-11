@@ -175,7 +175,6 @@ public class splashScreen extends AppCompatActivity implements
                 Random r = new Random();
                 final int randomLobbyInt = r.nextInt(9999);
 
-
                 backBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
 
@@ -204,9 +203,9 @@ public class splashScreen extends AppCompatActivity implements
 
                         mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(host); //keep MR
 
+                        generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
-
-                        //mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
+//                        mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
                         createDialog.dismiss();
                         startActivity(new Intent(splashScreen.this, testRecycledView.class));
 
