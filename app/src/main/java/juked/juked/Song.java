@@ -83,6 +83,10 @@ public class Song {
         voteBalance = vote;
     }
 
+    public String getAlbumName(){
+        return albumName;
+    }
+
     public String getSongName(){
         return songName;
     }

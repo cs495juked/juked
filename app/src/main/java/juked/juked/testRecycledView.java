@@ -10,6 +10,7 @@ public class testRecycledView extends AppCompatActivity {
     private TabLayout tabLayout ;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    public static FragmentHostPlaylist fhp = new FragmentHostPlaylist();
 
 
     @Override
@@ -23,7 +24,7 @@ public class testRecycledView extends AppCompatActivity {
 
         // add Fragment Here
 
-        adapter.addFragments(new FragmentHostPlaylist(), "Playlist");
+        adapter.addFragments(fhp, "Playlist");
         adapter.addFragments(new FragmentHostHistory(), "History");
         adapter.addFragments(new FragmentHostSettings(), "Settings");
 

@@ -1,6 +1,8 @@
 package juked.juked;
 
 import android.app.Fragment;
+import android.app.SearchableInfo;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +41,13 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
     View v;
 
 
+    ListView list;
+    ListViewAdapter adapter;
+    SearchView editsearch;
+
+    ArrayList<Song> arraylist = new ArrayList<Song>();
+
+
     private static final int REQUEST_CODE = 1337;   //LEET
     private String accessToken2 = splashScreen.accessToken;
     private static String jsonReturn;
@@ -52,47 +63,174 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         Log.d("response", "I am the access token " + accessToken2);
 
 
-
         playlistSongs = new ArrayList<>();
     }
 
     public FragmentHostPlaylist() {
     }
 
+    public String getNextTrack(String input){
+
+        String str = "";
+
+        try {
+
+            JSONObject json = new JSONObject(input);
+            JSONObject items = json.getJSONObject("tracks");
+
+            str = items.getString("next");
+
+            Log.d("Response", "HELLO<<<<<<<   " + str);
+            return str;
+
+        }catch (JSONException e){
+            Log.d("Response", "Failed getting album cover");
+            e.printStackTrace();
+            return "";
+        }
+
+    }//end getNextTrack
+
+
+    public ArrayList<Song> populateSearch(String input){
+
+        String json = "";
+        ArrayList<Song> myList = new ArrayList<Song>();
+
+        try {
+
+            json = new HttpTask().execute(getQueryString(input), accessToken2).get();
+            myList.add(new Song (0, getTrack(json), getSongName(json), getNameOfArtist(json), getAlbumCover(json), getAlbumName(json)));
+            //searchSongs.add(new PlaylistSong(getSongName(json), getNameOfArtist(json), getAlbumName(json)));
+
+            //Log.d("response", "Song name: " + getSongName(json));
+            //Log.d("response", "next song is " + getNextTrack(json));
+
+            for (int i = 0; i < 2; i++) {
+
+                json = new HttpTask().execute(getNextTrack(json), accessToken2).get();
+                //searchSongs.add(new PlaylistSong(getSongName(json), getNameOfArtist(json), getAlbumName(json)));
+                myList.add(new Song (0, getTrack(json), getSongName(json), getNameOfArtist(json), getAlbumCover(json), getAlbumName(json)));
+
+                //Log.d("response", "Song name: " + getSongName(json));
+                //Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
+
+            }
+        } catch(InterruptedException e){
+            Log.d("Response", "InterruptedException");
+            e.printStackTrace();
+        }catch (ExecutionException e){
+            Log.d("Response", "ExecutionException");
+            e.printStackTrace();
+        }
+
+        return myList;
+
+
+    }//end populateSearch
+
+
+    public void querySearchedSong(int position){
+
+        String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
+
+        try {
+
+            jsonReturn = new HttpTask().execute(getQueryString(query), accessToken2).get();
+
+        }catch(InterruptedException e){
+            Log.d("Response", "InterruptedException");
+            e.printStackTrace();
+        }catch (ExecutionException e){
+            Log.d("Response", "ExecutionException");
+            e.printStackTrace();
+        }
+
+
+        playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+        Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
+        player.playUri(null, mySong.getSongURI(), 0, 0);
+        Log.d("playing", mySong.getSongURI());
+
+        list.setVisibility(v.GONE);
+
+
+
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.playlistfragment,container,false);
-        SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
+
+        // Locate the ListView
+        list = (ListView) v.findViewById(R.id.list_view);
+        list.setVisibility(View.GONE);
+
+
+
+//
+//        for (int i = 0; i < animalNameList.length; i++) {
+//            // Binds all strings into an array
+//            arraylist.add(animalNameList[i]);
+//        }
+//        Context cont = v.getContext();
+//
+//        // Pass results to ListViewAdapter Class
+//        adapter = new ListViewAdapter(cont, arraylist);
+//
+//        // Binds the Adapter to the ListView
+//        list.setAdapter(adapter);
+
+        // Locate the EditText in listview_main.xml
+
+
+        final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
+
+
 
         songSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.d( "response: " , query );
+                arraylist = populateSearch(query);
+                ArrayList<String> songNameList = new ArrayList<>();
 
-
-                try {
-
-                    jsonReturn = new HttpTask().execute(getQueryString(query), accessToken2).get();
-
-                }catch(InterruptedException e){
-                    Log.d("Response", "InterruptedException");
-                    e.printStackTrace();
-                }catch (ExecutionException e){
-                    Log.d("Response", "ExecutionException");
-                    e.printStackTrace();
+                for (int i = 0; i < arraylist.size(); i++) {
+                  songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
                 }
 
-                playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn)));
-                Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
-                player.playUri(null, mySong.getSongURI(), 0, 0);
+
+
+                Context cont = v.getContext();
+
+                // Pass results to ListViewAdapter Class
+                adapter = new ListViewAdapter(cont, songNameList);
+
+                // Binds the Adapter to the ListView
+                list.setAdapter(adapter);
+
+                String text = query;
+                adapter.filter(text);
+
+                list.setVisibility(View.VISIBLE);
+
+
+
 
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-//                Log.d( "response" , newText );
+//                if(newText.equals("")) {
+//                    list.setVisibility(View.GONE);
+//                }
+//                else {
+//                    list.setVisibility(View.VISIBLE);
+//                }
+//                String text = newText;
+//                adapter.filter(text);
                 return false;
             }
 
@@ -257,9 +395,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             e.printStackTrace();
             return "";
         }
-
     }
-
 
     public int getSongLength(String input){
 
@@ -284,9 +420,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             return 0;
         }
 
-
     }//end getSongLength
-
-
 
 }//end FragmentHostPlayer

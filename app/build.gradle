@@ -40,6 +40,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation "com.android.support:support-core-utils:26.1.0"
+    implementation 'com.squareup.picasso:picasso:2.3.3'
 
     // This library handles authentication and authorization
     implementation 'com.spotify.sdk:spotify-android-auth:1.0.0@aar'

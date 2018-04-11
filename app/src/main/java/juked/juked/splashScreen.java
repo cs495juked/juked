@@ -177,7 +177,7 @@ public class splashScreen extends AppCompatActivity implements
 
                         mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby);
                         createDialog.dismiss();
-                        setContentView(R.layout.activity_test_recycled_view);
+                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
 
                         Toast.makeText(splashScreen.this,
                                 hostNickname + generatedLobbyCodeText.getText(),

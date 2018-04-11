@@ -4,16 +4,18 @@ public class PlaylistSong {
     private String songName;
     private String artistName;
     private String albumName;
+    private String albumArtwork;;
 
     public PlaylistSong(){
 
     }
 
 
-    public PlaylistSong(String songName, String aristName, String albumName) {
+    public PlaylistSong(String songName, String aristName, String albumName, String albumArtwork) {
         this.songName = songName;
         this.artistName = aristName;
         this.albumName = albumName;
+        this.albumArtwork = albumArtwork;
     }
 
     public String getSongName() {
@@ -40,5 +42,8 @@ public class PlaylistSong {
         this.albumName = albumName;
     }
 
+    public String getAlbumArtwork() { return albumArtwork; }
+
+    public void setAlbumArtwork(String albumArtwork) { this.albumArtwork = albumArtwork; }
     
 }
