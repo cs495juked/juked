@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "887204296643",
+    "firebase_url": "https://juked-60f98.firebaseio.com",
+    "project_id": "juked-60f98",
+    "storage_bucket": "juked-60f98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887204296643:android:daf41b492824dc45",
+        "android_client_info": {
+          "package_name": "juked.juked"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887204296643-c0i4a7pkq3fr4k54745mcf460lmickqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "juked.juked",
+            "certificate_hash": "f92ca48a4a06faaa86a2eb10737c751cd6883509"
+          }
+        },
+        {
+          "client_id": "887204296643-5pojocm31v204o2kc8aom3i11l79o8ao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0dc-U0bRn7mqTqj0M7P2ybt8AeJnhH7U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887204296643-5pojocm31v204o2kc8aom3i11l79o8ao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

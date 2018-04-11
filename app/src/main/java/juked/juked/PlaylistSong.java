@@ -45,5 +45,5 @@ public class PlaylistSong {
     public String getAlbumArtwork() { return albumArtwork; }
 
     public void setAlbumArtwork(String albumArtwork) { this.albumArtwork = albumArtwork; }
-    
+
 }
