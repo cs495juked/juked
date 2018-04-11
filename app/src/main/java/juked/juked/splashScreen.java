@@ -30,6 +30,7 @@ import com.spotify.sdk.android.player.PlayerEvent;
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
@@ -45,12 +46,16 @@ public class splashScreen extends AppCompatActivity implements
     private TextInputLayout hostNicknameInput;
     private TextView generatedLobbyCodeText;
 
+    //private EditText userNickname;
+    //private EditText lobbyNumber;
 
-    private DatabaseReference mDatabase; // reference to firebase database
+
+    private DatabaseReference mDatabase; // refer to firebase database
+    private DatabaseReference jDatabase; // refer to the child
 
     Dialog joinDialog;
     Dialog createDialog;
-
+    public int userId = 0;        // to update the user id number when joining a lobby
     public static Player mPlayer;
 
     private static final String CLIENT_ID = "3bf8e5d5bae64c319395b084204e71ea";
@@ -86,6 +91,7 @@ public class splashScreen extends AppCompatActivity implements
         createDialog.setContentView(R.layout.createlobbypopup);
 
         mDatabase = FirebaseDatabase.getInstance().getReference(); // firebase ref
+        // jDatabase = FirebaseDatabase.getInstance().getReference().child("Lobby");
 
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,25 +115,46 @@ public class splashScreen extends AppCompatActivity implements
                     public void onClick(View v) {
                         lobbyCodeInput = joinDialog.findViewById(R.id.inputLobbyCode);
                         final String lobbyCode = lobbyCodeInput.getEditText().getText().toString();
-
-
-
                         nicknameInput = joinDialog.findViewById(R.id.inputNickname);
                         String nickname = nicknameInput.getEditText().getText().toString();
 
-                        //when creating a new user need to read from firebase and find last created userid in lobby
+                        //when the user selects a song, pass it here to user selection.
+
                         final jukeuser user = new jukeuser(1, nickname, "mr brightside", 0);
-                        //Query queryRef = mDatabase.orderByChild("lobbyId").equalTo(lobbyCode);
+
+                        // add user to a party
+                        // get the id number for the user
+
+                        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                System.out.println(dataSnapshot.getValue());
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                        userId++;
+                        mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(user); // keep
 
 
+
+                        // jDatabase.push().setValue(user); // random value, will change later
+
+                        //HashMap<String,String> dataMap = new HashMap<String, String>();   //another try
+                        //dataMap.put("Lobby", lobbyCode);
+                        //dataMap.put("user",nickname);
+                        //mDatabase.push().setValue(dataMap);
 
 
                         joinDialog.dismiss();
                         startActivity(new Intent(splashScreen.this, testRecycledView.class));
 
-//                        Toast.makeText(splashScreen.this,
-//                                nickname + lobbyCode,
-//                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(splashScreen.this,
+                                nickname + lobbyCode,
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -173,9 +200,13 @@ public class splashScreen extends AppCompatActivity implements
                         //add host user class into the lobby class via ArrayList
                         //store Lobby in database
 
+                        int lobbyCode = randomLobbyInt;
+
+                        mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(host); //keep MR
 
 
-                        mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby);
+
+                        //mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
                         createDialog.dismiss();
                         setContentView(R.layout.activity_test_recycled_view);
 
