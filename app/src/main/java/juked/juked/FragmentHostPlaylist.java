@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,6 +36,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import juked.juked.splashScreen;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
@@ -61,7 +64,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("response", "I am the access token " + accessToken2);
-
 
         playlistSongs = new ArrayList<>();
     }
@@ -188,7 +190,13 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
 
-
+        // Makes the entire searchBar clickable
+        songSearchBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                songSearchBar.setIconified(false);
+            }
+        });
 
         songSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -199,8 +207,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 for (int i = 0; i < arraylist.size(); i++) {
                   songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
                 }
-
-
 
                 Context cont = v.getContext();
 
