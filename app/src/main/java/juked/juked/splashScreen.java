@@ -76,7 +76,7 @@ public class splashScreen extends AppCompatActivity implements
                 AuthenticationResponse.Type.TOKEN,
                 REDIRECT_URI);
 
-        builder.setScopes(new String[]{"user-read-private", "streaming"});
+        builder.setScopes(new String[]{"user-read-private", "streaming", "user-modify-playback-state"});
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
@@ -151,7 +151,6 @@ public class splashScreen extends AppCompatActivity implements
 
                         joinDialog.dismiss();
                         startActivity(new Intent(splashScreen.this, testRecycledView.class));
-                        testRecycledView.lobbyCode = lobbyCode;
 
                         Toast.makeText(splashScreen.this,
                                 nickname + lobbyCode,

@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,12 +36,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import juked.juked.splashScreen;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
-
 public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     View v;
-    Boolean isPlaying;
 
 
     ListView list;
@@ -65,6 +61,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("response", "I am the access token " + accessToken2);
+
 
         playlistSongs = new ArrayList<>();
     }
@@ -103,6 +100,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         try {
 
             json = new HttpTask().execute(getQueryString(input), accessToken2).get();
+            Log.d("response", "First song populated");
             myList.add(new Song (0, getTrack(json), getSongName(json), getNameOfArtist(json), getAlbumCover(json), getAlbumName(json)));
             //searchSongs.add(new PlaylistSong(getSongName(json), getNameOfArtist(json), getAlbumName(json)));
 
@@ -112,6 +110,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             for (int i = 0; i < 2; i++) {
 
                 json = new HttpTask().execute(getNextTrack(json), accessToken2).get();
+                Log.d("response", i+ " song populated");
                 //searchSongs.add(new PlaylistSong(getSongName(json), getNameOfArtist(json), getAlbumName(json)));
                 myList.add(new Song (0, getTrack(json), getSongName(json), getNameOfArtist(json), getAlbumCover(json), getAlbumName(json)));
 
@@ -132,39 +131,23 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     }//end populateSearch
 
-    public void playSongsInQueue(Song mySong){
-        isPlaying = true;
-        int songLength = mySong.getSongLength();
-        player.playUri(null, mySong.getSongURI(), 0, 0);
-        
-
-    }
 
     public void querySearchedSong(int position){
 
-        String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
+        //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
+        String uri = arraylist.get(position).getSongURI();
+        Log.d("response", "uri is: " + uri);
 
-        try {
 
-            jsonReturn = new HttpTask().execute(getQueryString(query), accessToken2).get();
-
-        }catch(InterruptedException e){
-            Log.d("Response", "InterruptedException");
-            e.printStackTrace();
-        }catch (ExecutionException e){
-            Log.d("Response", "ExecutionException");
-            e.printStackTrace();
-        }
-
-        playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
-        testRecycledView.fhh.historySongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
-
-        Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
-        playSongsInQueue(mySong);
-
-        Log.d("playing", mySong.getSongURI());
+        //playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+        playlistSongs.add(new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover()));
+        //Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
+        //player.playUri(null, mySong.getSongURI(), 0, 0);
+        player.playUri(null, uri, 0, 0);
+        //Log.d("playing", mySong.getSongURI());
 
         list.setVisibility(v.GONE);
+
 
     }
 
@@ -179,24 +162,67 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         list.setVisibility(View.GONE);
 
 
+
+//
+//        for (int i = 0; i < animalNameList.length; i++) {
+//            // Binds all strings into an array
+//            arraylist.add(animalNameList[i]);
+//        }
+//        Context cont = v.getContext();
+//
+//        // Pass results to ListViewAdapter Class
+//        adapter = new ListViewAdapter(cont, arraylist);
+//
+//        // Binds the Adapter to the ListView
+//        list.setAdapter(adapter);
+
+        // Locate the EditText in listview_main.xml
+
+
         final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
 
-        // Makes the entire searchBar clickable
-        songSearchBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                songSearchBar.setIconified(false);
-            }
-        });
+
 
         songSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+
+                /*arraylist = populateSearch(query);
+                ArrayList<String> songNameList = new ArrayList<>();
+
+                for (int i = 0; i < arraylist.size(); i++) {
+                    songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
+                }
+
+
+
+                Context cont = v.getContext();
+
+                // Pass results to ListViewAdapter Class
+                adapter = new ListViewAdapter(cont, songNameList);
+
+                // Binds the Adapter to the ListView
+                list.setAdapter(adapter);
+
+                String text = query;
+                adapter.filter(text);
+
+                list.setVisibility(View.VISIBLE);*/
+
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+
+
                 arraylist = populateSearch(query);
                 ArrayList<String> songNameList = new ArrayList<>();
 
                 for (int i = 0; i < arraylist.size(); i++) {
-                  songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
+                    songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
                 }
 
                 Context cont = v.getContext();
@@ -214,10 +240,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
 
                 return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
+
 //                if(newText.equals("")) {
 //                    list.setVisibility(View.GONE);
 //                }
@@ -226,7 +250,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 //                }
 //                String text = newText;
 //                adapter.filter(text);
-                return false;
+//                return false;
             }
 
 
@@ -238,8 +262,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerAdapter);
-
-
         return v;
     }
 
@@ -273,7 +295,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     public String getQueryString(String input){
 
-        String query = "https://api.spotify.com/v1/search?q=";
+        String query = "https://api.spotify.com/v1/search?q=\"";
 
         String[] splitStr = input.split("\\s+");
 
@@ -281,7 +303,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             query = query + "+" + splitStr[i];
         }
 
-        query = query + "&type=track&limit=1";
+        query = query + "\"&type=track&limit=1";
         Log.d("Response", "QUERY = " + query);
         return query;
 

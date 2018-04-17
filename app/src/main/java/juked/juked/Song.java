@@ -95,4 +95,6 @@ public class Song {
         return artistName;
     }
 
+    public String getAlbumCover() { return albumCover; }
+
 }//end class song

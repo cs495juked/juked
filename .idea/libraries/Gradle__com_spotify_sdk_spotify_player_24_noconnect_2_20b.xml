@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.spotify.sdk:spotify-player-24-noconnect-2.20b">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/wrapper/dists/4.4/caches/transforms-1/files-1.1/spotify-player-24-noconnect-2.20b.aar/ff2a935310b7539d0850cf7f9452a692/res" />
-      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/4.4/caches/transforms-1/files-1.1/spotify-player-24-noconnect-2.20b.aar/ff2a935310b7539d0850cf7f9452a692/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/4.4/caches/transforms-1/files-1.1/spotify-player-24-noconnect-2.20b.aar/ff2a935310b7539d0850cf7f9452a692/jars/libs/jnihelpers-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/spotify-player-24-noconnect-2.20b.aar/afcea493735d4c0dd4860cb1a3e99b88/jars/libs/jnihelpers-1.0.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/spotify-player-24-noconnect-2.20b.aar/afcea493735d4c0dd4860cb1a3e99b88/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/spotify-player-24-noconnect-2.20b.aar/afcea493735d4c0dd4860cb1a3e99b88/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
