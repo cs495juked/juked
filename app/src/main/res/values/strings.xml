@@ -97,5 +97,8 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="avatar">avatar</string>
 
+    <string name="displayLobbyCode">displayLobbyCode</string>
+    <string name="displayLobbyCodeText">Party Code: </string>
+
 
 </resources>

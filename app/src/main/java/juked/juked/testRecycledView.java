@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class testRecycledView extends AppCompatActivity {
 
@@ -14,7 +15,8 @@ public class testRecycledView extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     public static FragmentHostPlaylist fhp = new FragmentHostPlaylist();
-
+    public static FragmentHostHistory fhh = new FragmentHostHistory();
+    public static String lobbyCode;
     static FloatingActionButton playPauseButton;
 
 
@@ -28,6 +30,8 @@ public class testRecycledView extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
+        TextView tv_displayLobbyCode = findViewById(R.id.displayLobbyCodeNum);
+        tv_displayLobbyCode.setText(tv_displayLobbyCode.getText() + " " + lobbyCode);
         playPauseButton = findViewById(R.id.fab);
         playPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +50,10 @@ public class testRecycledView extends AppCompatActivity {
         // add Fragment Here
 
         adapter.addFragments(fhp, "Playlist");
-        adapter.addFragments(new FragmentHostHistory(), "History");
+        adapter.addFragments(fhh, "History");
         adapter.addFragments(new FragmentHostSettings(), "Settings");
+
+
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

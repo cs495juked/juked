@@ -151,6 +151,7 @@ public class splashScreen extends AppCompatActivity implements
 
                         joinDialog.dismiss();
                         startActivity(new Intent(splashScreen.this, testRecycledView.class));
+                        testRecycledView.lobbyCode = lobbyCode;
 
                         Toast.makeText(splashScreen.this,
                                 nickname + lobbyCode,

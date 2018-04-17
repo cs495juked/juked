@@ -42,6 +42,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     View v;
+    Boolean isPlaying;
 
 
     ListView list;
@@ -131,6 +132,13 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     }//end populateSearch
 
+    public void playSongsInQueue(Song mySong){
+        isPlaying = true;
+        int songLength = mySong.getSongLength();
+        player.playUri(null, mySong.getSongURI(), 0, 0);
+        
+
+    }
 
     public void querySearchedSong(int position){
 
@@ -148,15 +156,15 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             e.printStackTrace();
         }
 
-
         playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+        testRecycledView.fhh.historySongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+
         Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
-        player.playUri(null, mySong.getSongURI(), 0, 0);
+        playSongsInQueue(mySong);
+
         Log.d("playing", mySong.getSongURI());
 
         list.setVisibility(v.GONE);
-
-
 
     }
 
@@ -169,23 +177,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         // Locate the ListView
         list = (ListView) v.findViewById(R.id.list_view);
         list.setVisibility(View.GONE);
-
-
-
-//
-//        for (int i = 0; i < animalNameList.length; i++) {
-//            // Binds all strings into an array
-//            arraylist.add(animalNameList[i]);
-//        }
-//        Context cont = v.getContext();
-//
-//        // Pass results to ListViewAdapter Class
-//        adapter = new ListViewAdapter(cont, arraylist);
-//
-//        // Binds the Adapter to the ListView
-//        list.setAdapter(adapter);
-
-        // Locate the EditText in listview_main.xml
 
 
         final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
@@ -222,8 +213,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 list.setVisibility(View.VISIBLE);
 
 
-
-
                 return false;
             }
 
@@ -249,6 +238,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerAdapter);
+
+
         return v;
     }
 
