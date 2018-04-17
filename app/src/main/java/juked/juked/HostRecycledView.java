@@ -7,16 +7,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.spotify.sdk.android.player.Player;
 
-public class testRecycledView extends AppCompatActivity {
+public class HostRecycledView extends AppCompatActivity {
 
     private TabLayout tabLayout ;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     public static FragmentHostPlaylist fhp = new FragmentHostPlaylist();
-
+    public static FragmentHostHistory fhh = new FragmentHostHistory();
+    public static String lobbyCode;
     static FloatingActionButton playPauseButton;
 
     private Player player = splashScreen.mPlayer;
@@ -30,6 +32,8 @@ public class testRecycledView extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
+        TextView tv_displayLobbyCode = findViewById(R.id.displayLobbyCodeNum);
+        tv_displayLobbyCode.setText(tv_displayLobbyCode.getText() + " " + lobbyCode);
         playPauseButton = findViewById(R.id.fab);
         playPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +52,7 @@ public class testRecycledView extends AppCompatActivity {
         // add Fragment Here
 
         adapter.addFragments(fhp, "Playlist");
-        adapter.addFragments(new FragmentHostHistory(), "History");
+        adapter.addFragments(fhh, "History");
         adapter.addFragments(new FragmentHostSettings(), "Settings");
 
         viewPager.setAdapter(adapter);
@@ -72,12 +76,13 @@ public class testRecycledView extends AppCompatActivity {
         testRecycledView.flipPlayPauseButton(0);
      }*/
 
-    public  boolean tempVar = false;
+    public  boolean tempVar = true;
     public  void tempPlayPause() {
         if(tempVar) {
             tempVar = false;
             player.pause(null);
             flipPlayPauseButton(false);
+
         }
         else {
             tempVar = true;

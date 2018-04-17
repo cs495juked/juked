@@ -150,7 +150,8 @@ public class splashScreen extends AppCompatActivity implements
 
 
                         joinDialog.dismiss();
-                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
+//                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
+//                        testRecycledView.lobbyCode = lobbyCode;
 
                         Toast.makeText(splashScreen.this,
                                 nickname + lobbyCode,
@@ -207,11 +208,9 @@ public class splashScreen extends AppCompatActivity implements
 
 //                        mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
                         createDialog.dismiss();
-                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
+                        startActivity(new Intent(splashScreen.this, HostRecycledView.class));
+                        HostRecycledView.lobbyCode = Integer.toString(lobbyCode);
 
-                        Toast.makeText(splashScreen.this,
-                                hostNickname + generatedLobbyCodeText.getText(),
-                                Toast.LENGTH_SHORT).show();
                     }
                 });
 

@@ -12,7 +12,7 @@ package juked.juked;
         import java.util.List;
         import java.util.Locale;
         import java.util.concurrent.ExecutionException;
-        import juked.juked.testRecycledView;
+        import juked.juked.HostRecycledView;
 
 public class ListViewAdapter extends BaseAdapter {
 
@@ -71,7 +71,7 @@ public class ListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 TextView tv_animalName = finalView.findViewById(R.id.nameofanimal);
-                testRecycledView.fhp.querySearchedSong(position);
+                HostRecycledView.fhp.querySearchedSong(position);
             }
         });
 
