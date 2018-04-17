@@ -121,7 +121,7 @@ public class splashScreen extends AppCompatActivity implements
 
                         //when the user selects a song, pass it here to user selection.
 
-                        final jukeuser user = new jukeuser(1, nickname, " Working", 0);
+                        final jukeuser user = new jukeuser(1, nickname, 0);
 
                         // add user to a party
                         // get the id number for the user
@@ -199,7 +199,7 @@ public class splashScreen extends AppCompatActivity implements
                         String hostNickname = hostNicknameInput.getEditText().getText().toString();
 
                         //create new jukeuser for host
-                        jukeuser host = new jukeuser(01, hostNickname, "Finalcountdown", 1);
+                        jukeuser host = new jukeuser(01, hostNickname, 1);
                         jukelobby lobby = new jukelobby(randomLobbyInt, host);
                         //add host user class into the lobby class via ArrayList
                         //store Lobby in database

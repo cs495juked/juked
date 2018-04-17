@@ -160,13 +160,13 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         player.playUri(null, uri, 0, 0);
         //Log.d("playing", mySong.getSongURI());
 
-        playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
-        Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
-        player.playUri(null, mySong.getSongURI(), 0, 0);
-        Log.d("playing", mySong.getSongURI());
+       // playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+        //Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
+        player.playUri(null, uri, 0, 0);
+        Log.d("playing", uri);
         // my song need to be added to the database
         // q : how to get the lobby code
-        fragmantDatabase.child("353").child("1").child("song").setValue(mySong);
+        //fragmantDatabase.child("353").child("1").child("song").setValue(mySong);
 
         list.setVisibility(v.GONE);
 
