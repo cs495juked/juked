@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -36,6 +38,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import juked.juked.splashScreen;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
@@ -57,6 +61,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     private RecyclerView myRecyclerView;
     private List<PlaylistSong> playlistSongs;
+    private DatabaseReference fragmantDatabase;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -133,12 +138,16 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     public void querySearchedSong(int position){
 
+        fragmantDatabase = FirebaseDatabase.getInstance().getReference();
+
+        String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
+
+
         //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
         String uri = arraylist.get(position).getSongURI();
         Log.d("response", "uri is: " + uri);
 
-//        playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
-//        HostRecycledView.fhh.historySongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+
 
         //playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
         PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover());
@@ -151,7 +160,17 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         player.playUri(null, uri, 0, 0);
         //Log.d("playing", mySong.getSongURI());
 
+        playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+        Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
+        player.playUri(null, mySong.getSongURI(), 0, 0);
+        Log.d("playing", mySong.getSongURI());
+        // my song need to be added to the database
+        // q : how to get the lobby code
+        fragmantDatabase.child("353").child("1").child("song").setValue(mySong);
+
         list.setVisibility(v.GONE);
+
+
 
     }
 
@@ -164,6 +183,23 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         // Locate the ListView
         list = (ListView) v.findViewById(R.id.list_view);
         list.setVisibility(View.GONE);
+
+
+
+//
+//        for (int i = 0; i < animalNameList.length; i++) {
+//            // Binds all strings into an array
+//            arraylist.add(animalNameList[i]);
+//        }
+//        Context cont = v.getContext();
+//
+//        // Pass results to ListViewAdapter Class
+//        adapter = new ListViewAdapter(cont, arraylist);
+//
+//        // Binds the Adapter to the ListView
+//        list.setAdapter(adapter);
+
+        // Locate the EditText in listview_main.xml
 
 
         final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
@@ -215,7 +251,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 ArrayList<String> songNameList = new ArrayList<>();
 
                 for (int i = 0; i < arraylist.size(); i++) {
-                    songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
+                  songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
                 }
 
                 Context cont = v.getContext();
@@ -232,20 +268,12 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 list.setVisibility(View.VISIBLE);
 
 
+
+
                 return false;
             }
 
 
-//                if(newText.equals("")) {
-//                    list.setVisibility(View.GONE);
-//                }
-//                else {
-//                    list.setVisibility(View.VISIBLE);
-//                }
-//                String text = newText;
-//                adapter.filter(text);
-//                return false;
-//            }
 
 
 //        CharSequence searcher = songSearchBar.getQuery();

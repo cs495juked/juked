@@ -118,17 +118,20 @@ public class splashScreen extends AppCompatActivity implements
                         nicknameInput = joinDialog.findViewById(R.id.inputNickname);
                         String nickname = nicknameInput.getEditText().getText().toString();
 
+
                         //when the user selects a song, pass it here to user selection.
 
-                        final jukeuser user = new jukeuser(1, nickname, "mr brightside", 0);
+                        final jukeuser user = new jukeuser(1, nickname, " Working", 0);
 
                         // add user to a party
                         // get the id number for the user
 
-                        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                        mDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                System.out.println(dataSnapshot.getValue());
+                                //System.out.println(dataSnapshot.getValue());
+
+                                
                             }
 
                             @Override
@@ -137,6 +140,7 @@ public class splashScreen extends AppCompatActivity implements
                             }
                         });
                         userId++;
+
                         mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(user); // keep
 
 

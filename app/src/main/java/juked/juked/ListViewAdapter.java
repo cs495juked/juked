@@ -18,6 +18,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     // Declare Variables
 
+
     Context mContext;
     LayoutInflater inflater;
     private List<String> animalNamesList = null;
