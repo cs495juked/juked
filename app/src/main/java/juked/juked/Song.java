@@ -21,6 +21,7 @@ public class Song {
     private String artistName;
     private String albumCover;
     private String albumName;
+    private int position;
 
     //TODO: add length and everything back to constructor
     //changing for testing purposes
@@ -37,6 +38,7 @@ public class Song {
         voteBalance = 0;
         albumCover = cover;
         albumName = ALname;
+        position = 0 ;
 
     }
     public Song() {
@@ -100,5 +102,9 @@ public class Song {
     }
 
     public String getAlbumCover() { return albumCover; }
+
+    public int getPosition() {return position; }
+
+    public void setPosition(int pos) {position = pos;}
 
 }//end class song
