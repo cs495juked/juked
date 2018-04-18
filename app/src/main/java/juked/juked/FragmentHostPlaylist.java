@@ -235,7 +235,25 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
+                arraylist = populateSearch(query);
+                ArrayList<String> songNameList = new ArrayList<>();
 
+                for (int i = 0; i < arraylist.size(); i++) {
+                    songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
+                }
+
+                Context cont = v.getContext();
+
+                // Pass results to ListViewAdapter Class
+                adapter = new ListViewAdapter(cont, songNameList);
+
+                // Binds the Adapter to the ListView
+                list.setAdapter(adapter);
+
+                String text = query;
+                adapter.filter(text);
+
+                list.setVisibility(View.VISIBLE);
                 /*arraylist = populateSearch(query);
                 ArrayList<String> songNameList = new ArrayList<>();
 
@@ -266,7 +284,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             public boolean onQueryTextChange(String query) {
 
 
-                arraylist = populateSearch(query);
+                /*arraylist = populateSearch(query);
                 ArrayList<String> songNameList = new ArrayList<>();
 
                 for (int i = 0; i < arraylist.size(); i++) {
@@ -284,7 +302,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 String text = query;
                 adapter.filter(text);
 
-                list.setVisibility(View.VISIBLE);
+                list.setVisibility(View.VISIBLE);*/
 
 
 

@@ -64,8 +64,8 @@
       <file leaf-file-name="FragmentHostPlaylist.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="155" column="51" lean-forward="true" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="51" />
+            <state relative-caret-position="259">
+              <caret line="247" column="58" lean-forward="false" selection-start-line="247" selection-start-column="58" selection-end-line="247" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7934#8101#0" expanded="true" />
@@ -146,6 +146,7 @@
       <find>lobbyCode</find>
       <find>arraylist</find>
       <find>database</find>
+      <find>OnqueryTextChange</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2729,8 +2730,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="155" column="51" lean-forward="true" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="51" />
+        <state relative-caret-position="259">
+          <caret line="247" column="58" lean-forward="false" selection-start-line="247" selection-start-column="58" selection-end-line="247" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7934#8101#0" expanded="true" />
