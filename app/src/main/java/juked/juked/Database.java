@@ -35,6 +35,22 @@ public class Database {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 jukeuser pulledUser = dataSnapshot.child(uid).getValue(jukeuser.class);
 
+                ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    jukeuser user = snapshot.getValue(jukeuser.class);
+                    userList.add(user);
+                }
+                //Song songList[] = new Song[userList.size()];
+                int totalsongs = 0;
+                for (int i = 0; i < userList.size() ; i++) {
+                    Song userSong = userList.get(i).song;
+                    if ((userSong != null) && (userSong !=pulledUser.song)) {
+                       // int pos = userSong.getPosition();
+                        //songList[pos] = userSong;
+                        totalsongs++;
+                    }
+                }
+                newSong.setPosition(totalsongs);
                 pulledUser.setUserSong(newSong);
                 appDatabase.child(lobby).child(uid).setValue(pulledUser);
             }
