@@ -38,7 +38,11 @@ public class Song {
         albumCover = cover;
         albumName = ALname;
 
-    }//end song constructor
+    }
+    public Song() {
+
+    }
+    //end song constructor
 
 
     public int getSongLength(){

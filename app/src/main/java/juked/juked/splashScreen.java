@@ -55,7 +55,8 @@ public class splashScreen extends AppCompatActivity implements
 
     Dialog joinDialog;
     Dialog createDialog;
-    public int userId = 0;        // to update the user id number when joining a lobby
+    public int globalUserId = 0;
+    public int lobbyCode = 0;
     public static Player mPlayer;
 
     private static final String CLIENT_ID = "3bf8e5d5bae64c319395b084204e71ea";
@@ -136,6 +137,7 @@ public class splashScreen extends AppCompatActivity implements
                                 Log.d("responses", "count: " + String.valueOf(count) + " | newUser: " + String.valueOf(newUser));
                                 final jukeuser user = new jukeuser(newUser, nickname, 0);
                                 mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(user.userId)).setValue(user);
+                                globalUserId = user.userId;
                             }
 
                             @Override
@@ -211,13 +213,16 @@ public class splashScreen extends AppCompatActivity implements
                         int lobbyCode = randomLobbyInt;
 
                         mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
-
+                        globalUserId = host.userId;
                         generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
 //                        mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
                         createDialog.dismiss();
                         startActivity(new Intent(splashScreen.this, HostRecycledView.class));
+                        //these will need used again in join lobby as well
                         HostRecycledView.lobbyCode = Integer.toString(lobbyCode);
+                        FragmentHostPlaylist.lobbyCode = Integer.toString(lobbyCode);
+                        FragmentHostPlaylist.globalUserId = Integer.toString(globalUserId);
 
                     }
                 });

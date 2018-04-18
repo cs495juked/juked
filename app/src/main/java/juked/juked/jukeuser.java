@@ -13,8 +13,11 @@ public class jukeuser {
        song = null;
        host = h;
     }
+    public jukeuser () {
 
-    public void userSong (Song newSong) {
+    }
+
+    public void setUserSong (Song newSong) {
         song = newSong;
     }
 }

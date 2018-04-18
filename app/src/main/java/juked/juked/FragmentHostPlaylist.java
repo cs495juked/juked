@@ -21,8 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -52,6 +55,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     ArrayList<Song> arraylist = new ArrayList<Song>();
 
+    public static String lobbyCode;
+    public static String globalUserId;
 
     private static final int REQUEST_CODE = 1337;   //LEET
     private String accessToken2 = splashScreen.accessToken;
@@ -61,7 +66,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     private RecyclerView myRecyclerView;
     private List<PlaylistSong> playlistSongs;
-    private DatabaseReference fragmantDatabase;
+    private DatabaseReference fDatabase;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -138,38 +143,35 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     public void querySearchedSong(int position){
 
-        fragmantDatabase = FirebaseDatabase.getInstance().getReference();
-
-        String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
-
+        fDatabase = FirebaseDatabase.getInstance().getReference();
 
         //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
         String uri = arraylist.get(position).getSongURI();
         Log.d("response", "uri is: " + uri);
 
-
-
-        //playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
+        list.setVisibility(v.GONE);
         PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover());
 
         playlistSongs.add(pls);
         HostRecycledView.fhh.historySongs.add(pls);
-//        HostRecycledView.fhh.historySongs.add(new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover()));
-//        Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
-        //player.playUri(null, mySong.getSongURI(), 0, 0);
         player.playUri(null, uri, 0, 0);
-        //Log.d("playing", mySong.getSongURI());
+        final Song userSong = arraylist.get(position);
 
-       // playlistSongs.add(new PlaylistSong(getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumName(jsonReturn), getAlbumCover(jsonReturn)));
-        //Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
-        player.playUri(null, uri, 0, 0);
-        Log.d("playing", uri);
-        // my song need to be added to the database
-        // q : how to get the lobby code
-        //fragmantDatabase.child("353").child("1").child("song").setValue(mySong);
+        Log.d("responses","lobbyCode: " + lobbyCode + " | globalUserId: " + String.valueOf(globalUserId));
+        fDatabase.child(lobbyCode).child(globalUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Song userSong = new Song(0,"test","test","test","test","test");
+              jukeuser pulledUser = dataSnapshot.getValue(jukeuser.class);
+              pulledUser.setUserSong(userSong);
+              fDatabase.child(lobbyCode).child(globalUserId).setValue(pulledUser);
+            }
 
-        list.setVisibility(v.GONE);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
 
 
     }
