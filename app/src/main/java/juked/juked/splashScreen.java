@@ -1,5 +1,6 @@
 package juked.juked;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -50,8 +51,9 @@ public class splashScreen extends AppCompatActivity implements
     //private EditText lobbyNumber;
 
 
-    private DatabaseReference mDatabase; // refer to firebase database
-    private DatabaseReference jDatabase; // refer to the child
+    //private DatabaseReference mDatabase; // refer to firebase database
+    //private DatabaseReference jDatabase; // refer to the child
+    private Database appDB;
 
     Dialog joinDialog;
     Dialog createDialog;
@@ -90,8 +92,9 @@ public class splashScreen extends AppCompatActivity implements
         createButton = findViewById(R.id.createBtn);
         joinDialog.setContentView(R.layout.joinlobbypopup);
         createDialog.setContentView(R.layout.createlobbypopup);
+        appDB = new Database();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference(); // firebase ref
+        //mDatabase = FirebaseDatabase.getInstance().getReference(); // firebase ref
         // jDatabase = FirebaseDatabase.getInstance().getReference().child("Lobby");
 
         joinButton.setOnClickListener(new View.OnClickListener() {
@@ -126,8 +129,9 @@ public class splashScreen extends AppCompatActivity implements
 
                         // add user to a party
                         // get the id number for the user
-
-                        mDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
+                        appDB.setLobby(lobbyCode);
+                        appDB.addNewUser(nickname);
+                       /* mDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 //CHECK THIS AFTER WE ADD SONGS
@@ -144,7 +148,7 @@ public class splashScreen extends AppCompatActivity implements
                             public void onCancelled(DatabaseError databaseError) {
 
                             }
-                        });
+                        });*/
                         //userId++;
 
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(user); // keep
@@ -205,15 +209,17 @@ public class splashScreen extends AppCompatActivity implements
                         String hostNickname = hostNicknameInput.getEditText().getText().toString();
 
                         //create new jukeuser for host
-                        jukeuser host = new jukeuser(01, hostNickname, 1);
+                        //jukeuser host = new jukeuser(01, hostNickname, 1);
                         //jukelobby lobby = new jukelobby(randomLobbyInt, host);
                         //add host user class into the lobby class via ArrayList
                         //store Lobby in database
 
                         int lobbyCode = randomLobbyInt;
 
-                        mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
-                        globalUserId = host.userId;
+                        appDB.setLobby(String.valueOf(lobbyCode));
+                        appDB.addNewUser(hostNickname);
+                        //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
+                        //globalUserId = host.userId;
                         generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
 //                        mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
@@ -221,8 +227,9 @@ public class splashScreen extends AppCompatActivity implements
                         startActivity(new Intent(splashScreen.this, HostRecycledView.class));
                         //these will need used again in join lobby as well
                         HostRecycledView.lobbyCode = Integer.toString(lobbyCode);
-                        FragmentHostPlaylist.lobbyCode = Integer.toString(lobbyCode);
-                        FragmentHostPlaylist.globalUserId = Integer.toString(globalUserId);
+                        FragmentHostPlaylist.appDB = appDB;
+                        //FragmentHostPlaylist.lobbyCode = Integer.toString(lobbyCode);
+                        //FragmentHostPlaylist.globalUserId = Integer.toString(globalUserId);
 
                     }
                 });

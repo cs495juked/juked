@@ -55,8 +55,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     ArrayList<Song> arraylist = new ArrayList<Song>();
 
-    public static String lobbyCode;
-    public static String globalUserId;
+    //public static String lobbyCode;
+    public static Database appDB;
 
     private static final int REQUEST_CODE = 1337;   //LEET
     private String accessToken2 = splashScreen.accessToken;
@@ -66,7 +66,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     private RecyclerView myRecyclerView;
     private List<PlaylistSong> playlistSongs;
-    private DatabaseReference fDatabase;
+    //private DatabaseReference fDatabase;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -143,7 +143,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
     public void querySearchedSong(int position){
 
-        fDatabase = FirebaseDatabase.getInstance().getReference();
+        //fDatabase = FirebaseDatabase.getInstance().getReference();
 
         //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
         String uri = arraylist.get(position).getSongURI();
@@ -156,14 +156,18 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         HostRecycledView.fhh.historySongs.add(pls);
         player.playUri(null, uri, 0, 0);
         final Song userSong = arraylist.get(position);
-        jukeuser testUser = new jukeuser(2,"test",0);
+        //jukeuser testUser = new jukeuser(2,"test",0);
 
         //this is some hard coded test database stuff that will need removed later
-        testUser.setUserSong(new Song(0,"test","test","test","test","test"));
-        fDatabase.child(lobbyCode).child(String.valueOf(testUser.userId)).setValue(testUser);
+        //testUser.setUserSong(new Song(0,"test","test","test","test","test"));
+        //appDB.addNewUser("test");
+        //fDatabase.child(lobbyCode).child(String.valueOf(testUser.userId)).setValue(testUser);
 
-        Log.d("responses","lobbyCode: " + lobbyCode + " | globalUserId: " + String.valueOf(globalUserId));
-        fDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
+        //Log.d("responses","lobbyCode: " + lobbyCode + " | globalUserId: " + String.valueOf(globalUserId));
+
+        //Database nDatabase = new Database(lobbyCode,globalUserId);
+        appDB.updateSong(userSong);
+        /*fDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
               jukeuser pulledUser = dataSnapshot.child(globalUserId).getValue(jukeuser.class);
@@ -176,7 +180,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
     }
