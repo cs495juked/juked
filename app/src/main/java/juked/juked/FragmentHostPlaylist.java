@@ -167,12 +167,15 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         //Database nDatabase = new Database(lobbyCode,globalUserId);
         appDB.updateSong(userSong);
-        //ArrayList<jukeuser> userList = appDB.getUserList();
-
+       // Thread.sleep(100);
+        /*appDB.initateUserListRequest();
+        while (appDB.users == null) {
+            //do nothing
+        }
         //test code to see if this works, depricate later
-        /*int length = userList.size();
+        int length = appDB.users.size();
         for (int i = 0; i < length; i++) {
-            Log.d("DBTAG",String.valueOf(userList.get(i).userId));
+            Log.d("DBTAG",String.valueOf(appDB.users.get(i).userId));
         }*/
 
         /*fDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {

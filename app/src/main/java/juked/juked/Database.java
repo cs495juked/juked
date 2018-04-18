@@ -10,6 +10,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Database {
+    public ArrayList<jukeuser> users;
     private DatabaseReference appDatabase;
     private String lobby;
     private String uid;
@@ -17,9 +18,11 @@ public class Database {
     public Database (String lobbyCode) {
         appDatabase = FirebaseDatabase.getInstance().getReference();
         lobby = lobbyCode;
+        users = null;
     }
     public Database () {
         appDatabase = FirebaseDatabase.getInstance().getReference();
+        users = null;
     }
     public void setLobby (String lobbyCode) {
         lobby = lobbyCode;
@@ -116,23 +119,25 @@ public class Database {
     }
 
 
-    public ArrayList<jukeuser> getUserList() {
+    public void initateUserListRequest() {
         Log.d("DBTAG","inside of getUserList");
         readUserList(new FirebaseUserListCallback() {
             @Override
             public void onCallback(ArrayList<jukeuser> userList) {
                 Log.d("DBTAG","returned inside of readUserList");
+                users = userList;
                 //return userList;
             }
         });
         Log.d("DBTAG","returned outside of readUserList");
-        return null;
+        //return null;
     }
 
     private void readUserList (final FirebaseUserListCallback userListCallback) {
         appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("DBTAG","triggered onDataChange");
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
