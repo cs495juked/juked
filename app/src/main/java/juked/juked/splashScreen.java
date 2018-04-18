@@ -164,6 +164,9 @@ public class splashScreen extends AppCompatActivity implements
 
 
                         joinDialog.dismiss();
+                        startActivity(new Intent(splashScreen.this, HostRecycledView.class));
+                        HostRecycledView.lobbyCode = lobbyCode;
+                        FragmentHostPlaylist.appDB = appDB;
 //                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
 //                        testRecycledView.lobbyCode = lobbyCode;
 
