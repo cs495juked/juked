@@ -1,3 +1,5 @@
+//this class is not currently being used any more and will be depricated
+
 package juked.juked;
 
 import java.util.ArrayList;

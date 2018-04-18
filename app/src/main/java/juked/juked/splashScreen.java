@@ -116,12 +116,12 @@ public class splashScreen extends AppCompatActivity implements
                         lobbyCodeInput = joinDialog.findViewById(R.id.inputLobbyCode);
                         final String lobbyCode = lobbyCodeInput.getEditText().getText().toString();
                         nicknameInput = joinDialog.findViewById(R.id.inputNickname);
-                        String nickname = nicknameInput.getEditText().getText().toString();
+                        final String nickname = nicknameInput.getEditText().getText().toString();
 
 
                         //when the user selects a song, pass it here to user selection.
 
-                        final jukeuser user = new jukeuser(1, nickname, 0);
+                        //final jukeuser user = new jukeuser(1, nickname, 0);
 
                         // add user to a party
                         // get the id number for the user
@@ -129,9 +129,13 @@ public class splashScreen extends AppCompatActivity implements
                         mDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                //System.out.println(dataSnapshot.getValue());
-
-                                
+                                //CHECK THIS AFTER WE ADD SONGS
+                                //this code may have issues with reading the children of users (song objects) as children as well, throwing off the overall count
+                                long count = dataSnapshot.getChildrenCount();
+                                int newUser = (int) count + 1;
+                                Log.d("responses", "count: " + String.valueOf(count) + " | newUser: " + String.valueOf(newUser));
+                                final jukeuser user = new jukeuser(newUser, nickname, 0);
+                                mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(user.userId)).setValue(user);
                             }
 
                             @Override
@@ -139,9 +143,9 @@ public class splashScreen extends AppCompatActivity implements
 
                             }
                         });
-                        userId++;
+                        //userId++;
 
-                        mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(user); // keep
+                        //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(user); // keep
 
 
 
@@ -200,13 +204,13 @@ public class splashScreen extends AppCompatActivity implements
 
                         //create new jukeuser for host
                         jukeuser host = new jukeuser(01, hostNickname, 1);
-                        jukelobby lobby = new jukelobby(randomLobbyInt, host);
+                        //jukelobby lobby = new jukelobby(randomLobbyInt, host);
                         //add host user class into the lobby class via ArrayList
                         //store Lobby in database
 
                         int lobbyCode = randomLobbyInt;
 
-                        mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(host); //keep MR
+                        mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
 
                         generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
