@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
 
 public class Database {
     private DatabaseReference appDatabase;
@@ -76,14 +77,14 @@ public class Database {
     public jukeuser getUser() {
         readUser(new FirebaseUserCallback() {
             @Override
-            public jukeuser onCallback(jukeuser grabbedUser) {
-                return grabbedUser;
+            public void onCallback(jukeuser grabbedUser) {
+                //return grabbedUser;
             }
         });
         return null;
     }
 
-    public void readUser (final FirebaseUserCallback userCallback) {
+    private void readUser (final FirebaseUserCallback userCallback) {
         appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -93,12 +94,50 @@ public class Database {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("DBerror",databaseError.getMessage());
             }
         });
     }
 
+
+    public ArrayList<jukeuser> getUserList() {
+        Log.d("DBTAG","inside of getUserList");
+        readUserList(new FirebaseUserListCallback() {
+            @Override
+            public void onCallback(ArrayList<jukeuser> userList) {
+                Log.d("DBTAG","returned inside of readUserList");
+                //return userList;
+            }
+        });
+        Log.d("DBTAG","returned outside of readUserList");
+        return null;
+    }
+
+    private void readUserList (final FirebaseUserListCallback userListCallback) {
+        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    jukeuser user = snapshot.getValue(jukeuser.class);
+                    userList.add(user);
+                }
+                userListCallback.onCallback(userList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DBerror",databaseError.getMessage());
+            }
+        });
+    }
+
+
+    //Interfaces used for asynch callbacks
     private interface FirebaseUserCallback {
-        jukeuser onCallback(jukeuser grabbedUser);
+        void onCallback(jukeuser grabbedUser);
+    }
+    private interface FirebaseUserListCallback {
+        void onCallback(ArrayList<jukeuser> userlist);
     }
 }

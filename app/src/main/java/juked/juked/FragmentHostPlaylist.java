@@ -167,6 +167,14 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         //Database nDatabase = new Database(lobbyCode,globalUserId);
         appDB.updateSong(userSong);
+        //ArrayList<jukeuser> userList = appDB.getUserList();
+
+        //test code to see if this works, depricate later
+        /*int length = userList.size();
+        for (int i = 0; i < length; i++) {
+            Log.d("DBTAG",String.valueOf(userList.get(i).userId));
+        }*/
+
         /*fDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
