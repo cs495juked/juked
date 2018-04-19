@@ -82,14 +82,15 @@ public class ListViewAdapter extends BaseAdapter {
 
     // Filter Class
     public void filter(String charText) {
-        charText = charText.toLowerCase(Locale.getDefault());
+        charText = charText.replaceAll("\\.","").toLowerCase(Locale.getDefault());
         animalNamesList.clear();
         if (charText.length() == 0) {
             animalNamesList.addAll(arraylist);
         } else {
             for (String wp : arraylist) {
-                if (wp.toLowerCase(Locale.getDefault()).contains(charText)) {
+                if (wp.replaceAll("\\.","").toLowerCase(Locale.getDefault()).contains(charText)) {
                     animalNamesList.add(wp);
+
                 }
             }
         }

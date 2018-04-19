@@ -1,6 +1,5 @@
 package juked.juked;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,7 +18,7 @@ public class FragmentHostSettings extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.settingsfragment,container,false);
+        v= inflater.inflate(R.layout.host_settings_fragment,container,false);
         return v;
     }
 }

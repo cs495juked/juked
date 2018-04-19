@@ -1,7 +1,5 @@
 package juked.juked;
 
-import android.app.Fragment;
-import android.app.SearchableInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,10 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.Intent;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +35,6 @@ import com.spotify.sdk.android.player.SpotifyPlayer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import juked.juked.splashScreen;
-
-import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
@@ -200,7 +192,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.playlistfragment,container,false);
+        v= inflater.inflate(R.layout.host_playlist_fragment,container,false);
 
         // Locate the ListView
         list = (ListView) v.findViewById(R.id.list_view);
@@ -286,34 +278,48 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             @Override
             public boolean onQueryTextChange(String query) {
 
-
-                /*arraylist = populateSearch(query);
-                ArrayList<String> songNameList = new ArrayList<>();
-
-                for (int i = 0; i < arraylist.size(); i++) {
-                  songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
-                }
-
-                Context cont = v.getContext();
-
-                // Pass results to ListViewAdapter Class
-                adapter = new ListViewAdapter(cont, songNameList);
-
-                // Binds the Adapter to the ListView
-                list.setAdapter(adapter);
-
-                String text = query;
-                adapter.filter(text);
-
-                list.setVisibility(View.VISIBLE);*/
-
-
+//                if (query.equals("")){
+//                    arraylist.clear();
+//                    list.setVisibility(View.GONE);
+//
+//                }
+//                else {
+//                    arraylist = populateSearch(query);
+//                    ArrayList<String> songNameList = new ArrayList<>();
+//
+//
+//                    for (int i = 0; i < arraylist.size(); i++) {
+//                        songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
+//                    }
+//
+//                    Context cont = v.getContext();
+//
+//                    // Pass results to ListViewAdapter Class
+//                    adapter = new ListViewAdapter(cont, songNameList);
+//
+//                    // Binds the Adapter to the ListView
+//                    list.setAdapter(adapter);
+//
+//                    String text = query;
+//                    adapter.filter(text);
+//
+//                    list.setVisibility(View.VISIBLE);
 
 
                 return false;
             }
 
 
+//                if(newText.equals("")) {
+//                    list.setVisibility(View.GONE);
+//                }
+//                else {
+//                    list.setVisibility(View.VISIBLE);
+//                }
+//                String text = newText;
+//                adapter.filter(text);
+//                return false;
+//            }
 
 
 //        CharSequence searcher = songSearchBar.getQuery();

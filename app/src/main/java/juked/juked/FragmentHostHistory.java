@@ -1,9 +1,7 @@
 package juked.juked;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FragmentHostHistory extends android.support.v4.app.Fragment {
     View v;
@@ -33,7 +30,7 @@ public class FragmentHostHistory extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.historyfragment,container,false);
+        v= inflater.inflate(R.layout.host_history_fragment,container,false);
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.historyRecyclerView);
         RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), historySongs);

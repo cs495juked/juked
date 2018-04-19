@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuestRecycledView"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/displayLobbyCode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="15dp"
+            android:paddingTop="20dp"
+            android:text="@string/displayLobbyCodeText"
+            android:layout_marginBottom="1dp"
+            android:textColor="@color/JukedWhite"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/displayLobbyCodeNum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:paddingTop="20dp"
+            android:layout_marginBottom="1dp"
+            android:textColor="@color/JukedBlue"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="@color/JukedWhite"
+        app:tabSelectedTextColor="@color/JukedBlue"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/JukedBlue"
+        app:tabMode="fixed"
+        >
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+    </android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
+
