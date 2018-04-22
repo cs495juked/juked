@@ -5,6 +5,7 @@ public class PlaylistSong {
     private String artistName;
     private String albumName;
     private String albumArtwork;
+    private String vote = "none";
 
     public PlaylistSong(){
 
@@ -16,6 +17,7 @@ public class PlaylistSong {
         this.artistName = artistName;
         this.albumName = albumName;
         this.albumArtwork = albumArtwork;
+        this.vote = "none";
     }
 
     public String getSongName() {
@@ -45,5 +47,9 @@ public class PlaylistSong {
     public String getAlbumArtwork() { return albumArtwork; }
 
     public void setAlbumArtwork(String albumArtwork) { this.albumArtwork = albumArtwork; }
+
+    public String getVote() { return vote; }
+
+    public void setVote(String vote) { this.vote = vote; }
 
 }

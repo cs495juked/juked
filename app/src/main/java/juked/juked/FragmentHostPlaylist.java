@@ -148,42 +148,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         HostRecycledView.fhh.historySongs.add(pls);
         player.playUri(null, uri, 0, 0);
         final Song userSong = arraylist.get(position);
-        //jukeuser testUser = new jukeuser(2,"test",0);
 
-        //this is some hard coded test database stuff that will need removed later
-        //testUser.setUserSong(new Song(0,"test","test","test","test","test"));
-        //appDB.addNewUser("test");
-        //fDatabase.child(lobbyCode).child(String.valueOf(testUser.userId)).setValue(testUser);
-
-        //Log.d("responses","lobbyCode: " + lobbyCode + " | globalUserId: " + String.valueOf(globalUserId));
-
-        //Database nDatabase = new Database(lobbyCode,globalUserId);
         appDB.updateSong(userSong);
-       // Thread.sleep(100);
-        /*appDB.initateUserListRequest();
-        while (appDB.users == null) {
-            //do nothing
-        }
-        //test code to see if this works, depricate later
-        int length = appDB.users.size();
-        for (int i = 0; i < length; i++) {
-            Log.d("DBTAG",String.valueOf(appDB.users.get(i).userId));
-        }*/
-
-        /*fDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-              jukeuser pulledUser = dataSnapshot.child(globalUserId).getValue(jukeuser.class);
-
-              pulledUser.setUserSong(userSong);
-              fDatabase.child(lobbyCode).child(globalUserId).setValue(pulledUser);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
 
     }
@@ -198,22 +164,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         list = (ListView) v.findViewById(R.id.list_view);
         list.setVisibility(View.GONE);
 
-
-
-//
-//        for (int i = 0; i < animalNameList.length; i++) {
-//            // Binds all strings into an array
-//            arraylist.add(animalNameList[i]);
-//        }
-//        Context cont = v.getContext();
-//
-//        // Pass results to ListViewAdapter Class
-//        adapter = new ListViewAdapter(cont, arraylist);
-//
-//        // Binds the Adapter to the ListView
-//        list.setAdapter(adapter);
-
-        // Locate the EditText in listview_main.xml
 
 
         final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);

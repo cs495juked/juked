@@ -58,17 +58,20 @@
         >
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/upvote_icon"
+            android:layout_width="36dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20dp"
-            app:srcCompat="@android:drawable/stat_sys_upload" />
+            android:layout_marginRight="15dp"
+            app:srcCompat="@drawable/thumbsup" />
+
         <ImageView
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
+            android:id="@+id/downvote_icon"
+            android:layout_width="36dp"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/stat_sys_download"
-            />
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/thumbsdown" />
 
     </LinearLayout>
 

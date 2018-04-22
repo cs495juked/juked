@@ -40,10 +40,53 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
-        v.findViewById(R.id.playlistSongItem).setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.upvote_icon).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Log.d("response", mData.get(position).getSongName());
+            public void onClick(View v2) {
+
+                if(mData.get(position).getVote().equals("none")){
+                    ImageView img = v2.findViewById(R.id.upvote_icon);
+                    img.setImageResource(R.drawable.thumbsupselected);
+                    mData.get(position).setVote("up");
+                }
+                else if(mData.get(position).getVote().equals("down")){
+                    ImageView imgUp = v2.findViewById(R.id.upvote_icon);
+                    imgUp.setImageResource(R.drawable.thumbsupselected);
+                    ImageView imgDown = v.findViewById(R.id.downvote_icon);
+                    imgDown.setImageResource(R.drawable.thumbsdown);
+                    mData.get(position).setVote("up");
+                }
+                else if(mData.get(position).getVote().equals("up")){
+                    ImageView img = v2.findViewById(R.id.upvote_icon);
+                    img.setImageResource(R.drawable.thumbsup);
+                    mData.get(position).setVote("none");
+                }
+
+            }
+        });
+
+        v.findViewById(R.id.downvote_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v3) {
+
+                if(mData.get(position).getVote().equals("none")){
+                    ImageView img = v3.findViewById(R.id.downvote_icon);
+                    img.setImageResource(R.drawable.thumbsdownselected);
+                    mData.get(position).setVote("down");
+                }
+                else if(mData.get(position).getVote().equals("up")){
+                    ImageView imgDown = v3.findViewById(R.id.downvote_icon);
+                    imgDown.setImageResource(R.drawable.thumbsdownselected);
+                    ImageView imgUp = v.findViewById(R.id.upvote_icon);
+                    imgUp.setImageResource(R.drawable.thumbsup);
+                    mData.get(position).setVote("down");
+                }
+                else if(mData.get(position).getVote().equals("down")){
+                    ImageView img = v3.findViewById(R.id.downvote_icon);
+                    img.setImageResource(R.drawable.thumbsdown);
+                    mData.get(position).setVote("none");
+                }
+
             }
         });
 
