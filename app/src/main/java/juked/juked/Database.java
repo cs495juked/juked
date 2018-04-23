@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class Database {
     public ArrayList<jukeuser> users;
-    private DatabaseReference appDatabase;
-    private String lobby;
+    public DatabaseReference appDatabase;
+    public String lobby;
     private String uid;
 
     public Database (String lobbyCode) {
@@ -36,6 +36,7 @@ public class Database {
         appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //Log.d("DBTag","uid is: " + uid);
                 jukeuser pulledUser = dataSnapshot.child(uid).getValue(jukeuser.class);
 
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
@@ -47,9 +48,12 @@ public class Database {
                 int totalsongs = 0;
                 for (int i = 0; i < userList.size() ; i++) {
                     Song userSong = userList.get(i).song;
-                    if ((userSong != null) && (userSong !=pulledUser.song)) {
+                    //Log.d("DBTag","pulledUser is: " + pulledUser.userId);
+                    //Log.d("DBTag","userList.get(i) is: " + userList.get(i).userId);
+                    if ((userSong != null) && (userList.get(i).userId != pulledUser.userId)) {
                        // int pos = userSong.getPosition();
                         //songList[pos] = userSong;
+                        //Log.d("DBTag","Song inside of updateSong is: " + userSong.getSongName());
                         totalsongs++;
                     }
                 }

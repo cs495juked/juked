@@ -168,7 +168,60 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         list = (ListView) v.findViewById(R.id.list_view);
         list.setVisibility(View.GONE);
 
+        //Adds the listener for DB changes
+        Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
+        appDB.appDatabase.child(appDB.lobby).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("DBTag", "I made it inside on DataChange");
+                ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    jukeuser user = snapshot.getValue(jukeuser.class);
+                    userList.add(user);
+                }
+                ArrayList<PlaylistSong> playList = new ArrayList<PlaylistSong>();
+                int songs = 0;
+                for (int i = 0; i < userList.size(); i++) {
+                    if (userList.get(i).song != null) {
+                        songs++;
+                        Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
+                    }
+                }
+                int curr = 0;
+                while (songs > curr) {
+                    Log.d("DBTag",String.valueOf(songs)+ " > " + String.valueOf(curr));
+                    for (int i = 0; i < userList.size(); i++) {
+                        if (userList.get(i).song != null) {
+                            Song userSong = userList.get(i).song;
+                            int position = userSong.getPosition();
+                            if (position == curr) {
+                                PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover());
+                                playList.add(ps);
+                                curr++;
+                            }
+                        }
+                    }
+                }
+                if (songs != 0) {
+                    //playlistSongs.clear();
+                    //Log.d("DBTag", "I made it here where songs do not equal zero!");
+                    for (int i = 0; i < playList.size(); i++) {
+                        //playlistSongs.add(playList.get(i));
+                        Log.d("DBTag","playlist.get(" + String.valueOf(i) + ") is: " + playList.get(i).getSongName());
+                    }
+                    myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
+                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
+                    myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    myRecyclerView.setAdapter(recyclerAdapter);
+                    //update my UI object here
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DBTag",databaseError.getMessage());
+            }
+        });
 
         final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
 
