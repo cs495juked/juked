@@ -6,19 +6,24 @@ public class PlaylistSong {
     private String albumName;
     private String albumArtwork;
     private String vote = "none";
+    private String songURI;
 
     public PlaylistSong(){
 
     }
 
 
-    public PlaylistSong(String songName, String artistName, String albumName, String albumArtwork) {
+    public PlaylistSong(String songName, String artistName, String albumName, String albumArtwork, String songURI) {
         this.songName = songName;
         this.artistName = artistName;
         this.albumName = albumName;
         this.albumArtwork = albumArtwork;
         this.vote = "none";
     }
+
+    public String getSongURI() { return songURI; }
+
+    public void setSongURI(String songURI) { this.songURI = songURI; }
 
     public String getSongName() {
         return songName;
