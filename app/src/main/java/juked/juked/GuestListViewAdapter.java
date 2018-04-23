@@ -1,20 +1,20 @@
 package juked.juked;
 
 
-        import android.content.Context;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.BaseAdapter;
-        import android.widget.TextView;
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.Locale;
-        import java.util.concurrent.ExecutionException;
-        import juked.juked.HostRecycledView;
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
+import juked.juked.HostRecycledView;
 
-public class ListViewAdapter extends BaseAdapter {
+public class GuestListViewAdapter extends BaseAdapter {
 
     // Declare Variables
 
@@ -24,7 +24,7 @@ public class ListViewAdapter extends BaseAdapter {
     private List<String> animalNamesList = null;
     private ArrayList<String> arraylist;
 
-    public ListViewAdapter(Context context, List<String> animalNamesList) {
+    public GuestListViewAdapter(Context context, List<String> animalNamesList) {
         mContext = context;
         this.animalNamesList = animalNamesList;
         inflater = LayoutInflater.from(mContext);
@@ -72,7 +72,8 @@ public class ListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 TextView tv_animalName = finalView.findViewById(R.id.nameofanimal);
-                HostRecycledView.fhp.querySearchedSong(position);
+                Log.d("onclick", Integer.toString(position) );
+                GuestRecycledView.fgp.querySearchedSong(position);
             }
         });
 

@@ -42,7 +42,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
 
     ListView list;
-    ListViewAdapter adapter;
+    HostListViewAdapter adapter;
     SearchView editsearch;
 
     ArrayList<Song> arraylist = new ArrayList<Song>();
@@ -57,7 +57,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
     private Player player = splashScreen.mPlayer;
 
     private RecyclerView myRecyclerView;
-    private List<PlaylistSong> playlistSongs;
+    private ArrayList<PlaylistSong> playlistSongs;
     //private DatabaseReference fDatabase;
 
     @Override
@@ -142,9 +142,13 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         Log.d("response", "uri is: " + uri);
 
         list.setVisibility(v.GONE);
-        PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover());
+
+        PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(),
+                arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover());
 
         playlistSongs.add(pls);
+
+
         HostRecycledView.fhh.historySongs.add(pls);
         player.playUri(null, uri, 0, 0);
         final Song userSong = arraylist.get(position);
@@ -189,8 +193,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
                 Context cont = v.getContext();
 
-                // Pass results to ListViewAdapter Class
-                adapter = new ListViewAdapter(cont, songNameList);
+                // Pass results to HostListViewAdapter Class
+                adapter = new HostListViewAdapter(cont, songNameList);
 
                 // Binds the Adapter to the ListView
                 list.setAdapter(adapter);
@@ -210,8 +214,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
                 Context cont = v.getContext();
 
-                // Pass results to ListViewAdapter Class
-                adapter = new ListViewAdapter(cont, songNameList);
+                // Pass results to HostListViewAdapter Class
+                adapter = new HostListViewAdapter(cont, songNameList);
 
                 // Binds the Adapter to the ListView
                 list.setAdapter(adapter);
@@ -244,8 +248,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 //
 //                    Context cont = v.getContext();
 //
-//                    // Pass results to ListViewAdapter Class
-//                    adapter = new ListViewAdapter(cont, songNameList);
+//                    // Pass results to HostListViewAdapter Class
+//                    adapter = new HostListViewAdapter(cont, songNameList);
 //
 //                    // Binds the Adapter to the ListView
 //                    list.setAdapter(adapter);

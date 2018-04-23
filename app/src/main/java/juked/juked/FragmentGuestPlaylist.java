@@ -42,7 +42,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
 
     ListView list;
-    ListViewAdapter adapter;
+    GuestListViewAdapter adapter;
     SearchView editsearch;
 
     ArrayList<Song> arraylist = new ArrayList<Song>();
@@ -126,6 +126,8 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
             e.printStackTrace();
         }
 
+        Log.d("arraylist", Integer.toString(myList.size()));
+
         return myList;
 
 
@@ -136,6 +138,8 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
     public void querySearchedSong(int position){
 
         //fDatabase = FirebaseDatabase.getInstance().getReference();
+        Log.d("arraylist", Integer.toString(arraylist.size()));
+        Log.d("positiion", Integer.toString(position));
 
         //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
         String uri = arraylist.get(position).getSongURI();
@@ -145,45 +149,13 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
         PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover());
 
         playlistSongs.add(pls);
-        HostRecycledView.fhh.historySongs.add(pls);
+        GuestRecycledView.fgh.historySongs.add(pls);
+
         player.playUri(null, uri, 0, 0);
+        Log.d("userSong", arraylist.get(position).getSongName());
         final Song userSong = arraylist.get(position);
-        //jukeuser testUser = new jukeuser(2,"test",0);
 
-        //this is some hard coded test database stuff that will need removed later
-        //testUser.setUserSong(new Song(0,"test","test","test","test","test"));
-        //appDB.addNewUser("test");
-        //fDatabase.child(lobbyCode).child(String.valueOf(testUser.userId)).setValue(testUser);
-
-        //Log.d("responses","lobbyCode: " + lobbyCode + " | globalUserId: " + String.valueOf(globalUserId));
-
-        //Database nDatabase = new Database(lobbyCode,globalUserId);
         appDB.updateSong(userSong);
-        // Thread.sleep(100);
-        /*appDB.initateUserListRequest();
-        while (appDB.users == null) {
-            //do nothing
-        }
-        //test code to see if this works, depricate later
-        int length = appDB.users.size();
-        for (int i = 0; i < length; i++) {
-            Log.d("DBTAG",String.valueOf(appDB.users.get(i).userId));
-        }*/
-
-        /*fDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-              jukeuser pulledUser = dataSnapshot.child(globalUserId).getValue(jukeuser.class);
-
-              pulledUser.setUserSong(userSong);
-              fDatabase.child(lobbyCode).child(globalUserId).setValue(pulledUser);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
 
     }
@@ -192,7 +164,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.host_playlist_fragment,container,false);
+        v= inflater.inflate(R.layout.guest_playlist_fragment,container,false);
 
         // Locate the ListView
         list = (ListView) v.findViewById(R.id.list_view);
@@ -200,23 +172,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
 
 
-//
-//        for (int i = 0; i < animalNameList.length; i++) {
-//            // Binds all strings into an array
-//            arraylist.add(animalNameList[i]);
-//        }
-//        Context cont = v.getContext();
-//
-//        // Pass results to ListViewAdapter Class
-//        adapter = new ListViewAdapter(cont, arraylist);
-//
-//        // Binds the Adapter to the ListView
-//        list.setAdapter(adapter);
-
-        // Locate the EditText in listview_main.xml
-
-
-        final SearchView songSearchBar = v.findViewById(R.id.searchForSongBar);
+        final SearchView songSearchBar = v.findViewById(R.id.guestSearchForSongBar);
 
         // Makes the entire searchBar clickable
         songSearchBar.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +187,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
             public boolean onQueryTextSubmit(String query) {
 
                 arraylist = populateSearch(query);
+                Log.d("arraylist", Integer.toString(arraylist.size()));
                 ArrayList<String> songNameList = new ArrayList<>();
 
                 for (int i = 0; i < arraylist.size(); i++) {
@@ -239,8 +196,8 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
                 Context cont = v.getContext();
 
-                // Pass results to ListViewAdapter Class
-                adapter = new ListViewAdapter(cont, songNameList);
+                // Pass results to HostListViewAdapter Class
+                adapter = new GuestListViewAdapter(cont, songNameList);
 
                 // Binds the Adapter to the ListView
                 list.setAdapter(adapter);
@@ -249,27 +206,6 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 adapter.filter(text);
 
                 list.setVisibility(View.VISIBLE);
-                /*arraylist = populateSearch(query);
-                ArrayList<String> songNameList = new ArrayList<>();
-
-                for (int i = 0; i < arraylist.size(); i++) {
-                    songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
-                }
-
-
-
-                Context cont = v.getContext();
-
-                // Pass results to ListViewAdapter Class
-                adapter = new ListViewAdapter(cont, songNameList);
-
-                // Binds the Adapter to the ListView
-                list.setAdapter(adapter);
-
-                String text = query;
-                adapter.filter(text);
-
-                list.setVisibility(View.VISIBLE);*/
 
 
                 return false;
@@ -278,52 +214,10 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
             @Override
             public boolean onQueryTextChange(String query) {
 
-//                if (query.equals("")){
-//                    arraylist.clear();
-//                    list.setVisibility(View.GONE);
-//
-//                }
-//                else {
-//                    arraylist = populateSearch(query);
-//                    ArrayList<String> songNameList = new ArrayList<>();
-//
-//
-//                    for (int i = 0; i < arraylist.size(); i++) {
-//                        songNameList.add(arraylist.get(i).getSongName() + " by " + arraylist.get(i).getArtistName());
-//                    }
-//
-//                    Context cont = v.getContext();
-//
-//                    // Pass results to ListViewAdapter Class
-//                    adapter = new ListViewAdapter(cont, songNameList);
-//
-//                    // Binds the Adapter to the ListView
-//                    list.setAdapter(adapter);
-//
-//                    String text = query;
-//                    adapter.filter(text);
-//
-//                    list.setVisibility(View.VISIBLE);
-
-
                 return false;
             }
 
 
-//                if(newText.equals("")) {
-//                    list.setVisibility(View.GONE);
-//                }
-//                else {
-//                    list.setVisibility(View.VISIBLE);
-//                }
-//                String text = newText;
-//                adapter.filter(text);
-//                return false;
-//            }
-
-
-//        CharSequence searcher = songSearchBar.getQuery();
-//        android.util.Log.d("response: ", searcher.toString());
         });
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);

@@ -18,6 +18,9 @@ public class GuestRecycledView extends AppCompatActivity {
     private ViewPagerAdapter adapter;
     public static String lobbyCode;
 
+    public static FragmentGuestPlaylist fgp = new FragmentGuestPlaylist();
+    public static FragmentGuestHistory fgh = new FragmentGuestHistory();
+
 
     private Player player = splashScreen.mPlayer;
 
@@ -36,8 +39,8 @@ public class GuestRecycledView extends AppCompatActivity {
 
         // add Fragment Here
 
-        adapter.addFragments(new FragmentGuestPlaylist(), "Playlist");
-        adapter.addFragments(new FragmentGuestHistory(), "History");
+        adapter.addFragments(fgp, "Playlist");
+        adapter.addFragments(fgh, "History");
         adapter.addFragments(new FragmentGuestSettings(), "Settings");
 
         viewPager.setAdapter(adapter);
