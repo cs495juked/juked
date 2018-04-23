@@ -1,6 +1,7 @@
 package juked.juked;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,27 +39,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         v.findViewById(R.id.upvote_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v2) {
 
                 if(mData.get(position).getVote().equals("none")){
-                    ImageView img = v2.findViewById(R.id.upvote_icon);
-                    img.setImageResource(R.drawable.thumbsupselected);
+                    holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
                     mData.get(position).setVote("up");
                 }
                 else if(mData.get(position).getVote().equals("down")){
-                    ImageView imgUp = v2.findViewById(R.id.upvote_icon);
-                    imgUp.setImageResource(R.drawable.thumbsupselected);
-                    ImageView imgDown = v.findViewById(R.id.downvote_icon);
-                    imgDown.setImageResource(R.drawable.thumbsdown);
+                    holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
+                    holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
                     mData.get(position).setVote("up");
                 }
                 else if(mData.get(position).getVote().equals("up")){
-                    ImageView img = v2.findViewById(R.id.upvote_icon);
-                    img.setImageResource(R.drawable.thumbsup);
+                    holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
                     mData.get(position).setVote("none");
                 }
 
@@ -70,22 +67,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v3) {
 
                 if(mData.get(position).getVote().equals("none")){
-                    ImageView img = v3.findViewById(R.id.downvote_icon);
-                    img.setImageResource(R.drawable.thumbsdownselected);
+                    holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
                     mData.get(position).setVote("down");
                 }
                 else if(mData.get(position).getVote().equals("up")){
-                    ImageView imgDown = v3.findViewById(R.id.downvote_icon);
-                    imgDown.setImageResource(R.drawable.thumbsdownselected);
-                    ImageView imgUp = v.findViewById(R.id.upvote_icon);
-                    imgUp.setImageResource(R.drawable.thumbsup);
+                    holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
+                    holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
                     mData.get(position).setVote("down");
                 }
                 else if(mData.get(position).getVote().equals("down")){
-                    ImageView img = v3.findViewById(R.id.downvote_icon);
-                    img.setImageResource(R.drawable.thumbsdown);
+                    holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
                     mData.get(position).setVote("none");
                 }
+
 
             }
         });
@@ -110,6 +104,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView tv_artistName;
         private TextView tv_albumName;
         private ImageView iv_albumArtwork;
+        private ImageView iv_upvoteIcon;
+        private ImageView iv_downvoteIcon;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -117,6 +114,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_albumName = (TextView) itemView.findViewById(R.id.album_name);
             tv_artistName = (TextView) itemView.findViewById(R.id.artist_name);
             iv_albumArtwork = (ImageView) itemView.findViewById(R.id.userAvatar);
+            iv_upvoteIcon = (ImageView) itemView.findViewById(R.id.upvote_icon);
+            iv_downvoteIcon = (ImageView) itemView.findViewById(R.id.downvote_icon);
 
         }
     }
