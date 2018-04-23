@@ -32,11 +32,35 @@ public class Database {
         uid = userid;
     }
 
+    public void deleteSong(final String songName) {
+        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    jukeuser user = snapshot.getValue(jukeuser.class);
+                    userList.add(user);
+                }
+                for (int i = 0; i < userList.size(); i++) {
+                    if (userList.get(i).song.getSongName().equals(songName)) {
+                        userList.get(i).song = null;
+                        appDatabase.child(lobby).child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DBTag",databaseError.getMessage());
+            }
+        });
+    }
+
+
     public void updateSong(final Song newSong) {
         appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //Log.d("DBTag","uid is: " + uid);
                 jukeuser pulledUser = dataSnapshot.child(uid).getValue(jukeuser.class);
 
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
@@ -48,12 +72,10 @@ public class Database {
                 int totalsongs = 0;
                 for (int i = 0; i < userList.size() ; i++) {
                     Song userSong = userList.get(i).song;
-                    //Log.d("DBTag","pulledUser is: " + pulledUser.userId);
-                    //Log.d("DBTag","userList.get(i) is: " + userList.get(i).userId);
-                    if ((userSong != null) && (userList.get(i).userId != pulledUser.userId)) {
+                    if ((userSong != null) && (userList.get(i) != pulledUser)) {
                        // int pos = userSong.getPosition();
                         //songList[pos] = userSong;
-                        //Log.d("DBTag","Song inside of updateSong is: " + userSong.getSongName());
+
                         totalsongs++;
                     }
                 }
@@ -64,7 +86,7 @@ public class Database {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("DBTag",databaseError.getMessage());
             }
         });
     }
