@@ -29,6 +29,7 @@
             android:text="Adder's Nickname"
             android:textColor="@color/JukedWhite"
             android:textSize="10sp"
+            android:id="@+id/user_nickname"
             />
 
         <TextView

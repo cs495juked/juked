@@ -116,6 +116,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_albumName = (TextView) itemView.findViewById(R.id.album_name);
             tv_artistName = (TextView) itemView.findViewById(R.id.artist_name);
             iv_albumArtwork = (ImageView) itemView.findViewById(R.id.userAvatar);
+            tv_adderNickname = (TextView) itemView.findViewById(R.id.user_nickname);
             iv_upvoteIcon = (ImageView) itemView.findViewById(R.id.upvote_icon);
             iv_downvoteIcon = (ImageView) itemView.findViewById(R.id.downvote_icon);
 
