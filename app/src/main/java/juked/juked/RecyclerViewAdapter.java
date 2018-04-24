@@ -84,10 +84,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-
+        holder.tv_songName.setSelected(true); //allow scrolling text
         holder.tv_songName.setText(mData.get(position).getSongName());
         holder.tv_albumName.setText(mData.get(position).getAlbumName());
         holder.tv_artistName.setText(mData.get(position).getArtistName());
+        holder.tv_adderNickname.setText(mData.get(position).getAdderNickname());
         Picasso.with(mContext).load(mData.get(position).getAlbumArtwork()).into(holder.iv_albumArtwork);
 
 
@@ -103,6 +104,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView tv_songName;
         private TextView tv_artistName;
         private TextView tv_albumName;
+        private TextView tv_adderNickname;
         private ImageView iv_albumArtwork;
         private ImageView iv_upvoteIcon;
         private ImageView iv_downvoteIcon;

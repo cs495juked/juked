@@ -26,6 +26,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Adder's Nickname"
+            android:textColor="@color/JukedWhite"
+            android:textSize="10sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            android:scrollHorizontally="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit ="marquee_forever"
             android:textStyle="bold"
             android:text="song name"
             android:id="@+id/song_name"
@@ -37,7 +51,8 @@
             android:layout_height="wrap_content"
             android:text="Artist Name"
             android:id="@+id/artist_name"
-            android:textColor="@color/JukedWhite"/>
+            android:textColor="@color/JukedWhite"
+            />
 
         <TextView
 

@@ -47,6 +47,8 @@ public class splashScreen extends AppCompatActivity implements
     private TextInputLayout hostNicknameInput;
     private TextView generatedLobbyCodeText;
 
+
+
     //private EditText userNickname;
     //private EditText lobbyNumber;
 
@@ -60,6 +62,8 @@ public class splashScreen extends AppCompatActivity implements
     public int globalUserId = 0;
     public int lobbyCode = 0;
     public static Player mPlayer;
+
+    public static String userNickname = "";
 
     private static final String CLIENT_ID = "3bf8e5d5bae64c319395b084204e71ea";
     private static final String REDIRECT_URI = "juked://callback";
@@ -121,6 +125,7 @@ public class splashScreen extends AppCompatActivity implements
                         final String lobbyCode = lobbyCodeInput.getEditText().getText().toString();
                         nicknameInput = joinDialog.findViewById(R.id.inputNickname);
                         final String nickname = nicknameInput.getEditText().getText().toString();
+                        userNickname = nickname;
 
 
                         //when the user selects a song, pass it here to user selection.
@@ -164,15 +169,13 @@ public class splashScreen extends AppCompatActivity implements
 
 
                         joinDialog.dismiss();
+
                         startActivity(new Intent(splashScreen.this, GuestRecycledView.class));
                         GuestRecycledView.lobbyCode = lobbyCode;
                         FragmentGuestPlaylist.appDB = appDB;
 //                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
 //                        testRecycledView.lobbyCode = lobbyCode;
 
-                        Toast.makeText(splashScreen.this,
-                                nickname + lobbyCode,
-                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -210,6 +213,9 @@ public class splashScreen extends AppCompatActivity implements
 
                         hostNicknameInput = createDialog.findViewById(R.id.inputHostNickname);
                         String hostNickname = hostNicknameInput.getEditText().getText().toString();
+                        userNickname = hostNickname;
+
+                        generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
                         //create new jukeuser for host
                         //jukeuser host = new jukeuser(01, hostNickname, 1);
@@ -223,7 +229,7 @@ public class splashScreen extends AppCompatActivity implements
                         appDB.addNewUser(hostNickname);
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
                         //globalUserId = host.userId;
-                        generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
+
 
 //                        mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
                         createDialog.dismiss();
