@@ -72,7 +72,7 @@ public class Database {
                 int totalsongs = 0;
                 for (int i = 0; i < userList.size() ; i++) {
                     Song userSong = userList.get(i).song;
-                    if ((userSong != null) && (userList.get(i) != pulledUser)) {
+                    if ((userSong != null) && (userList.get(i).userId != pulledUser.userId)) {
                        // int pos = userSong.getPosition();
                         //songList[pos] = userSong;
 
