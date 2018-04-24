@@ -99,6 +99,15 @@
 
     <string name="displayLobbyCode">displayLobbyCode</string>
     <string name="displayLobbyCodeText">Party Code: </string>
+    <string name="nightMode">nmode</string>
+    <string name="spotifyLogout">splogout</string>
+    <string name="spotifLogout">spLogout</string>
+    <string name="jukedLogout">jkLogout</string>
+    <string name="nightMde">nMode</string>
+    <string name="spLogout">Spotify Logout</string>
+    <string name="jkLogout">Juked Logout</string>
+    <string name="dayMode">Day Mode</string>
+    <string name="nMode">Night Mode</string>
 
 
 </resources>

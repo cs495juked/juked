@@ -1,15 +1,25 @@
 package juked.juked;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+//import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.app.AppCompatDelegate;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.spotify.sdk.android.player.Player;
+
+import static juked.juked.R.layout.activity_test_recycled_view;
 
 public class HostRecycledView extends AppCompatActivity {
 
@@ -21,12 +31,86 @@ public class HostRecycledView extends AppCompatActivity {
     public static String lobbyCode;
     static FloatingActionButton playPauseButton;
 
+
+    public static int dark =0;
+   // public static int notDark =0;
+
+    public Button dT;
+    public Button nT;
+
+
+
     private Player player = splashScreen.mPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_recycled_view);
+
+        tabLayout = findViewById(R.id.tabs);
+
+
+
+//        dT = (Button) findViewById(R.id.day);
+//        nT = (Button) findViewById(R.id.night);
+//
+//        dT.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setTheme(R.style.LightTheme);
+//            }
+//        });
+//
+//        nT.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setTheme(R.style.LightTheme);
+//            }
+//        });
+
+        // themeUtils.onActivityCreateSetTheme(this);
+
+        if (dark ==0) {
+            setTheme(R.style.LightTheme);
+            //tabLayout.setAlpha(0f);
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        }
+
+            //findViewById(android.R.layout.activity_test_recycled_view).invalidate()
+            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+           // recreate();
+           // restartApp();
+//            getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
+//            getWindow().getDecorView().findViewById(android.R.id.content).requestLayout();
+            //findViewById(android.R.id.content).invalidate();
+//            ViewGroup vg;
+//            vg = findViewById (R.layout.activity_splash_screen);
+//            vg.invalidate();
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+   //   }
+//
+        if (dark == 1 ){
+            setTheme(R.style.DarkTheme);
+            //tabLayout.setAlpha(1f);
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        }
+
+
+//        if(dark == 0){
+//
+//        }
+//        else setTheme(R.style.DarkTheme);
+
+        setContentView(activity_test_recycled_view);
+
+       // change the color
+
+
 
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.viewPager);
@@ -100,5 +184,13 @@ public class HostRecycledView extends AppCompatActivity {
             playPauseButton.setImageResource(android.R.drawable.ic_media_play);
         }
     }
+
+//
+//    public void restartApp(){
+//
+//        Intent i = new Intent(getActivity(),splashScreen.class);
+//        startActivity(i);
+//        getActivity().finish();
+//    }
 
 }
