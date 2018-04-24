@@ -147,7 +147,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         playlistSongs.add(pls);
 
-
         HostRecycledView.fhh.historySongs.add(pls);
         player.playUri(null, uri, 0, 0);
         final Song userSong = arraylist.get(position);
@@ -193,7 +192,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                             Song userSong = userList.get(i).song;
                             int position = userSong.getPosition();
                             if (position == curr) {
-                                PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), splashScreen.userNickname);
+                                PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName);
                                 playList.add(ps);
                                 curr++;
                             }
