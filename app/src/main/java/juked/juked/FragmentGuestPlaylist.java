@@ -151,7 +151,6 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
         playlistSongs.add(pls);
         GuestRecycledView.fgh.historySongs.add(pls);
 
-        player.playUri(null, uri, 0, 0);
         Log.d("userSong", arraylist.get(position).getSongName());
         final Song userSong = arraylist.get(position);
 

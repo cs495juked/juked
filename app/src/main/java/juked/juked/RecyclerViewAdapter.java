@@ -17,7 +17,7 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>{
 
     Context mContext;
-    List<PlaylistSong> mData;
+    public static List<PlaylistSong> mData;
     MyViewHolder vHolder;
     View v ;
 

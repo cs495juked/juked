@@ -19,6 +19,7 @@ public class PlaylistSong {
         this.albumName = albumName;
         this.albumArtwork = albumArtwork;
         this.vote = "none";
+        this.songURI = songURI;
     }
 
     public String getSongURI() { return songURI; }

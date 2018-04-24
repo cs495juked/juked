@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.*;
 import android.view.*;
 import android.app.Dialog;
+import juked.juked.Database;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +33,7 @@ import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
@@ -46,6 +48,7 @@ public class splashScreen extends AppCompatActivity implements
     private TextInputLayout nicknameInput;
     private TextInputLayout hostNicknameInput;
     private TextView generatedLobbyCodeText;
+    private boolean isHost;
 
     //private EditText userNickname;
     //private EditText lobbyNumber;
@@ -60,6 +63,8 @@ public class splashScreen extends AppCompatActivity implements
     public int globalUserId = 0;
     public int lobbyCode = 0;
     public static Player mPlayer;
+
+    public List<PlaylistSong> songList; //= RecyclerViewAdapter.mData;
 
     private static final String CLIENT_ID = "3bf8e5d5bae64c319395b084204e71ea";
     private static final String REDIRECT_URI = "juked://callback";
@@ -106,6 +111,7 @@ public class splashScreen extends AppCompatActivity implements
                 joinLobbyFromPopup = joinDialog.findViewById(R.id.joinLobbyBtn);
                 backFromJoinBtn = joinDialog.findViewById(R.id.backToHomeJoin);
 
+                isHost = false;
                 backFromJoinBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -192,6 +198,7 @@ public class splashScreen extends AppCompatActivity implements
                 generatedLobbyCodeText = createDialog.findViewById(R.id.generatedLobbyCode);
                 Random r = new Random();
                 final int randomLobbyInt = r.nextInt(9999);
+                isHost = true;
 
                 backBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -297,6 +304,18 @@ public class splashScreen extends AppCompatActivity implements
         Log.d("MainActivity", "Playback event received: " + playerEvent.name());
         switch (playerEvent) {
             // Handle event type as necessary
+
+            case kSpPlaybackNotifyAudioDeliveryDone:
+
+                Log.d("response", "song is over");
+                //songList.clear();
+                if(isHost) {
+                    songList = RecyclerViewAdapter.mData;
+                    songList.remove(0);
+                    mPlayer.playUri(null, songList.get(0).getSongURI(), 0, 0);
+                }
+                break;
+
             default:
                 break;
         }

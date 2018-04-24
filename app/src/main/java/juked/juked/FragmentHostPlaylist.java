@@ -154,7 +154,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         appDB.updateSong(userSong);
 
-
     }
 
 
@@ -514,5 +513,6 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         }
 
     }//end getSongLength
+
 
 }//end FragmentHostPlayer
