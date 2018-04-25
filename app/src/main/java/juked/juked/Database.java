@@ -14,6 +14,7 @@ public class Database {
     public DatabaseReference appDatabase;
     public String lobby;
     private String uid;
+    public Song uSong;
 
     public Database (String lobbyCode) {
         appDatabase = FirebaseDatabase.getInstance().getReference();
@@ -32,8 +33,9 @@ public class Database {
         uid = userid;
     }
 
+
     public void deleteSong(final String songName) {
-        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
+        appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
@@ -44,7 +46,8 @@ public class Database {
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song.getSongName().equals(songName)) {
                         userList.get(i).song = null;
-                        appDatabase.child(lobby).child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
+                        appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
+                        break;
                     }
                 }
             }
@@ -56,9 +59,52 @@ public class Database {
         });
     }
 
+    public void setVote() {
+        appDatabase.child(lobby).setValue("votes");
+    }
+
+    public void updateVote(final String songURI, final int update, final int prev) {
+        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //grab the votes from the database, update the user vote
+                int found = 0;
+                ArrayList<Vote> votes = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.child("votes").child(songURI).getChildren()) {
+                    Vote vote = snapshot.getValue(Vote.class);
+                    votes.add(vote);
+                }
+                for (int i = 0; i < votes.size(); i++) {
+                    if (votes.get(i).getUID().equals(uid)) {
+                        found = 1;
+                        votes.get(i).setVote(update);
+                        appDatabase.child(lobby).child("votes").child(votes.get(i).getURI()).child(votes.get(i).getUID()).setValue(votes.get(i));
+                        break;
+                    }
+                }
+                if (found == 0) {
+                    Vote vote = new Vote(songURI,uid);
+                    appDatabase.child(lobby).child("votes").child(vote.getURI()).child(vote.getUID()).setValue(vote);
+                }
+                //update the song where it is stored
+                ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
+                for (DataSnapshot snapshot : dataSnapshot.child("users").getChildren()) {
+                    jukeuser user = snapshot.getValue(jukeuser.class);
+                    if ((user.song != null) && (user.song.getSongURI().equals(songURI))) {
+
+                    }
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DBTag",databaseError.getMessage());
+            }
+        });
+    }
 
     public void updateSong(final Song newSong) {
-        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
+        appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 jukeuser pulledUser = dataSnapshot.child(uid).getValue(jukeuser.class);
@@ -81,7 +127,13 @@ public class Database {
                 }
                 newSong.setPosition(totalsongs);
                 pulledUser.setUserSong(newSong);
-                appDatabase.child(lobby).child(uid).setValue(pulledUser);
+                uSong = newSong;
+                Vote uVote = new Vote(newSong.getSongURI(),uid);
+                uVote.setVote(1);
+                newSong.setNumVotes(1);
+                newSong.setUpVotes(1);
+                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
+                appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
             }
 
             @Override
@@ -107,7 +159,7 @@ public class Database {
                     user = new jukeuser(newUser, nickname, 0);
                 }
                 //final jukeuser user = new jukeuser(newUser, nickname, 0);
-                appDatabase.child(String.valueOf(lobby)).child(String.valueOf(user.userId)).setValue(user);
+                appDatabase.child(String.valueOf(lobby)).child("users").child(String.valueOf(user.userId)).setValue(user);
                 uid = String.valueOf(user.userId);
             }
 
@@ -116,75 +168,5 @@ public class Database {
 
             }
         });
-        //appDatabase.child(lobby).child(String.valueOf(user.userId)).setValue(user);
-    }
-
-    public jukeuser getUser() {
-        readUser(new FirebaseUserCallback() {
-            @Override
-            public void onCallback(jukeuser grabbedUser) {
-                //return grabbedUser;
-            }
-        });
-        return null;
-    }
-
-    private void readUser (final FirebaseUserCallback userCallback) {
-        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                jukeuser grabbedUser = dataSnapshot.child(uid).getValue(jukeuser.class);
-                userCallback.onCallback(grabbedUser);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("DBerror",databaseError.getMessage());
-            }
-        });
-    }
-
-
-    public void initateUserListRequest() {
-        Log.d("DBTAG","inside of getUserList");
-        readUserList(new FirebaseUserListCallback() {
-            @Override
-            public void onCallback(ArrayList<jukeuser> userList) {
-                Log.d("DBTAG","returned inside of readUserList");
-                users = userList;
-                //return userList;
-            }
-        });
-        Log.d("DBTAG","returned outside of readUserList");
-        //return null;
-    }
-
-    private void readUserList (final FirebaseUserListCallback userListCallback) {
-        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("DBTAG","triggered onDataChange");
-                ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    jukeuser user = snapshot.getValue(jukeuser.class);
-                    userList.add(user);
-                }
-                userListCallback.onCallback(userList);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("DBerror",databaseError.getMessage());
-            }
-        });
-    }
-
-
-    //Interfaces used for asynch callbacks
-    private interface FirebaseUserCallback {
-        void onCallback(jukeuser grabbedUser);
-    }
-    private interface FirebaseUserListCallback {
-        void onCallback(ArrayList<jukeuser> userlist);
     }
 }

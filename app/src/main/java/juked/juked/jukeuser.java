@@ -1,5 +1,7 @@
 package juked.juked;
 
+import java.util.ArrayList;
+
 public class jukeuser {
     public int userId=0;
     public String userName = "Default User ";
