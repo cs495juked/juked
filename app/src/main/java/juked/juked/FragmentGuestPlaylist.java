@@ -171,7 +171,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
         //Adds the listener for DB changes
         Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
-        appDB.appDatabase.child(appDB.lobby).child("users").addValueEventListener(new ValueEventListener() {
+        appDB.appDatabase.child(appDB.lobby).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("DBTag", "I made it inside on DataChange");

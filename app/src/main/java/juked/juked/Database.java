@@ -99,13 +99,15 @@ public class Database {
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
                 for (DataSnapshot snapshot : dataSnapshot.child("users").getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
-                    if ((user.song != null) && (user.song.getSongURI().equals(songURI))) {
-                        user.song.setVoteBalance(user.song.getVoteBalance()+votecount);
-                        break;
+                    if (user.song != null) {
+                        if (user.song.getSongURI().equals(songURI)) {
+                            user.song.setVoteBalance(user.song.getVoteBalance()+votecount);
+                        }
                     }
                 }
 
                 //update the song order
+
 
             }
             @Override
@@ -155,7 +157,7 @@ public class Database {
     }
 
     public void addNewUser (final String nickname) {
-        appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
+        appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //CHECK THIS AFTER WE ADD SONGS
