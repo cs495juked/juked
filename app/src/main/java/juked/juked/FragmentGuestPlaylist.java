@@ -211,7 +211,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                         Log.d("DBTag","playlist.get(" + String.valueOf(i) + ") is: " + playList.get(i).getSongName());
                     }
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
-                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, anarraylistofintegers);
+                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList); //RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, anarraylistofintegers);
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     myRecyclerView.setAdapter(recyclerAdapter);
                     //update my UI object here
