@@ -154,17 +154,35 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public boolean onLongClick(View v) {
 
             int adapterPos = vHolder.getAdapterPosition();
+            Log.d("onLongClick1", adapterPos + ":" + mData.get(adapterPos).getSongName());
             if (adapterPos != RecyclerView.NO_POSITION && splashScreen.isHost) {
-                Toast.makeText(v.getContext(), "ViewItem: " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
-                notifyItemRemoved(adapterPos);
-                notifyItemRangeChanged(adapterPos, getItemCount());
-                appDB.deleteSong(mData.get(adapterPos).getSongName());
-                mData.remove(adapterPos); // might need to delete later because ^^
-                if(!mData.isEmpty()) {
-                    player.playUri(null, mData.get(0).getSongURI(),0,0);
+                if(adapterPos == 0 && mData.size() == 1) {
+                    for(int i = 0; i < mData.size(); i++)
+                        Log.d("onLongClick2", "AdapterPos: " + adapterPos + " i: " + i + " @mData.get(i):" + mData.get(i).getSongName());
+
+                    player.pause(null);
+                    notifyItemRemoved(adapterPos);
+                    notifyItemRangeChanged(adapterPos, mData.size());
+//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
+                    mData.remove(adapterPos); // might need to delete later because ^^
+                }
+                else if(adapterPos == 0 && mData.size() > 1) {
+                    for(int i = 0; i < mData.size(); i++)
+                        Log.d("onLongClick3", "AdapterPos:" + adapterPos + " i: " + i + " @mData.get(i):" + mData.get(i).getSongName());
+
+                    player.playUri(null, mData.get(adapterPos+1).getSongURI(),0,0);
+                    notifyItemRemoved(adapterPos);
+                    notifyItemRangeChanged(adapterPos, mData.size());
+//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
+                    mData.remove(adapterPos); // might need to delete later because ^^
                 }
                 else {
-                    player.pause(null);
+                    for(int i = 0; i < mData.size(); i++)
+                        Log.d("onLongClick4", "AdapterPos:" + adapterPos + " i: " + i + " @mData.get(i):" + mData.get(i).getSongName());
+                    notifyItemRemoved(adapterPos);
+                    notifyItemRangeChanged(adapterPos, mData.size());
+//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
+                    mData.remove(adapterPos); // might need to delete later because ^^
                 }
             }
             return false;
