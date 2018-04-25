@@ -32,7 +32,7 @@ public class HostRecycledView extends AppCompatActivity {
     static FloatingActionButton playPauseButton;
 
 
-    public static int dark =0;
+    public static int dark =1;
    // public static int notDark =0;
 
     public Button dT;
@@ -92,7 +92,7 @@ public class HostRecycledView extends AppCompatActivity {
    //   }
 //
         if (dark == 1 ){
-            setTheme(R.style.DarkTheme);
+            setTheme(R.style.AppTheme);
             //tabLayout.setAlpha(1f);
 //            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 //            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
