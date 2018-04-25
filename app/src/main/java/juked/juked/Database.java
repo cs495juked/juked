@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.Collections.*;
 
 public class Database {
     public ArrayList<jukeuser> users;
@@ -86,14 +87,25 @@ public class Database {
                     Vote vote = new Vote(songURI,uid);
                     appDatabase.child(lobby).child("votes").child(vote.getURI()).child(vote.getUID()).setValue(vote);
                 }
+                int votecount = update+prev;
+                if (votecount == 0) {
+                    if (update == 1) {
+                        votecount = 2;
+                    } else {
+                        votecount = -2;
+                    }
+                }
                 //update the song where it is stored
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
                 for (DataSnapshot snapshot : dataSnapshot.child("users").getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
                     if ((user.song != null) && (user.song.getSongURI().equals(songURI))) {
-
+                        user.song.setVoteBalance(user.song.getVoteBalance()+votecount);
+                        break;
                     }
                 }
+
+                //update the song order
 
             }
             @Override
@@ -127,11 +139,10 @@ public class Database {
                 }
                 newSong.setPosition(totalsongs);
                 pulledUser.setUserSong(newSong);
-                uSong = newSong;
                 Vote uVote = new Vote(newSong.getSongURI(),uid);
                 uVote.setVote(1);
-                newSong.setNumVotes(1);
-                newSong.setUpVotes(1);
+                newSong.setVoteBalance(1);
+                uSong = newSong;
                 appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
                 appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
             }

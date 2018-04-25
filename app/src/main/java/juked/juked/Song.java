@@ -13,9 +13,6 @@ public class Song {
 
     private String songURI;
 
-    private int upVotes;
-    private int downVotes;
-    private int numVotes;
     private int voteBalance;
     private String songName;
     private String artistName;
@@ -32,9 +29,6 @@ public class Song {
         songURI = uri;
         songName = sName;
         artistName = aName;
-        upVotes = 0;
-        downVotes = 0;
-        numVotes = 0;
         voteBalance = 0;
         albumCover = cover;
         albumName = ALname;
@@ -55,30 +49,6 @@ public class Song {
 
     public String getSongURI(){
         return songURI;
-    }
-
-    public int getUpVotes() {
-        return upVotes;
-    }
-
-    public void setUpVotes(int vote){
-        upVotes = vote;
-    }
-
-    public int getDownVotes(){
-        return downVotes;
-    }
-
-    public void setDownVotes(int vote){
-        downVotes = vote;
-    }
-
-    public int getNumVotes(){
-        return numVotes;
-    }
-
-    public void setNumVotes(int vote){
-        numVotes = vote;
     }
 
     public int getVoteBalance(){
