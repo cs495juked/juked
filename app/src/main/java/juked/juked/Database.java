@@ -35,7 +35,7 @@ public class Database {
     }
 
 
-    public void deleteSong(final String songName) {
+    public void deleteSong(final String songURI) {
         appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -45,8 +45,9 @@ public class Database {
                     userList.add(user);
                 }
                 for (int i = 0; i < userList.size(); i++) {
-                    if (userList.get(i).song.getSongName().equals(songName)) {
+                    if (userList.get(i).song.getSongURI().equals(songURI)) {
                         //userList.get(i).song = null;
+                        appDatabase.child(lobby).child("votes").child(songURI).removeValue();
                         appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).child("song").removeValue();
                         break;
                     }

@@ -137,25 +137,29 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
     public void querySearchedSong(int position){
 
-        //fDatabase = FirebaseDatabase.getInstance().getReference();
-        Log.d("arraylist", Integer.toString(arraylist.size()));
-        Log.d("positiion", Integer.toString(position));
+        if (appDB.uSong == null) {
+            //fDatabase = FirebaseDatabase.getInstance().getReference();
+            Log.d("arraylist", Integer.toString(arraylist.size()));
+            Log.d("positiion", Integer.toString(position));
 
-        //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
-        String uri = arraylist.get(position).getSongURI();
-        Log.d("response", "uri is: " + uri);
+            //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
+            String uri = arraylist.get(position).getSongURI();
+            Log.d("response", "uri is: " + uri);
 
-        list.setVisibility(v.GONE);
-        PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, arraylist.get(position).getVoteBalance());
+            list.setVisibility(v.GONE);
+            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, arraylist.get(position).getVoteBalance());
 
-        playlistSongs.add(pls);
-        GuestRecycledView.fgh.historySongs.add(pls);
+            playlistSongs.add(pls);
+            GuestRecycledView.fgh.historySongs.add(pls);
 
-        Log.d("userSong", arraylist.get(position).getSongName());
-        final Song userSong = arraylist.get(position);
+            Log.d("userSong", arraylist.get(position).getSongName());
+            final Song userSong = arraylist.get(position);
 
-        appDB.updateSong(userSong);
-
+            appDB.updateSong(userSong);
+        } else {
+            Log.d("DBTag","Song is already queued!");
+            list.setVisibility(v.GONE);
+        }
 
     }
 
