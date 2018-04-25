@@ -61,19 +61,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         v.findViewById(R.id.upvote_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v2) {
+                Log.d("response", "upvote");
+                Log.d("response", mData.get(position).getVote());
 
                 if(mData.get(position).getVote().equals("none")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
                     mData.get(position).setVote("up");
+                    mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) +1 );
+                    holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                 }
                 else if(mData.get(position).getVote().equals("down")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
                     mData.get(position).setVote("up");
+                    mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) +2 );
+                    holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                 }
                 else if(mData.get(position).getVote().equals("up")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
                     mData.get(position).setVote("none");
+                    mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -1 );
+                    holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                 }
 
             }
@@ -86,26 +94,36 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 if(mData.get(position).getVote().equals("none")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
                     mData.get(position).setVote("down");
+                    mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -1 );
+                    holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                 }
                 else if(mData.get(position).getVote().equals("up")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
                     mData.get(position).setVote("down");
+                    mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -2 );
+                    holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                 }
                 else if(mData.get(position).getVote().equals("down")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
                     mData.get(position).setVote("none");
+                    mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) + 1 );
+                    holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                 }
+
             }
         });
 
         holder.tv_songName.setSelected(true); //allow scrolling text
         holder.tv_songName.setText(mData.get(position).getSongName());
+        holder.tv_albumName.setSelected(true); //allow scrolling text
         holder.tv_albumName.setText(mData.get(position).getAlbumName());
+        holder.tv_artistName.setSelected(true); //allow scrolling text
         holder.tv_artistName.setText(mData.get(position).getArtistName());
         holder.tv_adderNickname.setText(mData.get(position).getAdderNickname());
-        Picasso.with(mContext).load(mData.get(position).getAlbumArtwork()).into(holder.iv_albumArtwork);
+        holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
 
+        Picasso.with(mContext).load(mData.get(position).getAlbumArtwork()).into(holder.iv_albumArtwork);
 
     }
 
@@ -147,6 +165,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView tv_artistName;
         private TextView tv_albumName;
         private TextView tv_adderNickname;
+        private TextView tv_voteTotal;
         private ImageView iv_albumArtwork;
         private ImageView iv_upvoteIcon;
         private ImageView iv_downvoteIcon;
@@ -163,6 +182,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_adderNickname = (TextView) itemView.findViewById(R.id.user_nickname);
             iv_upvoteIcon = (ImageView) itemView.findViewById(R.id.upvote_icon);
             iv_downvoteIcon = (ImageView) itemView.findViewById(R.id.downvote_icon);
+            tv_voteTotal = itemView.findViewById(R.id.vote_total);
+
 
         }
 

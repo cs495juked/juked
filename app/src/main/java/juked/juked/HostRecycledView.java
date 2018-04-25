@@ -37,7 +37,7 @@ public class HostRecycledView extends AppCompatActivity {
 
     public Button dT;
     public Button nT;
-
+    public  static boolean tempVar = true;
 
 
     private Player player = splashScreen.mPlayer;
@@ -124,9 +124,9 @@ public class HostRecycledView extends AppCompatActivity {
             public void onClick(View view) {
                 // spotify play/pause which calls flipPlayButton
                 // toggle.spotifyPlayer();
-                tempPlayPause();
+                String playpause = tempPlayPause();
 
-                Snackbar.make(view, "Now Playing: Your Mum by Your Dad ft. Your Sister", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, playpause, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
 
@@ -160,19 +160,24 @@ public class HostRecycledView extends AppCompatActivity {
         testRecycledView.flipPlayPauseButton(0);
      }*/
 
-    public  boolean tempVar = true;
-    public  void tempPlayPause() {
+
+    public  String tempPlayPause() {
         if(tempVar) {
             tempVar = false;
             player.pause(null);
             flipPlayPauseButton(false);
+            String playpause = "Paused";
+            return playpause;
 
         }
         else {
             tempVar = true;
             player.resume(null);
             flipPlayPauseButton(true);
+            String playpause = "Playing";
+            return playpause;
         }
+
     }
 
     public static void flipPlayPauseButton(boolean isPlaying) {

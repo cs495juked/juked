@@ -149,6 +149,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         HostRecycledView.fhh.historySongs.add(pls);
         player.playUri(null, uri, 0, 0);
+        HostRecycledView.tempVar = true;
         final Song userSong = arraylist.get(position);
 
         appDB.updateSong(userSong);

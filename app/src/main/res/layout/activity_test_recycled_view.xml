@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="5dp"
-            android:src="@android:drawable/ic_media_play" />
+            android:src="@android:drawable/ic_media_pause" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
