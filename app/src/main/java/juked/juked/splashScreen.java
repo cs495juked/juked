@@ -48,7 +48,7 @@ public class splashScreen extends AppCompatActivity implements
     private TextInputLayout nicknameInput;
     private TextInputLayout hostNicknameInput;
     private TextView generatedLobbyCodeText;
-    private boolean isHost;
+    public static boolean isHost;
 
 
 
@@ -58,7 +58,7 @@ public class splashScreen extends AppCompatActivity implements
 
     //private DatabaseReference mDatabase; // refer to firebase database
     //private DatabaseReference jDatabase; // refer to the child
-    private Database appDB;
+    public static Database appDB;
 
     Dialog joinDialog;
     Dialog createDialog;
@@ -320,7 +320,6 @@ public class splashScreen extends AppCompatActivity implements
                     mPlayer.playUri(null, songList.get(0).getSongURI(), 0, 0);
                 }
                 break;
-
             default:
                 break;
         }
