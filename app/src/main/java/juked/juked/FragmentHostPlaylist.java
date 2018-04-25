@@ -143,7 +143,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         list.setVisibility(v.GONE);
 
-        PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname);
+        PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, arraylist.get(position).getVoteBalance());
 
         playlistSongs.add(pls);
 
@@ -192,7 +192,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                             Song userSong = userList.get(i).song;
                             int position = userSong.getPosition();
                             if (position == curr) {
-                                PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName);
+                                PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
                                 playList.add(ps);
                                 curr++;
                             }

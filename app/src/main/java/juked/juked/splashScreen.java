@@ -367,8 +367,6 @@ public class splashScreen extends AppCompatActivity implements
     public String getToken(){
         return accessToken;
 
-
-
     }
 
 }

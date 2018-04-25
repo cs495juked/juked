@@ -8,6 +8,7 @@ public class PlaylistSong {
     private String vote = "none";
     private String songURI;
     private String adderNickname;
+    private int voteTotal;
 
     public PlaylistSong(){
 
@@ -15,7 +16,7 @@ public class PlaylistSong {
 
 
 
-    public PlaylistSong(String songName, String artistName, String albumName, String albumArtwork, String songURI, String adderNickname) {
+    public PlaylistSong(String songName, String artistName, String albumName, String albumArtwork, String songURI, String adderNickname, int voteTotal) {
         this.songName = songName;
         this.artistName = artistName;
         this.albumName = albumName;
@@ -23,6 +24,8 @@ public class PlaylistSong {
         this.adderNickname = adderNickname;
         this.vote = "none";
         this.songURI = songURI;
+        this.voteTotal= voteTotal;
+
     }
 
     public String getSongURI() { return songURI; }
@@ -64,4 +67,8 @@ public class PlaylistSong {
     public String getAdderNickname() { return adderNickname; }
 
     public void setAdderNickname(String adderNickname) { this.adderNickname = adderNickname; }
+
+    public int getVoteTotal() { return voteTotal; }
+
+    public void setVoteTotal(int voteTotal) { this.voteTotal = voteTotal; }
 }
