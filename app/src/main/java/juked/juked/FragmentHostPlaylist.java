@@ -172,7 +172,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("DBTag", "I made it inside on DataChange");
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.child("users").getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
                     userList.add(user);
                 }
@@ -206,6 +206,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                         //playlistSongs.add(playList.get(i));
                         Log.d("DBTag","playlist.get(" + String.valueOf(i) + ") is: " + playList.get(i).getSongName());
                     }
+
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
                     RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

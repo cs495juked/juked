@@ -45,7 +45,7 @@
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/JukedBlue"
         app:tabMode="fixed"
-        >
+                >
 
     </android.support.design.widget.TabLayout>
 

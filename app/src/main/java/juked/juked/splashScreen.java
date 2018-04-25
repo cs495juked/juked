@@ -231,7 +231,6 @@ public class splashScreen extends AppCompatActivity implements
                         //store Lobby in database
 
                         int lobbyCode = randomLobbyInt;
-
                         appDB.setLobby(String.valueOf(lobbyCode));
                         appDB.addNewUser(hostNickname);
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR

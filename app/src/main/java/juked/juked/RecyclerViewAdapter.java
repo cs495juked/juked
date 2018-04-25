@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -33,8 +35,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         v = LayoutInflater.from(mContext).inflate(R.layout.playlist_item,parent,false);
         vHolder = new MyViewHolder(v);
-
-
 
 
         return vHolder;
@@ -93,7 +93,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) + 1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                 }
-
             }
         });
 
@@ -108,6 +107,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Picasso.with(mContext).load(mData.get(position).getAlbumArtwork()).into(holder.iv_albumArtwork);
 
+
     }
 
     @Override
@@ -115,7 +115,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mData.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tv_songName;
         private TextView tv_artistName;
@@ -137,8 +138,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             iv_upvoteIcon = itemView.findViewById(R.id.upvote_icon);
             iv_downvoteIcon = itemView.findViewById(R.id.downvote_icon);
             tv_voteTotal = itemView.findViewById(R.id.vote_total);
+            itemView.setOnClickListener(this);
 
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            Log.d("HYBB", "onClick is here");
+            Toast.makeText(v.getContext(), "ViewItem: " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+
+            //delete(getAdapterPosition()); //calls the method above to delete
         }
     }
 
+    public void removeItem(int position) {
+        mData.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, mData.size());
+    }
 }
