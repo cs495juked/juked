@@ -63,12 +63,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v2) {
                 Log.d("response", "upvote");
                 Log.d("response", mData.get(position).getVote());
-
+                int newvote = 1;
+                int oldvote;
+                String songURI = mData.get(position).getSongURI();
                 if(mData.get(position).getVote().equals("none")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
                     mData.get(position).setVote("up");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) +1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
+                    oldvote = 0;
+                    appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("down")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
@@ -76,26 +80,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVote("up");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) +2 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
+                    oldvote = -1;
+                    appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("up")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
                     mData.get(position).setVote("none");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
+                    oldvote = 1;
+                    appDB.updateVote(songURI,newvote,oldvote);
                 }
-
             }
         });
 
         v.findViewById(R.id.downvote_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v3) {
-
+                int newvote = -1;
+                int oldvote;
+                String songURI = mData.get(position).getSongURI();
                 if(mData.get(position).getVote().equals("none")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
                     mData.get(position).setVote("down");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
+                    oldvote = 0;
+                    appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("up")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
@@ -103,12 +114,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVote("down");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -2 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
+                    oldvote = 1;
+                    appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("down")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
                     mData.get(position).setVote("none");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) + 1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
+                    oldvote = -1;
+                    appDB.updateVote(songURI,newvote,oldvote);
                 }
 
             }

@@ -138,21 +138,28 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         //fDatabase = FirebaseDatabase.getInstance().getReference();
 
         //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
-        String uri = arraylist.get(position).getSongURI();
-        Log.d("response", "uri is: " + uri);
 
-        list.setVisibility(v.GONE);
+        if (appDB.uSong == null) {
+            String uri = arraylist.get(position).getSongURI();
+            Log.d("response", "uri is: " + uri);
 
-        PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, arraylist.get(position).getVoteBalance());
+            list.setVisibility(v.GONE);
 
-        playlistSongs.add(pls);
+            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, arraylist.get(position).getVoteBalance());
 
-        HostRecycledView.fhh.historySongs.add(pls);
-        player.playUri(null, uri, 0, 0);
-        HostRecycledView.tempVar = true;
-        final Song userSong = arraylist.get(position);
+            playlistSongs.add(pls);
 
-        appDB.updateSong(userSong);
+            HostRecycledView.fhh.historySongs.add(pls);
+            player.playUri(null, uri, 0, 0);
+            HostRecycledView.tempVar = true;
+            final Song userSong = arraylist.get(position);
+
+            appDB.updateSong(userSong);
+        } else {
+            //add some error popup here!
+            Log.d("DBTag","Song is already queued!");
+            list.setVisibility(v.GONE);
+        }
 
     }
 
@@ -168,7 +175,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         //Adds the listener for DB changes
         Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
-        appDB.appDatabase.child(appDB.lobby).child("users").addValueEventListener(new ValueEventListener() {
+        appDB.appDatabase.child(appDB.lobby).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("DBTag", "I made it inside on DataChange");
@@ -203,11 +210,40 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 if (songs != 0) {
                     //playlistSongs.clear();
                     //Log.d("DBTag", "I made it here where songs do not equal zero!");
-                    for (int i = 0; i < playList.size(); i++) {
-                        //playlistSongs.add(playList.get(i));
-                        Log.d("DBTag","playlist.get(" + String.valueOf(i) + ") is: " + playList.get(i).getSongName());
-                    }
 
+                    ArrayList<Vote> votes = new ArrayList<>();
+                    ArrayList<Vote> sortedVotes = new ArrayList<>();
+                    int found;
+                    for (DataSnapshot uriSnapshot : dataSnapshot.child("votes").getChildren()) {
+                        found = 0;
+                        //String songURI = uriSnapshot.getValue(String.class);
+                        //Log.d("DBTag","songURI is: " + songURI);
+                        String songURI = "";
+                        for (DataSnapshot voteSnapshot : uriSnapshot.getChildren()) {
+                            Vote vote = voteSnapshot.getValue(Vote.class);
+                            songURI = vote.getURI();
+                            if (vote.getUID().equals(appDB.uid)) {
+                                votes.add(vote);
+                                found = 1;
+                                break;
+                            }
+                        }
+                        if (found == 0) {
+                            Vote vote = new Vote(songURI,appDB.uid);
+                            votes.add(vote);
+                        }
+                    }
+                    for (int i = 0; i < playList.size(); i ++) {
+                        for (int j = 0; j < votes.size(); j ++) {
+                            if (playList.get(i).getSongURI().equals(votes.get(j).getURI())) {
+                                sortedVotes.add(votes.get(j));
+                                break;
+                            }
+                        }
+                    }
+                    for (int i = 0; i < sortedVotes.size(); i ++ ) {
+                        Log.d("DBTag",appDB.uid + " : " + String.valueOf(sortedVotes.get(i).getVote()));
+                    }
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
                     RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

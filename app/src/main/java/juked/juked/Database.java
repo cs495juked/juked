@@ -8,13 +8,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
-import java.util.Collections.*;
+import java.util.Collections;
 
 public class Database {
     public ArrayList<jukeuser> users;
     public DatabaseReference appDatabase;
     public String lobby;
-    private String uid;
+    public String uid;
     public Song uSong;
 
     public Database (String lobbyCode) {
@@ -46,8 +46,8 @@ public class Database {
                 }
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song.getSongName().equals(songName)) {
-                        userList.get(i).song = null;
-                        appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
+                        //userList.get(i).song = null;
+                        appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).child("song").removeValue();
                         break;
                     }
                 }
@@ -85,6 +85,7 @@ public class Database {
                 }
                 if (found == 0) {
                     Vote vote = new Vote(songURI,uid);
+                    vote.setVote(update);
                     appDatabase.child(lobby).child("votes").child(vote.getURI()).child(vote.getUID()).setValue(vote);
                 }
                 int votecount = update+prev;
@@ -94,21 +95,45 @@ public class Database {
                     } else {
                         votecount = -2;
                     }
+                } else if (votecount == 2) {
+                    votecount = -1;
+                } else if (votecount == -2) {
+                    votecount = 1;
                 }
+
+
+
                 //update the song where it is stored
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
+                ///ArrayList<Song> songList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.child("users").getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
                     if (user.song != null) {
+                        ///songList.add(user.song);
+                        Log.d("DBTag","Song in voteUpdate is: " + user.song.getSongName());
                         if (user.song.getSongURI().equals(songURI)) {
+                            Log.d("DBTag","Song in voteUpdate that is equal to URI is: " + user.song.getSongName());
                             user.song.setVoteBalance(user.song.getVoteBalance()+votecount);
+                            Log.d("DBTag","Updated votecount is: " + user.song.getVoteBalance());
                         }
                     }
+                    userList.add(user);
                 }
 
                 //update the song order
-
-
+                if (userList.size() == 1) {
+                    appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(0).userId)).setValue(userList.get(0));
+                } else {
+                    Collections.sort(userList, new SortUsers());
+                    for (int i = 0; i < userList.size() ; i++) {
+                        if (userList.get(i).song != null) {
+                            if (userList.get(i).song.getPosition() != i) {
+                                userList.get(i).song.setPosition(i);
+                                appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
+                            }
+                        }
+                    }
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -122,7 +147,7 @@ public class Database {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 jukeuser pulledUser = dataSnapshot.child(uid).getValue(jukeuser.class);
-
+                int listPosition = 0;
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
@@ -132,6 +157,9 @@ public class Database {
                 int totalsongs = 0;
                 for (int i = 0; i < userList.size() ; i++) {
                     Song userSong = userList.get(i).song;
+                    if (pulledUser.userId == userList.get(i).userId) {
+                        listPosition = i;
+                    }
                     if ((userSong != null) && (userList.get(i).userId != pulledUser.userId)) {
                        // int pos = userSong.getPosition();
                         //songList[pos] = userSong;
@@ -139,14 +167,33 @@ public class Database {
                         totalsongs++;
                     }
                 }
-                newSong.setPosition(totalsongs);
-                pulledUser.setUserSong(newSong);
+
+                //setSongPosition
+                //pulledUser.setUserSong(newSong);
+                //pulledUser.song.setVoteBalance(1);
+                userList.get(listPosition).setUserSong(newSong);
+                userList.get(listPosition).song.setVoteBalance(1);
+                uSong = userList.get(listPosition).song;
                 Vote uVote = new Vote(newSong.getSongURI(),uid);
                 uVote.setVote(1);
-                newSong.setVoteBalance(1);
-                uSong = newSong;
                 appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
-                appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
+                Collections.sort(userList,new SortUsers());
+                for (int i = 0; i < userList.size(); i ++ ) {
+                    Log.d("DBTag","i: " + String.valueOf(i));
+                    if (userList.get(i).song != null) {
+                        Log.d("DBTag","i.song.position: " + String.valueOf(userList.get(i).song.getPosition()));
+                        if (userList.get(i).song.getPosition() != i) {
+                            Log.d("DBTag","Made it inside of inner get");
+                            userList.get(i).song.setPosition(i);
+                            appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
+                        }
+                    }
+                }
+
+                /*Vote uVote = new Vote(newSong.getSongURI(),uid);
+                uVote.setVote(1);
+                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);*/
+                //appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
             }
 
             @Override
@@ -156,7 +203,7 @@ public class Database {
         });
     }
 
-    public void addNewUser (final String nickname) {
+    public void addNewHost (final String nickname) {
         appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -178,7 +225,67 @@ public class Database {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Log.d("DBTag",databaseError.getMessage());
+            }
+        });
+    }
 
+    public void addNewUser (final String nickname) {
+        appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long count = dataSnapshot.getChildrenCount();
+                if (count == (long) 0) {
+                    throw new java.lang.RuntimeException("Invalid Lobby Code");
+                }
+                int newUser = (int) count + 1;
+                Log.d("responses", "count: " + String.valueOf(count) + " | newUser: " + String.valueOf(newUser));
+                jukeuser user;
+                if (newUser == 1) {
+                    user = new jukeuser(newUser, nickname, 1);
+                } else {
+                    user = new jukeuser(newUser, nickname, 0);
+                }
+                //final jukeuser user = new jukeuser(newUser, nickname, 0);
+                appDatabase.child(String.valueOf(lobby)).child("users").child(String.valueOf(user.userId)).setValue(user);
+                uid = String.valueOf(user.userId);
+                /*try {
+                    long count = dataSnapshot.getChildrenCount();
+                    if (count == (long) 0) {
+                        throw new java.lang.RuntimeException("Invalid Lobby Code");
+                    }
+                    int newUser = (int) count + 1;
+                    Log.d("responses", "count: " + String.valueOf(count) + " | newUser: " + String.valueOf(newUser));
+                    jukeuser user;
+                    if (newUser == 1) {
+                        user = new jukeuser(newUser, nickname, 1);
+                    } else {
+                        user = new jukeuser(newUser, nickname, 0);
+                    }
+                    //final jukeuser user = new jukeuser(newUser, nickname, 0);
+                    appDatabase.child(String.valueOf(lobby)).child("users").child(String.valueOf(user.userId)).setValue(user);
+                    uid = String.valueOf(user.userId);
+                }
+                catch (RuntimeException e) {
+                    Log.d("DBTag",e.getMessage());
+                    splashScreen.appDB = null;
+                }*/
+                /*int newUser = (int) count + 1;
+                Log.d("responses", "count: " + String.valueOf(count) + " | newUser: " + String.valueOf(newUser));
+                jukeuser user;
+                if (newUser == 1) {
+                    user = new jukeuser(newUser, nickname, 1);
+                } else {
+                    user = new jukeuser(newUser, nickname, 0);
+                }
+                //final jukeuser user = new jukeuser(newUser, nickname, 0);
+                appDatabase.child(String.valueOf(lobby)).child("users").child(String.valueOf(user.userId)).setValue(user);
+                uid = String.valueOf(user.userId);*/
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DBTag",databaseError.getMessage());
             }
         });
     }

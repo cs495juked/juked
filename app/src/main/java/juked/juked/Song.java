@@ -1,5 +1,7 @@
 package juked.juked;
 
+import java.util.Comparator;
+
 /**
  * Written by jgmills
  */
@@ -32,7 +34,7 @@ public class Song {
         voteBalance = 0;
         albumCover = cover;
         albumName = ALname;
-        position = 0 ;
+        position = -1 ;
 
     }
     public Song() {
@@ -78,3 +80,9 @@ public class Song {
     public void setPosition(int pos) {position = pos;}
 
 }//end class song
+
+class SortSong implements Comparator<Song> {
+    public int compare (Song a, Song b) {
+        return a.getPosition()-b.getPosition();
+    }
+}

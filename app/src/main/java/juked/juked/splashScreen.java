@@ -174,11 +174,7 @@ public class splashScreen extends AppCompatActivity implements
                         //mDatabase.push().setValue(dataMap);
 
 
-                        joinDialog.dismiss();
 
-                        startActivity(new Intent(splashScreen.this, GuestRecycledView.class));
-                        GuestRecycledView.lobbyCode = lobbyCode;
-                        FragmentGuestPlaylist.appDB = appDB;
 //                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
 //                        testRecycledView.lobbyCode = lobbyCode;
 
@@ -232,7 +228,7 @@ public class splashScreen extends AppCompatActivity implements
 
                         int lobbyCode = randomLobbyInt;
                         appDB.setLobby(String.valueOf(lobbyCode));
-                        appDB.addNewUser(hostNickname);
+                        appDB.addNewHost(hostNickname);
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
                         //globalUserId = host.userId;
 
