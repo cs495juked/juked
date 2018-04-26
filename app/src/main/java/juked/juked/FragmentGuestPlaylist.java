@@ -201,6 +201,21 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 }
 //                ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
                 List<PlaylistSong> playList = RecyclerViewAdapter.getPlayList();
+                for (int i = 0; i<playList.size(); i++){
+                    for(int j = 0; j<voteList.size(); j++){
+                        if(playList.get(i).getSongURI().equals(voteList.get(j).getURI())){
+                            if(voteList.get(j).getVote() == 1) {
+                                playList.get(i).setVote("up");
+                            }
+                            else if(voteList.get(j).getVote() == -1) {
+                                playList.get(i).setVote("down");
+                            }
+                            else{
+                                playList.get(i).setVote("none");
+                            }
+                        }
+                    }
+                }
                 myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
                 RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList,voteList );
                 myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -227,10 +242,14 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 ArrayList<PlaylistSong> playList = new ArrayList<PlaylistSong>();
                 int songs = 0;
                 Log.d("DBTag","User Size: " + String.valueOf(userList.size()));
+
+
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song != null) {
                         Song userSong = userList.get(i).song;
-                        PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
+                        PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(),
+                                userSong.getAlbumName(), userSong.getAlbumCover(),
+                                userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
                         playList.add(ps);;
                         Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
                     }
@@ -240,6 +259,22 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 if (playList.size() != 0) {
                     Log.d("DBTag","inside playlistsize check");
                     ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
+                    for (int i = 0; i<playList.size(); i++){
+                        for(int j = 0; j<listVotes.size(); j++){
+                            if(playList.get(i).getSongURI().equals(listVotes.get(j).getURI())){
+                                if(listVotes.get(j).getVote() == 1) {
+                                    playList.get(i).setVote("up");
+                                }
+                                else if(listVotes.get(j).getVote() == -1) {
+                                    playList.get(i).setVote("down");
+                                }
+                                else{
+                                    playList.get(i).setVote("none");
+                                }
+                            }
+                        }
+                    }
+
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
 //                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, );
                     RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, listVotes);//

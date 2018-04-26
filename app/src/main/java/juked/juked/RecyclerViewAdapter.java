@@ -63,6 +63,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         v = LayoutInflater.from(mContext).inflate(R.layout.playlist_item,parent,false);
         vHolder = new MyViewHolder(v);
 
+//        for (int i = 0; i<mData.size(); i++) {
+//            for (int j = 0; j < voteInts.size(); j++) {
+//                if (voteInts.get(j).getURI() == mData.get(i).getSongURI()) {
+//                    if (voteInts.get(j).getVote() == 1) {
+//                        Log.d("upvote",Integer.toString(voteInts.get(j).getVote()));
+//                        Log.d("mdata",mData.get(i).getSongName());
+//                        mData.get(i).setVote("up");
+//
+//                    } else if (voteInts.get(j).getVote() == -1) {
+//                        Log.d("upvote",Integer.toString(voteInts.get(j).getVote()));
+//                        Log.d("mdata",mData.get(i).getSongName());
+//                        mData.get(i).setVote("down");
+//
+//                    } else {
+//                        Log.d("upvote",Integer.toString(voteInts.get(j).getVote()));
+//                        Log.d("mdata",mData.get(i).getSongName());
+//                        mData.get(i).setVote("none");
+//
+//                    }
+//                }
+//            }
+//        }
+
         return vHolder;
     }
 
@@ -109,7 +132,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v3) {
 
-
                 String songURI = mData.get(position).getSongURI();
                 if(mData.get(position).getVote().equals("none")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
@@ -137,23 +159,32 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             }
         });
+
+
         if (voteInts.size() == 0){
             Vote tempVote = new Vote(mData.get(position).getSongURI(), mData.get(position).getAdderNickname());
             voteInts.add(tempVote);
         }
-        if(voteInts.get(position).getVote() == 1){
+
+
+        if(mData.get(position).getVote().equals("up")){
             holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
-            mData.get(position).setVote("up");
+            holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
+
         }
-        else if(voteInts.get(position).getVote() == -1){
+        else if(mData.get(position).getVote().equals("down")){
             holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
-            mData.get(position).setVote("down");
+            holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
+
         }
         else{
             holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
             holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
-            mData.get(position).setVote("none");
+
         }
+
+
+
 
         holder.tv_songName.setSelected(true); //allow scrolling text
         holder.tv_songName.setText(mData.get(position).getSongName());

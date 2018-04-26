@@ -22,7 +22,7 @@ public class PlaylistSong {
         this.albumName = albumName;
         this.albumArtwork = albumArtwork;
         this.adderNickname = adderNickname;
-
+        this.vote = "down";
         this.songURI = songURI;
         this.voteTotal= voteTotal;
 

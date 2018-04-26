@@ -201,7 +201,24 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
                 }
 
+
+
                 List<PlaylistSong> playList = RecyclerViewAdapter.getPlayList();
+                for (int i = 0; i<playList.size(); i++){
+                    for(int j = 0; j<voteList.size(); j++){
+                        if(playList.get(i).getSongURI().equals(voteList.get(j).getURI())){
+                            if(voteList.get(j).getVote() == 1) {
+                                playList.get(i).setVote("up");
+                            }
+                            else if(voteList.get(j).getVote() == -1) {
+                                playList.get(i).setVote("down");
+                            }
+                            else{
+                                playList.get(i).setVote("none");
+                            }
+                        }
+                    }
+                }
                 myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
                 RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, voteList);
                 myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -241,6 +258,21 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 if (playList.size() != 0) {
                     Log.d("DBTag","inside playlistsize check");
                     ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
+                    for (int i = 0; i<playList.size(); i++){
+                        for(int j = 0; j<listVotes.size(); j++){
+                            if(playList.get(i).getSongURI().equals(listVotes.get(j).getURI())){
+                                if(listVotes.get(j).getVote() == 1) {
+                                    playList.get(i).setVote("up");
+                                }
+                                else if(listVotes.get(j).getVote() == -1) {
+                                    playList.get(i).setVote("down");
+                                }
+                                else{
+                                    playList.get(i).setVote("none");
+                                }
+                            }
+                        }
+                    }
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
 //                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, );
                     RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, listVotes);//
