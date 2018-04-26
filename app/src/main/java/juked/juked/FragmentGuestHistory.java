@@ -24,7 +24,6 @@ public class FragmentGuestHistory extends android.support.v4.app.Fragment {
         historySongs = new ArrayList<>();
     }
 
-
     public FragmentGuestHistory() {
     }
 

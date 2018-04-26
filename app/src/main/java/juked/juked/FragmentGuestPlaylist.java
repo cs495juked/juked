@@ -145,7 +145,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                     exitsts = true;
                 }
             }
-            if(!exitsts) {
+            if(!exitsts){
                 PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
                 playlistSongs.add(pls);
