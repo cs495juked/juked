@@ -160,10 +160,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-
-        if (voteInts.size() == 0){
-            Vote tempVote = new Vote(mData.get(position).getSongURI(), mData.get(position).getAdderNickname());
-            voteInts.add(tempVote);
+        if(voteInts != null) {
+            if (voteInts.size() == 0) {
+                Vote tempVote = new Vote(mData.get(position).getSongURI(), mData.get(position).getAdderNickname());
+                voteInts.add(tempVote);
+            }
         }
 
 

@@ -132,25 +132,30 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
 
     public void querySearchedSong(int position){
-
+        Boolean exitsts = false;
         if (appDB.uSong == null) {
-
-            Log.d("arraylist", Integer.toString(arraylist.size()));
-            Log.d("positiion", Integer.toString(position));
 
             //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
             String uri = arraylist.get(position).getSongURI();
 
             list.setVisibility(v.GONE);
-            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
-        playlistSongs.add(pls);
-        GuestRecycledView.fgh.historySongs.add(pls);
+            for(int i =0; i<playlistSongs.size(); i++){
+                if(uri.equals(playlistSongs.get(i).getSongURI())){
+                    exitsts = true;
+                }
+            }
+            if(!exitsts) {
+                PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
-            Log.d("userSong", arraylist.get(position).getSongName());
-            final Song userSong = arraylist.get(position);
+                playlistSongs.add(pls);
+                GuestRecycledView.fgh.historySongs.add(pls);
 
-            appDB.updateSong(userSong);
+                Log.d("userSong", arraylist.get(position).getSongName());
+                final Song userSong = arraylist.get(position);
+
+                appDB.updateSong(userSong);
+            }
         } else {
 
             CharSequence text = "You already have a song in the queue!\nWait until your song has been played to add another";
@@ -253,9 +258,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song != null) {
                         Song userSong = userList.get(i).song;
-                        PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(),
-                                userSong.getAlbumName(), userSong.getAlbumCover(),
-                                userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
+                        PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
                         playList.add(ps);;
                         Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
                     }

@@ -141,21 +141,30 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
 
         if (appDB.uSong == null) {
+            Boolean exitsts = false;
             String uri = arraylist.get(position).getSongURI();
             Log.d("response", "uri is: " + uri);
 
             list.setVisibility(v.GONE);
 
-            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
+            for(int i =0; i<playlistSongs.size(); i++){
+                if(uri.equals(playlistSongs.get(i).getSongURI())){
+                    exitsts = true;
+                }
+            }
+            if(!exitsts) {
 
-            playlistSongs.add(pls);
+                PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
-            HostRecycledView.fhh.historySongs.add(pls);
-            player.playUri(null, uri, 0, 0);
-            HostRecycledView.tempVar = true;
-            final Song userSong = arraylist.get(position);
+                playlistSongs.add(pls);
 
-            appDB.updateSong(userSong);
+                HostRecycledView.fhh.historySongs.add(pls);
+                player.playUri(null, uri, 0, 0);
+                HostRecycledView.tempVar = true;
+                final Song userSong = arraylist.get(position);
+
+                appDB.updateSong(userSong);
+            }
         } else {
             //add some error popup here!
             Log.d("DBTag","Song is already queued!");
