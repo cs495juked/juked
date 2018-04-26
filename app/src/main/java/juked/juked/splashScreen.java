@@ -203,6 +203,9 @@ public class splashScreen extends AppCompatActivity implements
                 final int randomLobbyInt = r.nextInt(9999);
                 isHost = true;
 
+                generatedLobbyCodeText.setText(Integer.toString(randomLobbyInt)); // gets the lobby code
+
+
                 backBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
 
