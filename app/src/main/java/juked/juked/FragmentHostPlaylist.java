@@ -267,7 +267,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                             HostRecycledView.fhh.historySongs = new ArrayList<>();
 
                         }
-                        GuestRecycledView.fgh.historySongs.add(ps);
+                        HostRecycledView.fhh.historySongs.add(ps);
                         Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
                     }
                 }
