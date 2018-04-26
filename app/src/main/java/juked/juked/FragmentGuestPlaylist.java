@@ -177,7 +177,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
         appDB.appDatabase.child(appDB.lobby).child("votes").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("DBTag", "I made it inside on DataChange");
+                //Log.d("DBTag", "I made it inside on DataChange");
                 ArrayList<Vote> voteList = new ArrayList<Vote>();
                 String songURI;
                 int found;
@@ -220,12 +220,13 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("DBTag", "I made it inside on DataChange");
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
-                for (DataSnapshot snapshot : dataSnapshot.child("users").getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
                     userList.add(user);
                 }
                 ArrayList<PlaylistSong> playList = new ArrayList<PlaylistSong>();
                 int songs = 0;
+                Log.d("DBTag","User Size: " + String.valueOf(userList.size()));
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song != null) {
                         Song userSong = userList.get(i).song;
@@ -237,6 +238,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
 
                 if (playList.size() != 0) {
+                    Log.d("DBTag","inside playlistsize check");
                     ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
 //                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, );
