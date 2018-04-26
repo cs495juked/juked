@@ -316,14 +316,21 @@ public class splashScreen extends AppCompatActivity implements
 
             case kSpPlaybackNotifyAudioDeliveryDone:
 
-                Log.d("response", "song is over");
+                songList = RecyclerViewAdapter.mData;
+                String temp = songList.get(0).getSongURI();
+
                 //songList.clear();
                 if(isHost) {
-                    songList = RecyclerViewAdapter.mData;
-                    songList.remove(0);
-                    mPlayer.playUri(null, songList.get(0).getSongURI(), 0, 0);
+                    if(songList.size() > 0) {
+                        songList.remove(0);
+                        appDB.deleteSong(temp);
+                        mPlayer.playUri(null, songList.get(0).getSongURI(), 0, 0);
+                    }else{
+                        Log.d("response", "No song in queue");
+                    }
                 }
                 break;
+
             default:
                 break;
         }

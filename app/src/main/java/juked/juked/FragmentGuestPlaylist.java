@@ -268,7 +268,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 if (playList.size() != 0) {
                     Log.d("DBTag","inside playlistsize check");
                     ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
-                    if(listVotes == null){
+                    if(listVotes == null) {
                         listVotes = new ArrayList<>();
                     }
                     for (int i = 0; i<playList.size(); i++){
