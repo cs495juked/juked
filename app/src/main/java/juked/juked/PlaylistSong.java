@@ -5,7 +5,7 @@ public class PlaylistSong {
     private String artistName;
     private String albumName;
     private String albumArtwork;
-    private String vote = "none";
+    private String vote;
     private String songURI;
     private String adderNickname;
     private int voteTotal;
@@ -22,7 +22,7 @@ public class PlaylistSong {
         this.albumName = albumName;
         this.albumArtwork = albumArtwork;
         this.adderNickname = adderNickname;
-        this.vote = "up";
+
         this.songURI = songURI;
         this.voteTotal= voteTotal;
 

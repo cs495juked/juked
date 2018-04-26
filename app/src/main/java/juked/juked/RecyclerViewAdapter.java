@@ -47,6 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.mData = mData;
         this.mContext = mContext;
         this.voteInts = voteInts;
+
     }
 
     public static List<PlaylistSong> getPlayList() {
@@ -71,8 +72,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         v.findViewById(R.id.upvote_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v2) {
+                Log.d("vote val", mData.get(position).getVote());
                 String songURI = mData.get(position).getSongURI();
                 if(mData.get(position).getVote().equals("none")){
+                    Log.d("response", "A");
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
                     mData.get(position).setVote("up");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) +1 );
@@ -81,6 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     appDB.updateVote(songURI,1,1);
                 }
                 else if(mData.get(position).getVote().equals("down")){
+                    Log.d("response", "B");
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
                     mData.get(position).setVote("up");
@@ -90,6 +94,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     appDB.updateVote(songURI,2,1);
                 }
                 else if(mData.get(position).getVote().equals("up")){
+                    Log.d("response", "C");
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
                     mData.get(position).setVote("none");
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -1 );
@@ -103,6 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         v.findViewById(R.id.downvote_icon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v3) {
+
 
                 String songURI = mData.get(position).getSongURI();
                 if(mData.get(position).getVote().equals("none")){
@@ -137,9 +143,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
         if(voteInts.get(position).getVote() == 1){
             holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
+            mData.get(position).setVote("up");
         }
         else if(voteInts.get(position).getVote() == -1){
             holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
+            mData.get(position).setVote("down");
+        }
+        else{
+            holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
+            holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
+            mData.get(position).setVote("none");
         }
 
         holder.tv_songName.setSelected(true); //allow scrolling text
