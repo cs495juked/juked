@@ -142,7 +142,12 @@ public class splashScreen extends AppCompatActivity implements
                         // get the id number for the user
                         appDB.setLobby(lobbyCode);
                         appDB.addNewUser(nickname);
-                       /* mDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                        joinDialog.dismiss();
+                        startActivity(new Intent(splashScreen.this, GuestRecycledView.class));
+                        GuestRecycledView.lobbyCode = lobbyCode;
+                        FragmentGuestPlaylist.appDB = appDB;
+                        /* mDatabase.child(lobbyCode).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 //CHECK THIS AFTER WE ADD SONGS

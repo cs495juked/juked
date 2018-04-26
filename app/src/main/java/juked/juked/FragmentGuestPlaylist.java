@@ -175,7 +175,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
         //Adds the listener for DB changes
         Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
-        appDB.appDatabase.child(appDB.lobby).addValueEventListener(new ValueEventListener() {
+        appDB.appDatabase.child(appDB.lobby).child("updateTrigger").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("DBTag", "I made it inside on DataChange");
@@ -194,15 +194,20 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 }
                 int curr = 0;
                 while (songs > curr) {
-                    Log.d("DBTag",String.valueOf(songs)+ " > " + String.valueOf(curr));
+                    Log.d("DBag",String.valueOf(songs)+ " > " + String.valueOf(curr));
                     for (int i = 0; i < userList.size(); i++) {
+                        Log.d("DBag",userList.get(i).song.getSongName());
                         if (userList.get(i).song != null) {
                             Song userSong = userList.get(i).song;
                             int position = userSong.getPosition();
+                            Log.d("DBag","Position is: " + String.valueOf(position));
+                            Log.d("DBag","Curr is: " + String.valueOf(curr));
                             if (position == curr) {
+                                Log.d("DBTag","Adding song: " + userList.get(i).song.getSongName());
                                 PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
                                 playList.add(ps);
                                 curr++;
+                                break;
                             }
                         }
                     }

@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class Database {
     public ArrayList<jukeuser> users;
@@ -135,6 +136,9 @@ public class Database {
                         }
                     }
                 }
+                Random rand = new Random();
+                int random = rand.nextInt(10000);
+                appDatabase.child(lobby).child("updateTrigger").setValue(random);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -190,6 +194,9 @@ public class Database {
                         }
                     }
                 }
+                Random rand = new Random();
+                int random = rand.nextInt(10000);
+                appDatabase.child(lobby).child("updateTrigger").setValue(random);
 
                 /*Vote uVote = new Vote(newSong.getSongURI(),uid);
                 uVote.setVote(1);
