@@ -199,8 +199,12 @@ public class splashScreen extends AppCompatActivity implements
                 createLobbyFromPopup = createDialog.findViewById(R.id.createLobbyBtn);
 
                 generatedLobbyCodeText = createDialog.findViewById(R.id.generatedLobbyCode);
+                generatedLobbyCodeText.setText(Integer.toString(lobbyCode)); // gets the lobby code
+
                 Random r = new Random();
                 final int randomLobbyInt = r.nextInt(9999);
+                generatedLobbyCodeText.setText(Integer.toString(randomLobbyInt)); // gets the lobby code
+
                 isHost = true;
 
                 backBtn.setOnClickListener(new View.OnClickListener() {
@@ -211,18 +215,20 @@ public class splashScreen extends AppCompatActivity implements
                     }
                 });
 
-                //generatedLobbyCodeText.setText(lobby); // gets the lobby code
+                //generatedLobbyCodeText.setText(lobbyCode); // gets the lobby code
 
                 createLobbyFromPopup.setOnClickListener(new View.OnClickListener() {
-                    @Override
+                   // generatedLobbyCodeText.setText(lobbyCode); // gets the lobby code
 
+                    @Override
                     public void onClick(View v) {
+                        //generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
                         hostNicknameInput = createDialog.findViewById(R.id.inputHostNickname);
                         String hostNickname = hostNicknameInput.getEditText().getText().toString();
                         userNickname = hostNickname;
 
-                        generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
+                        //generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
                         //create new jukeuser for host
                         //jukeuser host = new jukeuser(01, hostNickname, 1);
@@ -231,11 +237,14 @@ public class splashScreen extends AppCompatActivity implements
                         //store Lobby in database
 
                         int lobbyCode = randomLobbyInt;
+                        generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
+
                         appDB.setLobby(String.valueOf(lobbyCode));
                         appDB.addNewUser(hostNickname);
 //                        appDB.appDatabase.child(appDB.lobby).child("users").child("updateTrigger").setValue(1);
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
                         //globalUserId = host.userId;
+//                        generatedLobbyCodeText.setText(Integer.toString(lobbyCode));
 
 
 //                        mDatabase.child(String.valueOf(lobby.lobbyId)).setValue(lobby); // first code
