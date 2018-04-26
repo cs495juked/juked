@@ -10,6 +10,8 @@ public class Vote {
         vote = 0;
         userID = uID;
     }
+
+    //test
     public Vote() {
 
     }

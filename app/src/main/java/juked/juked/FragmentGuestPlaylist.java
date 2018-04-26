@@ -172,7 +172,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
         // Locate the ListView
         list = (ListView) v.findViewById(R.id.list_view);
         list.setVisibility(View.GONE);
-
+        //test
         //Adds the listener for DB changes
         Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
         appDB.appDatabase.child(appDB.lobby).child("updateTrigger").addValueEventListener(new ValueEventListener() {
