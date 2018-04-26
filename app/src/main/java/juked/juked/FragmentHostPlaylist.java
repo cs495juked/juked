@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -219,8 +220,15 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                         }
                     }
                 }
+                ArrayList<PlaylistSong> playCopy = new ArrayList<>(playList);
+                if(playCopy.size() > 0){
+                    playCopy.remove(0);
+                    Collections.sort(playCopy, new SortPlaylist());
+                    playCopy.add(0, playList.get(0));
+                }
+
                 myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
-                RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, voteList);
+                RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playCopy, voteList);
                 myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 myRecyclerView.setAdapter(recyclerAdapter);
 
@@ -273,9 +281,15 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                             }
                         }
                     }
+                    ArrayList<PlaylistSong> playCopy = new ArrayList<>(playList);
+                    if(playCopy.size() > 0){
+                        playCopy.remove(0);
+                        Collections.sort(playCopy, new SortPlaylist());
+                        playCopy.add(0, playList.get(0));
+                    }
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
 //                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, );
-                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, listVotes);//
+                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playCopy, listVotes);//
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     myRecyclerView.setAdapter(recyclerAdapter);
 

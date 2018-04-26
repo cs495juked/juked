@@ -1,4 +1,5 @@
 package juked.juked;
+import java.util.*;
 
 public class PlaylistSong {
     private String songName;
@@ -71,4 +72,13 @@ public class PlaylistSong {
     public int getVoteTotal() { return voteTotal; }
 
     public void setVoteTotal(int voteTotal) { this.voteTotal = voteTotal; }
+
+
+}
+
+
+ class SortPlaylist implements Comparator<PlaylistSong>{
+    public int compare(PlaylistSong a, PlaylistSong b){
+        return b.getVoteTotal()-a.getVoteTotal();
+    }
 }

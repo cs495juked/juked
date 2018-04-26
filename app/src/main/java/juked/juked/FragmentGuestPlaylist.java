@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -63,7 +65,6 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("response", "I am the access token " + accessToken2);
 
         playlistSongs = new ArrayList<>();
     }
@@ -82,11 +83,9 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
             str = items.getString("next");
 
-            Log.d("Response", "HELLO<<<<<<<   " + str);
             return str;
 
         }catch (JSONException e){
-            Log.d("Response", "Failed getting album cover");
             e.printStackTrace();
             return "";
         }
@@ -105,16 +104,13 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
             myList.add(new Song (0, getTrack(json), getSongName(json), getNameOfArtist(json), getAlbumCover(json), getAlbumName(json)));
             //searchSongs.add(new PlaylistSong(getSongName(json), getNameOfArtist(json), getAlbumName(json)));
 
-            //Log.d("response", "Song name: " + getSongName(json));
-            //Log.d("response", "next song is " + getNextTrack(json));
-
             for (int i = 0; i < 2; i++) {
 
                 json = new HttpTask().execute(getNextTrack(json), accessToken2).get();
                 //searchSongs.add(new PlaylistSong(getSongName(json), getNameOfArtist(json), getAlbumName(json)));
                 myList.add(new Song (0, getTrack(json), getSongName(json), getNameOfArtist(json), getAlbumCover(json), getAlbumName(json)));
 
-                //Log.d("response", "Song name: " + getSongName(json));
+
                 //Song mySong = new Song(0, getTrack(jsonReturn), getSongName(jsonReturn), getNameOfArtist(jsonReturn), getAlbumCover(jsonReturn), getAlbumName(jsonReturn));
 
             }
@@ -138,13 +134,12 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
     public void querySearchedSong(int position){
 
         if (appDB.uSong == null) {
-            //fDatabase = FirebaseDatabase.getInstance().getReference();
+
             Log.d("arraylist", Integer.toString(arraylist.size()));
             Log.d("positiion", Integer.toString(position));
 
             //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
             String uri = arraylist.get(position).getSongURI();
-            Log.d("response", "uri is: " + uri);
 
             list.setVisibility(v.GONE);
             PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
@@ -157,7 +152,12 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
             appDB.updateSong(userSong);
         } else {
-            Log.d("DBTag","Song is already queued!");
+
+            CharSequence text = "You already have a song in the queue!\nWait until your song has been played to add another";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(getContext(), text, duration);
+            toast.show();
             list.setVisibility(v.GONE);
         }
 
@@ -216,8 +216,14 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                         }
                     }
                 }
+                ArrayList<PlaylistSong> playCopy = new ArrayList<>(playList);
+                if(playCopy.size() > 0){
+                    playCopy.remove(0);
+                    Collections.sort(playCopy, new SortPlaylist());
+                    playCopy.add(0, playList.get(0));
+                }
                 myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
-                RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList,voteList );
+                RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playCopy,voteList );
                 myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 myRecyclerView.setAdapter(recyclerAdapter);
 
@@ -278,9 +284,15 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                         }
                     }
 
+                    ArrayList<PlaylistSong> playCopy = new ArrayList<>(playList);
+                    if(playCopy.size() > 0){
+                        playCopy.remove(0);
+                        Collections.sort(playCopy, new SortPlaylist());
+                        playCopy.add(0, playList.get(0));
+                    }
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
 //                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, );
-                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, listVotes);//
+                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playCopy, listVotes);//
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     myRecyclerView.setAdapter(recyclerAdapter);
 
@@ -342,7 +354,6 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
         });
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
-//        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs);
         RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs, null);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerAdapter);
