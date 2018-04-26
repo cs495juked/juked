@@ -216,28 +216,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             Log.d("onLongClick", 1 + ":" + deleteName);
 //            Log.d("onLongClick1", adapterPos + ":" + mData.get(adapterPos).getSongName());
-            for (int i = 0; i <mData.size(); i++){
-                if(mData.get(i).getSongName() == deleteName){
-                    if (i == 0  && mData.size() == 1){
-                        player.pause(null);
-                        mData.remove(i); // might need to delete later because ^^
-                    notifyItemRemoved(i);
-                    notifyItemRangeChanged(i, mData.size());
-//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
-                    }
-                    else if(i == 0 && mData.size() > 1) {
-                        player.playUri(null, mData.get(i+1).getSongURI(),0,0);
-                    mData.remove(i); // might need to delete later because ^^
-                    notifyItemRemoved(i);
-                    notifyItemRangeChanged(i, mData.size());
-//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
-                    }
-                    else{
+            if(splashScreen.isHost) {
+                for (int i = 0; i < mData.size(); i++) {
+                    if (mData.get(i).getSongName() == deleteName) {
+                        if (i == 0 && mData.size() == 1) {
+                            player.pause(null);
+                            appDB.deleteSong(mData.get(i).getSongURI());
+                            mData.remove(i); // might need to delete later because ^^
+                            notifyItemRemoved(i);
+                            notifyItemRangeChanged(i, mData.size());
 
-                    mData.remove(i); // might need to delete later because ^^
-                    notifyItemRemoved(i);
-                    notifyItemRangeChanged(i, mData.size());
-//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
+                        } else if (i == 0 && mData.size() > 1) {
+                            player.playUri(null, mData.get(i + 1).getSongURI(), 0, 0);
+                            appDB.deleteSong(mData.get(i).getSongURI());
+                            mData.remove(i); // might need to delete later because ^^
+                            notifyItemRemoved(i);
+                            notifyItemRangeChanged(i, mData.size());
+
+                        } else {
+                            appDB.deleteSong(mData.get(i).getSongURI());
+                            mData.remove(i); // might need to delete later because ^^
+                            notifyItemRemoved(i);
+                            notifyItemRangeChanged(i, mData.size());
+                            appDB.deleteSong(mData.get(i).getSongURI());
+                        }
                     }
                 }
             }
