@@ -225,21 +225,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             appDB.deleteSong(mData.get(i).getSongURI());
                             mData.remove(i); // might need to delete later because ^^
                             notifyItemRemoved(i);
-                            notifyItemRangeChanged(i, mData.size());
+                            notifyItemRangeChanged(i, mData.size());*/
 
                         } else if (i == 0 && mData.size() > 1) {
                             player.playUri(null, mData.get(i + 1).getSongURI(), 0, 0);
                             appDB.deleteSong(mData.get(i).getSongURI());
-                            mData.remove(i); // might need to delete later because ^^
+                           /* mData.remove(i); // might need to delete later because ^^
                             notifyItemRemoved(i);
-                            notifyItemRangeChanged(i, mData.size());
+                            notifyItemRangeChanged(i, mData.size());*/
 
                         } else {
                             appDB.deleteSong(mData.get(i).getSongURI());
-                            mData.remove(i); // might need to delete later because ^^
+                            /*mData.remove(i); // might need to delete later because ^^
                             notifyItemRemoved(i);
                             notifyItemRangeChanged(i, mData.size());
-                            appDB.deleteSong(mData.get(i).getSongURI());
+                            //appDB.deleteSong(mData.get(i).getSongURI());
                         }
                     }
                 }
