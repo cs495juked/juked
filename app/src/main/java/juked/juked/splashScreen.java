@@ -233,7 +233,8 @@ public class splashScreen extends AppCompatActivity implements
 
                         int lobbyCode = randomLobbyInt;
                         appDB.setLobby(String.valueOf(lobbyCode));
-                        appDB.addNewHost(hostNickname);
+                        appDB.addNewUser(hostNickname);
+                        appDB.appDatabase.child(appDB.lobby).child("users").child("updateTrigger").setValue(1);
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
                         //globalUserId = host.userId;
 

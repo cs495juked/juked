@@ -175,7 +175,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
         //test
         //Adds the listener for DB changes
         Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
-        appDB.appDatabase.child(appDB.lobby).child("updateTrigger").addValueEventListener(new ValueEventListener() {
+        appDB.appDatabase.child(appDB.lobby).child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("DBTag", "I made it inside on DataChange");
@@ -216,7 +216,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                     //playlistSongs.clear();
                     //Log.d("DBTag", "I made it here where songs do not equal zero!");
 
-                    ArrayList<Vote> votes = new ArrayList<>();
+                    /*ArrayList<Vote> votes = new ArrayList<>();
                     ArrayList<Vote> sortedVotes = new ArrayList<>();
                     int found;
                     for (DataSnapshot uriSnapshot : dataSnapshot.child("votes").getChildren()) {
@@ -248,7 +248,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                     }
                     for (int i = 0; i < sortedVotes.size(); i ++ ) {
                         Log.d("DBTag",appDB.uid + " : " + String.valueOf(sortedVotes.get(i).getVote()));
-                    }
+                    }*/
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
                     RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

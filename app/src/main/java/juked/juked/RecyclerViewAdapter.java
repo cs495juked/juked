@@ -72,7 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) +1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                     oldvote = 0;
-                    appDB.updateVote(songURI,newvote,oldvote);
+                    //appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("down")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsupselected);
@@ -81,7 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) +2 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                     oldvote = -1;
-                    appDB.updateVote(songURI,newvote,oldvote);
+                    //appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("up")){
                     holder.iv_upvoteIcon.setImageResource(R.drawable.thumbsup);
@@ -89,7 +89,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                     oldvote = 1;
-                    appDB.updateVote(songURI,newvote,oldvote);
+                    //appDB.updateVote(songURI,newvote,oldvote);
                 }
             }
         });
@@ -106,7 +106,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                     oldvote = 0;
-                    appDB.updateVote(songURI,newvote,oldvote);
+                    //appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("up")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdownselected);
@@ -115,7 +115,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) -2 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                     oldvote = 1;
-                    appDB.updateVote(songURI,newvote,oldvote);
+                    //appDB.updateVote(songURI,newvote,oldvote);
                 }
                 else if(mData.get(position).getVote().equals("down")){
                     holder.iv_downvoteIcon.setImageResource(R.drawable.thumbsdown);
@@ -123,7 +123,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     mData.get(position).setVoteTotal(Integer.valueOf(mData.get(position).getVoteTotal()) + 1 );
                     holder.tv_voteTotal.setText(String.valueOf(mData.get(position).getVoteTotal()));
                     oldvote = -1;
-                    appDB.updateVote(songURI,newvote,oldvote);
+                    //appDB.updateVote(songURI,newvote,oldvote);
                 }
 
             }
@@ -163,7 +163,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     player.pause(null);
                     notifyItemRemoved(adapterPos);
                     notifyItemRangeChanged(adapterPos, mData.size());
-//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
+                    appDB.deleteSong(mData.get(adapterPos).getSongURI());
                     mData.remove(adapterPos); // might need to delete later because ^^
                 }
                 else if(adapterPos == 0 && mData.size() > 1) {
@@ -173,16 +173,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     player.playUri(null, mData.get(adapterPos+1).getSongURI(),0,0);
                     notifyItemRemoved(adapterPos);
                     notifyItemRangeChanged(adapterPos, mData.size());
-//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
-                    mData.remove(adapterPos); // might need to delete later because ^^
+                    appDB.deleteSong(mData.get(adapterPos).getSongURI());
+                    //mData.remove(adapterPos); // might need to delete later because ^^
                 }
                 else {
                     for(int i = 0; i < mData.size(); i++)
                         Log.d("onLongClick4", "AdapterPos:" + adapterPos + " i: " + i + " @mData.get(i):" + mData.get(i).getSongName());
                     notifyItemRemoved(adapterPos);
                     notifyItemRangeChanged(adapterPos, mData.size());
-//                    appDB.deleteSong(mData.get(adapterPos).getSongName());
-                    mData.remove(adapterPos); // might need to delete later because ^^
+                    appDB.deleteSong(mData.get(adapterPos).getSongURI());
+                    //mData.remove(adapterPos); // might need to delete later because ^^
                 }
             }
             return false;

@@ -7,9 +7,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class Database {
     public ArrayList<jukeuser> users;
@@ -42,17 +40,20 @@ public class Database {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String key = snapshot.getKey();
                     jukeuser user = snapshot.getValue(jukeuser.class);
                     userList.add(user);
                 }
+
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song.getSongURI().equals(songURI)) {
                         //userList.get(i).song = null;
-                        appDatabase.child(lobby).child("votes").child(songURI).removeValue();
+                        //appDatabase.child(lobby).child("votes").child(songURI).removeValue();
                         appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).child("song").removeValue();
                         break;
                     }
                 }
+
             }
 
             @Override
@@ -172,11 +173,22 @@ public class Database {
                         totalsongs++;
                     }
                 }
+                newSong.setPosition(totalsongs);
+                pulledUser.setUserSong(newSong);
+                uSong = newSong;
+                Vote uVote = new Vote(newSong.getSongURI(),uid);
+                uVote.setVote(0);
+
+                //add code here to create vote object for each user and push to DB
+
+                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
+
+                appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
 
                 //setSongPosition
                 //pulledUser.setUserSong(newSong);
                 //pulledUser.song.setVoteBalance(1);
-                userList.get(listPosition).setUserSong(newSong);
+                /*userList.get(listPosition).setUserSong(newSong);
                 userList.get(listPosition).song.setVoteBalance(1);
                 uSong = userList.get(listPosition).song;
                 Vote uVote = new Vote(newSong.getSongURI(),uid);
@@ -198,10 +210,11 @@ public class Database {
                 int random = rand.nextInt(10000);
                 appDatabase.child(lobby).child("updateTrigger").setValue(random);
 
-                /*Vote uVote = new Vote(newSong.getSongURI(),uid);
+                Vote uVote = new Vote(newSong.getSongURI(),uid);
                 uVote.setVote(1);
-                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);*/
+                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
                 //appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
+                */
             }
 
             @Override
@@ -211,7 +224,7 @@ public class Database {
         });
     }
 
-    public void addNewHost (final String nickname) {
+    public void addNewUser (final String nickname) {
         appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -238,7 +251,7 @@ public class Database {
         });
     }
 
-    public void addNewUser (final String nickname) {
+    /*public void addNewUser (final String nickname) {
         appDatabase.child(lobby).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -288,7 +301,7 @@ public class Database {
                 }
                 //final jukeuser user = new jukeuser(newUser, nickname, 0);
                 appDatabase.child(String.valueOf(lobby)).child("users").child(String.valueOf(user.userId)).setValue(user);
-                uid = String.valueOf(user.userId);*/
+                uid = String.valueOf(user.userId);
             }
 
             @Override
@@ -296,5 +309,5 @@ public class Database {
                 Log.d("DBTag",databaseError.getMessage());
             }
         });
-    }
+    }*/
 }
