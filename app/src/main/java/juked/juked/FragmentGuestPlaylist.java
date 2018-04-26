@@ -169,13 +169,12 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.guest_playlist_fragment,container,false);
 
-        // Locate the ListView
+
         list = (ListView) v.findViewById(R.id.list_view);
         list.setVisibility(View.GONE);
-        //test
-        //Adds the listener for DB changes
+
         Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
-        appDB.appDatabase.child(appDB.lobby).child("users").addValueEventListener(new ValueEventListener() {
+        /*appDB.appDatabase.child(appDB.lobby).child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("DBTag", "I made it inside on DataChange");
@@ -213,47 +212,12 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                     }
                 }
                 if (songs != 0) {
-                    //playlistSongs.clear();
-                    //Log.d("DBTag", "I made it here where songs do not equal zero!");
 
-                    /*ArrayList<Vote> votes = new ArrayList<>();
-                    ArrayList<Vote> sortedVotes = new ArrayList<>();
-                    int found;
-                    for (DataSnapshot uriSnapshot : dataSnapshot.child("votes").getChildren()) {
-                        found = 0;
-                        //String songURI = uriSnapshot.getValue(String.class);
-                        //Log.d("DBTag","songURI is: " + songURI);
-                        String songURI = "";
-                        for (DataSnapshot voteSnapshot : uriSnapshot.getChildren()) {
-                            Vote vote = voteSnapshot.getValue(Vote.class);
-                            songURI = vote.getURI();
-                            if (vote.getUID().equals(appDB.uid)) {
-                                votes.add(vote);
-                                found = 1;
-                                break;
-                            }
-                        }
-                        if (found == 0) {
-                            Vote vote = new Vote(songURI,appDB.uid);
-                            votes.add(vote);
-                        }
-                    }
-                    for (int i = 0; i < playList.size(); i ++) {
-                        for (int j = 0; j < votes.size(); j ++) {
-                            if (playList.get(i).getSongURI().equals(votes.get(j).getURI())) {
-                                sortedVotes.add(votes.get(j));
-                                break;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < sortedVotes.size(); i ++ ) {
-                        Log.d("DBTag",appDB.uid + " : " + String.valueOf(sortedVotes.get(i).getVote()));
-                    }*/
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
                     RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     myRecyclerView.setAdapter(recyclerAdapter);
-                    //update my UI object here
+
                 }
             }
 
@@ -261,7 +225,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
             public void onCancelled(DatabaseError databaseError) {
                 Log.d("DBTag",databaseError.getMessage());
             }
-        });
+        });*/
 
         final SearchView songSearchBar = v.findViewById(R.id.guestSearchForSongBar);
 

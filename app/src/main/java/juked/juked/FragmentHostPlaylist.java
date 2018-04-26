@@ -175,6 +175,46 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
         //Adds the listener for DB changes
         Log.d("DBTag","app.DB lobby is: "+appDB.lobby);
+        appDB.appDatabase.child(appDB.lobby).child("votes").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("DBTag", "I made it inside on DataChange");
+                ArrayList<Vote> voteList = new ArrayList<Vote>();
+                String songURI;
+                int found;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    found = 0;
+                    songURI = "";
+                    for (DataSnapshot voteSnapshot : snapshot.getChildren()) {
+                        Vote vote = voteSnapshot.getValue(Vote.class);
+                        songURI = vote.getURI();
+                        if (vote.getUID().equals(appDB.uid)) {
+                            found = 1;
+                            voteList.add(vote);
+                            break;
+                        }
+                    }
+                    if (found == 0) {
+                        Vote vote = new Vote(songURI,appDB.uid);
+                        voteList.add(vote);
+                    }
+
+                }
+                List<PlaylistSong> playList = RecyclerViewAdapter.getPlayList();
+                myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
+                RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
+                myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                myRecyclerView.setAdapter(recyclerAdapter);
+
+                }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("DBTag",databaseError.getMessage());
+            }
+        });
+
         appDB.appDatabase.child(appDB.lobby).child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -188,68 +228,21 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                 int songs = 0;
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song != null) {
-                        songs++;
+                        Song userSong = userList.get(i).song;
+                        PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
+                        playList.add(ps);;
                         Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
                     }
                 }
-                int curr = 0;
-                while (songs > curr) {
-                    Log.d("DBTag",String.valueOf(songs)+ " > " + String.valueOf(curr));
-                    for (int i = 0; i < userList.size(); i++) {
-                        if (userList.get(i).song != null) {
-                            Song userSong = userList.get(i).song;
-                            int position = userSong.getPosition();
-                            if (position == curr) {
-                                PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
-                                playList.add(ps);
-                                curr++;
-                            }
-                        }
-                    }
-                }
 
-                if (songs != 0) {
-                    //playlistSongs.clear();
-                    //Log.d("DBTag", "I made it here where songs do not equal zero!");
 
-                    /*ArrayList<Vote> votes = new ArrayList<>();
-                    ArrayList<Vote> sortedVotes = new ArrayList<>();
-                    int found;
-                    for (DataSnapshot uriSnapshot : dataSnapshot.child("votes").getChildren()) {
-                        found = 0;
-                        //String songURI = uriSnapshot.getValue(String.class);
-                        //Log.d("DBTag","songURI is: " + songURI);
-                        String songURI = "";
-                        for (DataSnapshot voteSnapshot : uriSnapshot.getChildren()) {
-                            Vote vote = voteSnapshot.getValue(Vote.class);
-                            songURI = vote.getURI();
-                            if (vote.getUID().equals(appDB.uid)) {
-                                votes.add(vote);
-                                found = 1;
-                                break;
-                            }
-                        }
-                        if (found == 0) {
-                            Vote vote = new Vote(songURI,appDB.uid);
-                            votes.add(vote);
-                        }
-                    }
-                    for (int i = 0; i < playList.size(); i ++) {
-                        for (int j = 0; j < votes.size(); j ++) {
-                            if (playList.get(i).getSongURI().equals(votes.get(j).getURI())) {
-                                sortedVotes.add(votes.get(j));
-                                break;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < sortedVotes.size(); i ++ ) {
-                        Log.d("DBTag",appDB.uid + " : " + String.valueOf(sortedVotes.get(i).getVote()));
-                    }*/
+                if (playList.size() != 0) {
+
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
                     RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     myRecyclerView.setAdapter(recyclerAdapter);
-                    //update my UI object here
+
                 }
             }
 

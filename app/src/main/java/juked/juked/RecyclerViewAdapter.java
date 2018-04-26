@@ -46,6 +46,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.mContext = mContext;
     }
 
+    public static List<PlaylistSong> getPlayList() {
+        return mData;
+    }
+    public static List<Vote> getVotes() {
+        //LAURA add this
+        return null;
+    }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

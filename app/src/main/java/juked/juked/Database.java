@@ -48,7 +48,7 @@ public class Database {
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song.getSongURI().equals(songURI)) {
                         //userList.get(i).song = null;
-                        //appDatabase.child(lobby).child("votes").child(songURI).removeValue();
+                        appDatabase.child(lobby).child("votes").child(songURI).removeValue();
                         appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).child("song").removeValue();
                         break;
                     }
@@ -104,43 +104,21 @@ public class Database {
                     votecount = 1;
                 }
 
-
-
-                //update the song where it is stored
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
-                ///ArrayList<Song> songList = new ArrayList<>();
+
                 for (DataSnapshot snapshot : dataSnapshot.child("users").getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
-                    if (user.song != null) {
-                        ///songList.add(user.song);
-                        Log.d("DBTag","Song in voteUpdate is: " + user.song.getSongName());
-                        if (user.song.getSongURI().equals(songURI)) {
-                            Log.d("DBTag","Song in voteUpdate that is equal to URI is: " + user.song.getSongName());
-                            user.song.setVoteBalance(user.song.getVoteBalance()+votecount);
-                            Log.d("DBTag","Updated votecount is: " + user.song.getVoteBalance());
+                    if ((user.song != null) && (user.song.getSongURI().equals(songURI))) {
+
+                        user.song.setVoteBalance(user.song.getVoteBalance()+votecount);
+                        appDatabase.child(lobby).child("users").child(String.valueOf(user.userId)).setValue(user);
+                        break;
                         }
                     }
-                    userList.add(user);
+
                 }
 
-                //update the song order
-                if (userList.size() == 1) {
-                    appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(0).userId)).setValue(userList.get(0));
-                } else {
-                    Collections.sort(userList, new SortUsers());
-                    for (int i = 0; i < userList.size() ; i++) {
-                        if (userList.get(i).song != null) {
-                            if (userList.get(i).song.getPosition() != i) {
-                                userList.get(i).song.setPosition(i);
-                                appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
-                            }
-                        }
-                    }
-                }
-                Random rand = new Random();
-                int random = rand.nextInt(10000);
-                appDatabase.child(lobby).child("updateTrigger").setValue(random);
-            }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d("DBTag",databaseError.getMessage());
@@ -173,11 +151,11 @@ public class Database {
                         totalsongs++;
                     }
                 }
-                newSong.setPosition(totalsongs);
+                newSong.setVoteBalance(1);
                 pulledUser.setUserSong(newSong);
                 uSong = newSong;
                 Vote uVote = new Vote(newSong.getSongURI(),uid);
-                uVote.setVote(0);
+                uVote.setVote(1);
 
                 //add code here to create vote object for each user and push to DB
 

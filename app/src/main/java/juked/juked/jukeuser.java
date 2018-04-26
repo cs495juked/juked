@@ -24,19 +24,4 @@ public class jukeuser {
         song = newSong;
     }
 }
-class SortUsers implements Comparator<jukeuser> {
-    public int compare (jukeuser a, jukeuser b) {
-        if (a.song == null) {
-            return 1;
-        }
-        if (b.song == null) {
-            return -1;
-        }
-        if ((a.song != null) && (b.song != null)) {
-            return b.song.getVoteBalance()-a.song.getVoteBalance();
-        }
-        else {
-            return 0;
-        }
-    }
-}
+
