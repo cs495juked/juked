@@ -262,7 +262,11 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                     if (userList.get(i).song != null) {
                         Song userSong = userList.get(i).song;
                         PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
-                        playList.add(ps);;
+                        playList.add(ps);
+                        if( GuestRecycledView.fgh.historySongs == null) {
+                            GuestRecycledView.fgh.historySongs = new ArrayList<>();
+
+                        }
                         GuestRecycledView.fgh.historySongs.add(ps);
                         Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
                     }

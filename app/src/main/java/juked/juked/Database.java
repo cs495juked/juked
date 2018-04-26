@@ -47,7 +47,7 @@ public class Database {
                 }
 
                 for (int i = 0; i < userList.size(); i++) {
-                    if (userList.get(i).song.getSongURI().equals(songURI)) {
+                    if (userList.get(i).song != null && userList.get(i).song.getSongURI().equals(songURI)) {
                         //userList.get(i).song = null;
                         uSong = null;
                         appDatabase.child(lobby).child("votes").child(songURI).removeValue();

@@ -17,17 +17,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,27 +58,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FragmentHostPlaylist.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FragmentHostPlaylist.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="268" column="17" lean-forward="true" selection-start-line="268" selection-start-column="17" selection-end-line="268" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="1543">
+              <caret line="265" column="24" lean-forward="true" selection-start-line="265" selection-start-column="24" selection-end-line="269" selection-end-column="67" />
+              <folding>
+                <element signature="e#12947#13114#0" expanded="true" />
+                <element signature="e#13113#13114#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FragmentGuestPlaylist.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FragmentGuestPlaylist.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="284" column="36" lean-forward="false" selection-start-line="284" selection-start-column="33" selection-end-line="284" selection-end-column="36" />
+            <state relative-caret-position="280">
+              <caret line="257" column="25" lean-forward="true" selection-start-line="257" selection-start-column="25" selection-end-line="257" selection-end-column="25" />
               <folding>
                 <element signature="e#6145#6151#0" expanded="true" />
                 <element signature="e#8961#8971#0" expanded="true" />
                 <element signature="e#9243#9257#0" expanded="true" />
-                <element signature="e#12087#12254#0" expanded="true" />
-                <element signature="e#12253#12254#0" expanded="true" />
+                <element signature="e#12272#12439#0" expanded="true" />
+                <element signature="e#12438#12439#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,8 +100,8 @@
       <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="267">
+              <caret line="58" column="13" lean-forward="false" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,14 +122,13 @@
       <file leaf-file-name="RecyclerViewAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="242" column="25" lean-forward="false" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
+            <state relative-caret-position="313">
+              <caret line="239" column="42" lean-forward="false" selection-start-line="239" selection-start-column="42" selection-end-line="239" selection-end-column="42" />
               <folding>
                 <element signature="e#1875#1876#0" expanded="true" />
                 <element signature="e#1906#1907#0" expanded="true" />
                 <element signature="e#8789#8790#0" expanded="true" />
                 <element signature="e#8824#8825#0" expanded="true" />
-                <marker date="1524761812421" expanded="true" signature="12222:12277" ph="//..." />
               </folding>
             </state>
           </provider>
@@ -205,6 +204,7 @@
       <find>toa</find>
       <find>exi</find>
       <find>arraylist</find>
+      <find>ps</find>
       <find>add</find>
     </findStrings>
   </component>
@@ -2275,11 +2275,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/PlaylistSong.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestHistory.java" />
         <option value="$PROJECT_DIR$/local.properties" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" />
       </list>
     </option>
   </component>
@@ -2993,7 +2993,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524760022279</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="history debugging">
+      <created>1524762521993</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1524762521994</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3116,7 +3123,8 @@
     <MESSAGE value="vote syncing debugged!" />
     <MESSAGE value="sorting by vote count" />
     <MESSAGE value="prevent duplicate song" />
-    <option name="LAST_COMMIT_MESSAGE" value="prevent duplicate song" />
+    <MESSAGE value="history debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="history debugging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3151,7 +3159,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2227">
           <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#12947#13114#0" expanded="true" />
+            <element signature="e#13113#13114#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3176,7 +3187,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2074">
           <caret line="164" column="64" lean-forward="false" selection-start-line="164" selection-start-column="64" selection-end-line="164" selection-end-column="64" />
-          <folding />
+          <folding>
+            <element signature="e#12947#13114#0" expanded="true" />
+            <element signature="e#13113#13114#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3418,30 +3432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="242" column="25" lean-forward="false" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
-          <folding>
-            <element signature="e#1875#1876#0" expanded="true" />
-            <element signature="e#1906#1907#0" expanded="true" />
-            <element signature="e#8789#8790#0" expanded="true" />
-            <element signature="e#8824#8825#0" expanded="true" />
-            <marker date="1524761812421" expanded="true" signature="12222:12277" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -3450,25 +3440,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="284" column="36" lean-forward="false" selection-start-line="284" selection-start-column="33" selection-end-line="284" selection-end-column="36" />
+        <state relative-caret-position="313">
+          <caret line="239" column="42" lean-forward="false" selection-start-line="239" selection-start-column="42" selection-end-line="239" selection-end-column="42" />
           <folding>
-            <element signature="e#6145#6151#0" expanded="true" />
-            <element signature="e#8961#8971#0" expanded="true" />
-            <element signature="e#9243#9257#0" expanded="true" />
-            <element signature="e#12087#12254#0" expanded="true" />
-            <element signature="e#12253#12254#0" expanded="true" />
+            <element signature="e#1875#1876#0" expanded="true" />
+            <element signature="e#1906#1907#0" expanded="true" />
+            <element signature="e#8789#8790#0" expanded="true" />
+            <element signature="e#8824#8825#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="58" column="13" lean-forward="false" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="268" column="17" lean-forward="true" selection-start-line="268" selection-start-column="17" selection-end-line="268" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="1543">
+          <caret line="265" column="24" lean-forward="true" selection-start-line="265" selection-start-column="24" selection-end-line="269" selection-end-column="67" />
+          <folding>
+            <element signature="e#12947#13114#0" expanded="true" />
+            <element signature="e#13113#13114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="257" column="25" lean-forward="true" selection-start-line="257" selection-start-column="25" selection-end-line="257" selection-end-column="25" />
+          <folding>
+            <element signature="e#6145#6151#0" expanded="true" />
+            <element signature="e#8961#8971#0" expanded="true" />
+            <element signature="e#9243#9257#0" expanded="true" />
+            <element signature="e#12272#12439#0" expanded="true" />
+            <element signature="e#12438#12439#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
