@@ -148,6 +148,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
             for(int i =0; i<playlistSongs.size(); i++){
                 if(uri.equals(playlistSongs.get(i).getSongURI())){
+                    Log.d("response","found URI");
                     exitsts = true;
                 }
             }

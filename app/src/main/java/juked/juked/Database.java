@@ -130,8 +130,13 @@ public class Database {
                 }
                 //Song songList[] = new Song[userList.size()];
                 int totalsongs = 0;
+                int exists = 0;
                 for (int i = 0; i < userList.size() ; i++) {
                     Song userSong = userList.get(i).song;
+                    if (userSong.getSongURI().equals(userList.get(i).song.getSongURI())) {
+                        exists = 1;
+                        break;
+                    }
                     if (pulledUser.userId == userList.get(i).userId) {
                         listPosition = i;
                     }
@@ -142,18 +147,15 @@ public class Database {
                         totalsongs++;
                     }
                 }
-                newSong.setVoteBalance(1);
-                pulledUser.setUserSong(newSong);
-                uSong = newSong;
-                Vote uVote = new Vote(newSong.getSongURI(),uid);
-                uVote.setVote(1);
-
-                //add code here to create vote object for each user and push to DB
-
-                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
-
-                appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
-
+                if (exists == 0) {
+                    newSong.setVoteBalance(1);
+                    pulledUser.setUserSong(newSong);
+                    uSong = newSong;
+                    Vote uVote = new Vote(newSong.getSongURI(), uid);
+                    uVote.setVote(1);
+                    appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
+                    appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
+                }
                 //setSongPosition
                 //pulledUser.setUserSong(newSong);
                 //pulledUser.song.setVoteBalance(1);

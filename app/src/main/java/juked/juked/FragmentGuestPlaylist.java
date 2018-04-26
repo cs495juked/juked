@@ -139,9 +139,12 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
             String uri = arraylist.get(position).getSongURI();
 
             list.setVisibility(v.GONE);
-
+            Log.d("existcheck","tester");
             for(int i =0; i<playlistSongs.size(); i++){
+                Log.d("existcheck","uri 1 is: "+ playlistSongs.get(i).getSongURI());
+                Log.d("existcheck","uri 2 is: "+ uri);
                 if(uri.equals(playlistSongs.get(i).getSongURI())){
+                    Log.d("DBTag","found URI");
                     exitsts = true;
                 }
             }
