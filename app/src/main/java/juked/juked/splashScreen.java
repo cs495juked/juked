@@ -169,8 +169,6 @@ public class splashScreen extends AppCompatActivity implements
 
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(userId)).setValue(user); // keep
 
-
-
                         // jDatabase.push().setValue(user); // random value, will change later
 
                         //HashMap<String,String> dataMap = new HashMap<String, String>();   //another try
@@ -178,10 +176,11 @@ public class splashScreen extends AppCompatActivity implements
                         //dataMap.put("user",nickname);
                         //mDatabase.push().setValue(dataMap);
 
+                        joinDialog.dismiss();
 
-
-//                        startActivity(new Intent(splashScreen.this, testRecycledView.class));
-//                        testRecycledView.lobbyCode = lobbyCode;
+                        startActivity(new Intent(splashScreen.this, GuestRecycledView.class));
+                        GuestRecycledView.lobbyCode = lobbyCode;
+                        FragmentGuestPlaylist.appDB = appDB;
 
                     }
                 });
@@ -234,7 +233,7 @@ public class splashScreen extends AppCompatActivity implements
                         int lobbyCode = randomLobbyInt;
                         appDB.setLobby(String.valueOf(lobbyCode));
                         appDB.addNewUser(hostNickname);
-                        appDB.appDatabase.child(appDB.lobby).child("users").child("updateTrigger").setValue(1);
+//                        appDB.appDatabase.child(appDB.lobby).child("users").child("updateTrigger").setValue(1);
                         //mDatabase.child(String.valueOf(lobbyCode)).child(String.valueOf(host.userId)).setValue(host); //keep MR
                         //globalUserId = host.userId;
 

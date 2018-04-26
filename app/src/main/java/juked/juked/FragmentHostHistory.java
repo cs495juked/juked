@@ -15,6 +15,7 @@ public class FragmentHostHistory extends android.support.v4.app.Fragment {
     View v;
     private RecyclerView myRecyclerView;
     public  ArrayList<PlaylistSong> historySongs;
+    public  ArrayList<Integer> voteList;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +34,9 @@ public class FragmentHostHistory extends android.support.v4.app.Fragment {
         v= inflater.inflate(R.layout.host_history_fragment,container,false);
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.historyRecyclerView);
-        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), historySongs);
+        ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
+//        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), historySongs, voteList);
+        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), historySongs, listVotes);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerAdapter);
         return v;

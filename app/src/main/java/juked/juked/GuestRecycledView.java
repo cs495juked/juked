@@ -17,6 +17,7 @@ public class GuestRecycledView extends AppCompatActivity {
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     public static String lobbyCode;
+    public static int dark = 1;
 
     public static FragmentGuestPlaylist fgp = new FragmentGuestPlaylist();
     public static FragmentGuestHistory fgh = new FragmentGuestHistory();
@@ -35,6 +36,16 @@ public class GuestRecycledView extends AppCompatActivity {
 
         TextView tv_displayLobbyCode = findViewById(R.id.displayLobbyCodeNum);
         tv_displayLobbyCode.setText(tv_displayLobbyCode.getText() + " " + lobbyCode);
+
+        if (dark ==0) {
+            setTheme(R.style.LightTheme);
+        }
+
+
+        if (dark == 1 ){
+            setTheme(R.style.AppTheme);
+        }
+
 
 
         // add Fragment Here

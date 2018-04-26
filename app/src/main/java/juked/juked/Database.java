@@ -67,7 +67,7 @@ public class Database {
         appDatabase.child(lobby).setValue("votes");
     }
 
-    public void updateVote(final String songURI, final int update, final int prev) {
+    public void updateVote(final String songURI, final int voteBalanceChange, final int voteDir) {
         appDatabase.child(lobby).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -81,28 +81,17 @@ public class Database {
                 for (int i = 0; i < votes.size(); i++) {
                     if (votes.get(i).getUID().equals(uid)) {
                         found = 1;
-                        votes.get(i).setVote(update);
+                        votes.get(i).setVote(voteDir);
                         appDatabase.child(lobby).child("votes").child(votes.get(i).getURI()).child(votes.get(i).getUID()).setValue(votes.get(i));
                         break;
                     }
                 }
                 if (found == 0) {
                     Vote vote = new Vote(songURI,uid);
-                    vote.setVote(update);
+                    vote.setVote(voteDir);
                     appDatabase.child(lobby).child("votes").child(vote.getURI()).child(vote.getUID()).setValue(vote);
                 }
-                int votecount = update+prev;
-                if (votecount == 0) {
-                    if (update == 1) {
-                        votecount = 2;
-                    } else {
-                        votecount = -2;
-                    }
-                } else if (votecount == 2) {
-                    votecount = -1;
-                } else if (votecount == -2) {
-                    votecount = 1;
-                }
+
 
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
 
@@ -110,7 +99,7 @@ public class Database {
                     jukeuser user = snapshot.getValue(jukeuser.class);
                     if ((user.song != null) && (user.song.getSongURI().equals(songURI))) {
 
-                        user.song.setVoteBalance(user.song.getVoteBalance()+votecount);
+                        user.song.setVoteBalance(user.song.getVoteBalance()+voteBalanceChange);
                         appDatabase.child(lobby).child("users").child(String.valueOf(user.userId)).setValue(user);
                         break;
                         }

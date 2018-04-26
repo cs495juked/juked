@@ -145,7 +145,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
             list.setVisibility(v.GONE);
 
-            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, arraylist.get(position).getVoteBalance());
+            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
             playlistSongs.add(pls);
 
@@ -200,9 +200,10 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                     }
 
                 }
+
                 List<PlaylistSong> playList = RecyclerViewAdapter.getPlayList();
                 myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
-                RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
+                RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, voteList);
                 myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 myRecyclerView.setAdapter(recyclerAdapter);
 
@@ -237,9 +238,10 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 
 
                 if (playList.size() != 0) {
-
+                    ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
                     myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
-                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList);
+//                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, );
+                    RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playList, listVotes);//
                     myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     myRecyclerView.setAdapter(recyclerAdapter);
 
@@ -363,7 +365,8 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
         });
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
-        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs);
+//        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs);
+        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs, null);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerAdapter);
         return v;
