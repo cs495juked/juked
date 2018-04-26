@@ -12,22 +12,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be5dbbf1-0918-4a3f-9954-1e02866cad33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,6 +36,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -61,27 +61,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FragmentHostPlaylist.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java">
+      <file leaf-file-name="splashScreen.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="268" column="17" lean-forward="true" selection-start-line="268" selection-start-column="17" selection-end-line="268" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FragmentGuestPlaylist.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="284" column="36" lean-forward="false" selection-start-line="284" selection-start-column="33" selection-end-line="284" selection-end-column="36" />
+            <state relative-caret-position="2190">
+              <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
               <folding>
-                <element signature="e#6145#6151#0" expanded="true" />
-                <element signature="e#8961#8971#0" expanded="true" />
-                <element signature="e#9243#9257#0" expanded="true" />
-                <element signature="e#12087#12254#0" expanded="true" />
-                <element signature="e#12253#12254#0" expanded="true" />
+                <marker date="1524760467000" expanded="false" signature="13884:13895" ph=" { " />
+                <marker date="1524760467000" expanded="false" signature="13936:13942" ph=" }" />
+                <marker date="1524760467000" expanded="false" signature="13998:14009" ph=" { " />
+                <marker date="1524760467000" expanded="false" signature="14047:14053" ph=" }" />
+                <marker date="1524760467000" expanded="false" signature="14103:14114" ph=" { " />
+                <marker date="1524760467000" expanded="false" signature="14164:14170" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -90,47 +81,9 @@
       <file leaf-file-name="local.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FragmentHostHistory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RecyclerViewAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="242" column="25" lean-forward="false" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
-              <folding>
-                <element signature="e#1875#1876#0" expanded="true" />
-                <element signature="e#1906#1907#0" expanded="true" />
-                <element signature="e#8789#8790#0" expanded="true" />
-                <element signature="e#8824#8825#0" expanded="true" />
-                <marker date="1524761812421" expanded="true" signature="12222:12277" ph="//..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -138,9 +91,98 @@
       <file leaf-file-name="FragmentHostSettings.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-253">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="-10">
+              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragmentHostPlaylist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="143" column="25" lean-forward="false" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
+              <folding>
+                <marker date="1524762601000" expanded="true" signature="16461:16910" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="16953:17521" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="17584:17933" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="17997:18693" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="18760:19331" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="19395:20150" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="20196:20827" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="20871:21452" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragmentGuestHistory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestHistory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+              <folding>
+                <marker date="1524760467000" expanded="true" signature="893:1500" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FragmentGuestPlaylist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="379" column="1" lean-forward="false" selection-start-line="379" selection-start-column="1" selection-end-line="379" selection-end-column="1" />
+              <folding>
+                <marker date="1524762601000" expanded="true" signature="13748:14013" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="14056:14624" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="14687:15036" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="15100:15796" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="15863:16434" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="16498:17253" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="17299:17930" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="17974:18555" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="41" column="73" lean-forward="false" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1254#1264#0" expanded="true" />
+                <element signature="e#3762#3772#0" expanded="true" />
+                <element signature="e#4951#4961#0" expanded="true" />
+                <marker date="1524762601000" expanded="true" signature="6745:6819" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="6890:8183" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="6996:8175" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="7084:8002" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="7102:7279" ph="//..." />
+                <marker date="1524762601000" expanded="true" signature="8091:8165" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecyclerViewAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3000">
+              <caret line="229" column="38" lean-forward="false" selection-start-line="229" selection-start-column="38" selection-end-line="229" selection-end-column="38" />
+              <folding>
+                <element signature="e#1875#1876#0" expanded="true" />
+                <element signature="e#1906#1907#0" expanded="true" />
+                <marker date="1524762601000" expanded="true" signature="8788:8799" ph=" { " />
+                <marker date="1524762601000" expanded="true" signature="8819:8825" ph=" }" />
+                <marker date="1524762601000" expanded="true" signature="8926:9702" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="8990:9702" ph="{...}" />
+                <marker date="1524762601000" expanded="true" signature="12222:12283" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,11 +200,10 @@
       <file leaf-file-name="PlaylistSong.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/PlaylistSong.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="69" column="56" lean-forward="false" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+            <state relative-caret-position="945">
+              <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
               <folding>
-                <element signature="e#2064#2065#0" expanded="true" />
-                <element signature="e#2120#2121#0" expanded="true" />
+                <marker date="1524756154000" expanded="true" signature="2119:2121" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -201,11 +242,8 @@
       <find>vote</find>
       <find>upda</find>
       <find>host</find>
-      <find>conte</find>
-      <find>toa</find>
-      <find>exi</find>
       <find>arraylist</find>
-      <find>add</find>
+      <find>conte</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2243,11 +2281,6 @@
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-      </map>
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -2270,24 +2303,23 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/Song.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/jukeuser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestHistory.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/Vote.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/PlaylistSong.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestHistory.java" />
-        <option value="$PROJECT_DIR$/local.properties" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/PlaylistSong.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java" />
+        <option value="$PROJECT_DIR$/local.properties" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-246" />
-    <option name="y" value="22" />
-    <option name="width" value="1400" />
-    <option name="height" value="778" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
@@ -2308,142 +2340,109 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
-          <expand>
-            <path>
-              <item name="juked" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="juked" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="juked" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="juked" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="juked" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="PlaylistSong.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="juked" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidBuildScriptsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dummy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juked" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="juked" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="juked" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="android" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="juked" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="juked.juked" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="values" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="values-w820dp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="juked" type="b2602c69:ProjectViewProjectNode" />
-              <item name="juked" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="xml" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1524011166632" />
-    <property name="device.picker.selection" value="please" />
+    <property name="device.picker.selection" value="Nexus_6_API_25" />
     <property name="android.profiler.active" value="true" />
     <property name="SearchEverywhereHistoryKey" value="none&#9;PSI&#9;JAVA://juked.juked.R.id#none&#10;1 &gt; 0&#9;null&#9;null&#10;onCreateView&#9;PSI&#9;JAVA://juked.juked.FragmentHostPlaylist#onCreateView" />
   </component>
@@ -2471,12 +2470,16 @@
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.4/javaCompile/taskJars.bin</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/local.properties</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -2584,7 +2587,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -2608,99 +2611,6 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="app" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
-      <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -2793,14 +2703,20 @@
       </Profilers>
       <method />
     </configuration>
-    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
     </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
@@ -2817,12 +2733,6 @@
         <option name="vmOptions" />
       </ExternalSystemSettings>
       <method />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -2890,6 +2800,106 @@
       <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
       <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Android App.app" />
+    </list>
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
     </configuration>
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -2965,35 +2975,7 @@
       <option name="project" value="LOCAL" />
       <updated>1524755860209</updated>
     </task>
-    <task id="LOCAL-00009" summary="sorting by vote count">
-      <created>1524756062533</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1524756062534</updated>
-    </task>
-    <task id="LOCAL-00010" summary="prevent duplicate song">
-      <created>1524757408152</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1524757408152</updated>
-    </task>
-    <task id="LOCAL-00011" summary="prevent duplicate song">
-      <created>1524757603704</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1524757603704</updated>
-    </task>
-    <task id="LOCAL-00012" summary="prevent duplicate song">
-      <created>1524760022279</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1524760022279</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3006,28 +2988,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="0" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32473445" sideWeight="0.73101777" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650074" sideWeight="0.7358643" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29575402" sideWeight="0.4644588" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32169953" sideWeight="0.1453958" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.323217" sideWeight="0.46526656" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.323217" sideWeight="0.48142165" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287879" sideWeight="0.4970545" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32169953" sideWeight="0.8546042" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32503662" sideWeight="0.52907914" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32650074" sideWeight="0.47738287" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32503662" sideWeight="0.47092083" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32796487" sideWeight="0.49676898" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3235725" sideWeight="0.8642973" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30161053" sideWeight="0.5193861" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32473445" sideWeight="0.48707592" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.315832" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3062,6 +3043,7 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30161053" sideWeight="0.5193861" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31633466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -3115,20 +3097,10 @@
     <MESSAGE value="vote syncing debugged?" />
     <MESSAGE value="vote syncing debugged!" />
     <MESSAGE value="sorting by vote count" />
-    <MESSAGE value="prevent duplicate song" />
-    <option name="LAST_COMMIT_MESSAGE" value="prevent duplicate song" />
+    <option name="LAST_COMMIT_MESSAGE" value="sorting by vote count" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java</url>
-          <line>241</line>
-          <properties />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="1" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -3151,7 +3123,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2227">
           <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1524762601000" expanded="true" signature="16461:16910" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="16953:17521" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17584:17933" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17997:18693" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="18760:19331" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="19395:20150" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="20196:20827" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="20871:21452" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3160,7 +3141,12 @@
         <state relative-caret-position="204">
           <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="48" />
           <folding>
-            <marker date="1524757426657" expanded="false" signature="8593:8702" ph="(v) → {" />
+            <marker date="1524760467000" expanded="false" signature="13884:13895" ph=" { " />
+            <marker date="1524760467000" expanded="false" signature="13936:13942" ph=" }" />
+            <marker date="1524760467000" expanded="false" signature="13998:14009" ph=" { " />
+            <marker date="1524760467000" expanded="false" signature="14047:14053" ph=" }" />
+            <marker date="1524760467000" expanded="false" signature="14103:14114" ph=" { " />
+            <marker date="1524760467000" expanded="false" signature="14164:14170" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -3176,7 +3162,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2074">
           <caret line="164" column="64" lean-forward="false" selection-start-line="164" selection-start-column="64" selection-end-line="164" selection-end-column="64" />
-          <folding />
+          <folding>
+            <marker date="1524762601000" expanded="true" signature="16461:16910" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="16953:17521" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17584:17933" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17997:18693" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="18760:19331" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="19395:20150" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="20196:20827" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="20871:21452" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3230,13 +3225,13 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/guest_settings_fragment.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/GuestRecycledView.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/GuestListViewAdapter.java">
@@ -3337,7 +3332,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3345,7 +3339,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1188">
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3365,13 +3358,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <marker date="1524757426657" expanded="false" signature="8593:8702" ph="(v) → {" />
-          </folding>
+        <state relative-caret-position="322">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3383,92 +3374,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/PlaylistSong.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="69" column="56" lean-forward="false" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+        <state relative-caret-position="3000">
+          <caret line="229" column="38" lean-forward="false" selection-start-line="229" selection-start-column="38" selection-end-line="229" selection-end-column="38" />
           <folding>
-            <element signature="e#2064#2065#0" expanded="true" />
-            <element signature="e#2120#2121#0" expanded="true" />
+            <element signature="e#1875#1876#0" expanded="true" />
+            <element signature="e#1906#1907#0" expanded="true" />
+            <marker date="1524762601000" expanded="true" signature="8788:8799" ph=" { " />
+            <marker date="1524762601000" expanded="true" signature="8819:8825" ph=" }" />
+            <marker date="1524762601000" expanded="true" signature="8926:9702" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="8990:9702" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="12222:12283" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-253">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/RecyclerViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="242" column="25" lean-forward="false" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
+        <state relative-caret-position="405">
+          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
           <folding>
-            <element signature="e#1875#1876#0" expanded="true" />
-            <element signature="e#1906#1907#0" expanded="true" />
-            <element signature="e#8789#8790#0" expanded="true" />
-            <element signature="e#8824#8825#0" expanded="true" />
-            <marker date="1524761812421" expanded="true" signature="12222:12277" ph="//..." />
+            <marker date="1524760467000" expanded="true" signature="893:1500" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="222">
+          <caret line="41" column="73" lean-forward="false" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1254#1264#0" expanded="true" />
+            <element signature="e#3762#3772#0" expanded="true" />
+            <element signature="e#4951#4961#0" expanded="true" />
+            <marker date="1524762601000" expanded="true" signature="6745:6819" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="6890:8183" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="6996:8175" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="7084:8002" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="7102:7279" ph="//..." />
+            <marker date="1524762601000" expanded="true" signature="8091:8165" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostHistory.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/PlaylistSong.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="284" column="36" lean-forward="false" selection-start-line="284" selection-start-column="33" selection-end-line="284" selection-end-column="36" />
+        <state relative-caret-position="945">
+          <caret line="63" column="44" lean-forward="false" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
           <folding>
-            <element signature="e#6145#6151#0" expanded="true" />
-            <element signature="e#8961#8971#0" expanded="true" />
-            <element signature="e#9243#9257#0" expanded="true" />
-            <element signature="e#12087#12254#0" expanded="true" />
-            <element signature="e#12253#12254#0" expanded="true" />
+            <marker date="1524756154000" expanded="true" signature="2119:2121" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostPlaylist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="268" column="17" lean-forward="true" selection-start-line="268" selection-start-column="17" selection-end-line="268" selection-end-column="17" />
+        <state relative-caret-position="561">
+          <caret line="143" column="25" lean-forward="false" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
+          <folding>
+            <marker date="1524762601000" expanded="true" signature="16461:16910" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="16953:17521" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17584:17933" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17997:18693" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="18760:19331" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="19395:20150" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="20196:20827" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="20871:21452" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentGuestPlaylist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="379" column="1" lean-forward="false" selection-start-line="379" selection-start-column="1" selection-end-line="379" selection-end-column="1" />
+          <folding>
+            <marker date="1524762601000" expanded="true" signature="13748:14013" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="14056:14624" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="14687:15036" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="15100:15796" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="15863:16434" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="16498:17253" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17299:17930" ph="{...}" />
+            <marker date="1524762601000" expanded="true" signature="17974:18555" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/FragmentHostSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/juked/juked/splashScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2190">
+          <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+          <folding>
+            <marker date="1524760467000" expanded="false" signature="13884:13895" ph=" { " />
+            <marker date="1524760467000" expanded="false" signature="13936:13942" ph=" }" />
+            <marker date="1524760467000" expanded="false" signature="13998:14009" ph=" { " />
+            <marker date="1524760467000" expanded="false" signature="14047:14053" ph=" }" />
+            <marker date="1524760467000" expanded="false" signature="14103:14114" ph=" { " />
+            <marker date="1524760467000" expanded="false" signature="14164:14170" ph=" }" />
+          </folding>
         </state>
       </provider>
     </entry>
