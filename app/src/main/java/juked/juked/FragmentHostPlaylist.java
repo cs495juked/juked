@@ -263,6 +263,7 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
                         Song userSong = userList.get(i).song;
                         PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
                         playList.add(ps);;
+                        GuestRecycledView.fgh.historySongs.add(ps);
                         Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
                     }
                 }
@@ -416,6 +417,14 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
 //        CharSequence searcher = songSearchBar.getQuery();
 //        android.util.Log.d("response: ", searcher.toString());
         });
+
+        ArrayList<PlaylistSong> playCopy = new ArrayList<>(playlistSongs);
+        if(playCopy.size() > 0){
+            playCopy.remove(0);
+            Collections.sort(playCopy, new SortPlaylist());
+            playCopy.add(0, playlistSongs.get(0));
+        }
+
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
 //        RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs);

@@ -252,6 +252,7 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                         Song userSong = userList.get(i).song;
                         PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
                         playList.add(ps);
+                        GuestRecycledView.fgh.historySongs.add(ps);
                     }
                 }
 
@@ -345,6 +346,13 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
 
         });
+
+        ArrayList<PlaylistSong> playCopy = new ArrayList<>(playlistSongs);
+        if(playCopy.size() > 0){
+            playCopy.remove(0);
+            Collections.sort(playCopy, new SortPlaylist());
+            playCopy.add(0, playlistSongs.get(0));
+        }
 
         myRecyclerView = (RecyclerView) v.findViewById(R.id.playlistRecyclerView);
         RecyclerViewAdapter recyclerAdapter = new RecyclerViewAdapter(getContext(), playlistSongs, null);

@@ -224,22 +224,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             player.pause(null);
                             appDB.deleteSong(mData.get(i).getSongURI());
                             mData.remove(i); // might need to delete later because ^^
-                            notifyItemRemoved(i);
-                            notifyItemRangeChanged(i, mData.size());*/
+//                            notifyItemRemoved(i);
+//                            notifyItemRangeChanged(i, mData.size());
 
                         } else if (i == 0 && mData.size() > 1) {
                             player.playUri(null, mData.get(i + 1).getSongURI(), 0, 0);
                             appDB.deleteSong(mData.get(i).getSongURI());
-                           /* mData.remove(i); // might need to delete later because ^^
-                            notifyItemRemoved(i);
-                            notifyItemRangeChanged(i, mData.size());*/
+                            mData.remove(i); // might need to delete later because ^^
+//                            notifyItemRemoved(i);
+//                            notifyItemRangeChanged(i, mData.size());
 
                         } else {
                             appDB.deleteSong(mData.get(i).getSongURI());
-                            /*mData.remove(i); // might need to delete later because ^^
-                            notifyItemRemoved(i);
-                            notifyItemRangeChanged(i, mData.size());
-                            //appDB.deleteSong(mData.get(i).getSongURI());
+                            mData.remove(i); // might need to delete later because ^^
+//                            notifyItemRemoved(i);
+//                            notifyItemRangeChanged(i, mData.size());
+//                            appDB.deleteSong(mData.get(i).getSongURI());
                         }
                     }
                 }
@@ -284,7 +284,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public void removeItem(int position) {
         mData.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, mData.size());
+//        notifyItemRemoved(position);
+//        notifyItemRangeChanged(position, mData.size());
     }
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class FragmentHostHistory extends android.support.v4.app.Fragment {
     View v;
     private RecyclerView myRecyclerView;
-    public  ArrayList<PlaylistSong> historySongs;
+    public  static ArrayList<PlaylistSong> historySongs;
     public  ArrayList<Integer> voteList;
 
     @Override

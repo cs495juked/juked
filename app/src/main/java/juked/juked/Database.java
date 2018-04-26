@@ -160,36 +160,7 @@ public class Database {
                     appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
                     appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
                 }
-                //setSongPosition
-                //pulledUser.setUserSong(newSong);
-                //pulledUser.song.setVoteBalance(1);
-                /*userList.get(listPosition).setUserSong(newSong);
-                userList.get(listPosition).song.setVoteBalance(1);
-                uSong = userList.get(listPosition).song;
-                Vote uVote = new Vote(newSong.getSongURI(),uid);
-                uVote.setVote(1);
-                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
-                Collections.sort(userList,new SortUsers());
-                for (int i = 0; i < userList.size(); i ++ ) {
-                    Log.d("DBTag","i: " + String.valueOf(i));
-                    if (userList.get(i).song != null) {
-                        Log.d("DBTag","i.song.position: " + String.valueOf(userList.get(i).song.getPosition()));
-                        if (userList.get(i).song.getPosition() != i) {
-                            Log.d("DBTag","Made it inside of inner get");
-                            userList.get(i).song.setPosition(i);
-                            appDatabase.child(lobby).child("users").child(String.valueOf(userList.get(i).userId)).setValue(userList.get(i));
-                        }
-                    }
-                }
-                Random rand = new Random();
-                int random = rand.nextInt(10000);
-                appDatabase.child(lobby).child("updateTrigger").setValue(random);
 
-                Vote uVote = new Vote(newSong.getSongURI(),uid);
-                uVote.setVote(1);
-                appDatabase.child(lobby).child("votes").child(uVote.getURI()).child(uVote.getUID()).setValue(uVote);
-                //appDatabase.child(lobby).child("users").child(uid).setValue(pulledUser);
-                */
             }
 
             @Override
