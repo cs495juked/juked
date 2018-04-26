@@ -132,33 +132,25 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
 
 
     public void querySearchedSong(int position){
-        Boolean exitsts = false;
+
         if (appDB.uSong == null) {
 
             //String query = arraylist.get(position).getSongName() + " " +arraylist.get(position).getArtistName() + " " + arraylist.get(position).getAlbumName() ;
             String uri = arraylist.get(position).getSongURI();
 
             list.setVisibility(v.GONE);
-            Log.d("existcheck","tester");
-            for(int i =0; i<playlistSongs.size(); i++){
-                Log.d("existcheck","uri 1 is: "+ playlistSongs.get(i).getSongURI());
-                Log.d("existcheck","uri 2 is: "+ uri);
-                if(uri.equals(playlistSongs.get(i).getSongURI())){
-                    Log.d("DBTag","found URI");
-                    exitsts = true;
-                }
-            }
-            if(!exitsts){
-                PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
-                playlistSongs.add(pls);
-                GuestRecycledView.fgh.historySongs.add(pls);
 
-                Log.d("userSong", arraylist.get(position).getSongName());
-                final Song userSong = arraylist.get(position);
+            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
-                appDB.updateSong(userSong);
-            }
+            playlistSongs.add(pls);
+            GuestRecycledView.fgh.historySongs.add(pls);
+
+            Log.d("userSong", arraylist.get(position).getSongName());
+            final Song userSong = arraylist.get(position);
+
+            appDB.updateSong(userSong);
+
         } else {
 
             CharSequence text = "You already have a song in the queue!\nWait until your song has been played to add another";
@@ -247,7 +239,6 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
         appDB.appDatabase.child(appDB.lobby).child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("DBTag", "I made it inside on DataChange");
                 ArrayList<jukeuser> userList = new ArrayList<jukeuser>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     jukeuser user = snapshot.getValue(jukeuser.class);
@@ -255,21 +246,17 @@ public class FragmentGuestPlaylist extends android.support.v4.app.Fragment {
                 }
                 ArrayList<PlaylistSong> playList = new ArrayList<PlaylistSong>();
                 int songs = 0;
-                Log.d("DBTag","User Size: " + String.valueOf(userList.size()));
-
 
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).song != null) {
                         Song userSong = userList.get(i).song;
                         PlaylistSong ps = new PlaylistSong(userSong.getSongName(), userSong.getArtistName(), userSong.getAlbumName(), userSong.getAlbumCover(), userSong.getSongURI(), userList.get(i).userName, userSong.getVoteBalance());
-                        playList.add(ps);;
-                        Log.d("DBTag","Song is: " + userList.get(i).song.getSongName());
+                        playList.add(ps);
                     }
                 }
 
 
                 if (playList.size() != 0) {
-                    Log.d("DBTag","inside playlistsize check");
                     ArrayList<Vote> listVotes = RecyclerViewAdapter.getVotes();
                     if(listVotes == null) {
                         listVotes = new ArrayList<>();

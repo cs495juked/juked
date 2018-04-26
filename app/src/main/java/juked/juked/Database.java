@@ -131,23 +131,27 @@ public class Database {
                 //Song songList[] = new Song[userList.size()];
                 int totalsongs = 0;
                 int exists = 0;
+                Log.d("here", newSong.getSongName());
                 for (int i = 0; i < userList.size() ; i++) {
                     Song userSong = userList.get(i).song;
-                    if (userSong.getSongURI().equals(userList.get(i).song.getSongURI())) {
-                        exists = 1;
-                        break;
-                    }
                     if (pulledUser.userId == userList.get(i).userId) {
                         listPosition = i;
                     }
-                    if ((userSong != null) && (userList.get(i).userId != pulledUser.userId)) {
-                       // int pos = userSong.getPosition();
-                        //songList[pos] = userSong;
+                    if(userSong != null){
+                        if (newSong.getSongURI().equals(userList.get(i).song.getSongURI())) {
+                            Log.d("here", "made it 2");
+                            exists = 1;
+                            break;
+                        }
 
-                        totalsongs++;
+                        if(userList.get(i).userId != pulledUser.userId){
+                            totalsongs++;
+                        }
                     }
+
                 }
                 if (exists == 0) {
+                    Log.d("here", "made it");
                     newSong.setVoteBalance(1);
                     pulledUser.setUserSong(newSong);
                     uSong = newSong;

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -146,28 +147,23 @@ public class FragmentHostPlaylist extends android.support.v4.app.Fragment {
             Log.d("response", "uri is: " + uri);
             list.setVisibility(v.GONE);
 
-            for(int i =0; i<playlistSongs.size(); i++){
-                if(uri.equals(playlistSongs.get(i).getSongURI())){
-                    Log.d("response","found URI");
-                    exitsts = true;
-                }
-            }
-            if(!exitsts) {
+            PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
 
-                PlaylistSong pls = new PlaylistSong(arraylist.get(position).getSongName(), arraylist.get(position).getArtistName(), arraylist.get(position).getAlbumName(), arraylist.get(position).getAlbumCover(), arraylist.get(position).getSongURI(), splashScreen.userNickname, 1);
+            playlistSongs.add(pls);
 
-                playlistSongs.add(pls);
+            HostRecycledView.fhh.historySongs.add(pls);
+            player.playUri(null, uri, 0, 0);
+            HostRecycledView.tempVar = true;
+            final Song userSong = arraylist.get(position);
 
-                HostRecycledView.fhh.historySongs.add(pls);
-                player.playUri(null, uri, 0, 0);
-                HostRecycledView.tempVar = true;
-                final Song userSong = arraylist.get(position);
+            appDB.updateSong(userSong);
 
-                appDB.updateSong(userSong);
-            }
         } else {
-            //add some error popup here!
-            Log.d("DBTag","Song is already queued!");
+            CharSequence text = "You already have a song in the queue!\nWait until your song has been played to add another";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(getContext(), text, duration);
+            toast.show();
             list.setVisibility(v.GONE);
         }
 
